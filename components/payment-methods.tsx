@@ -28,11 +28,11 @@ export function PaymentMethods({ variant = "badges" }: { variant?: "badges" | "s
   }
 
   return (
-    <ul className="flex flex-wrap items-center justify-center gap-2.5">
+    <ul className="mx-auto flex max-w-md items-center justify-center gap-1.5">
       {cards.map((c) => (
         <li
           key={c.file}
-          className="flex h-9 w-[52px] items-center justify-center overflow-hidden rounded-md bg-white shadow-sm"
+          className="flex h-7 flex-1 items-center justify-center overflow-hidden rounded bg-white shadow-sm"
         >
           <Image
             src={`/images/cards/${c.file}.png`}
