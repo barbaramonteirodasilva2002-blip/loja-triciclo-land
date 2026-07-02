@@ -9,7 +9,6 @@ import { Comparison } from "@/components/comparison"
 import { OfferCountdown } from "@/components/offer-countdown"
 import { UseCases } from "@/components/use-cases"
 import { Reviews } from "@/components/reviews"
-import { TrustBar } from "@/components/trust-bar"
 import { Faq } from "@/components/faq"
 import { SiteFooter } from "@/components/site-footer"
 import { StickyBuyBar } from "@/components/sticky-buy-bar"
@@ -20,7 +19,6 @@ export default function Page() {
       <SiteHeader />
       <main>
         <ProductHero />
-        <TrustBar />
         <FeatureBanners />
         <HotCold />
         <Installation />
