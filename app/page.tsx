@@ -1,23 +1,35 @@
 import { SiteHeader } from "@/components/site-header"
-import { Hero } from "@/components/hero"
-import { Benefits } from "@/components/benefits"
-import { FeaturedProducts } from "@/components/featured-products"
-import { Testimonials } from "@/components/testimonials"
-import { Newsletter } from "@/components/newsletter"
+import { ProductHero } from "@/components/product-hero"
+import { FeatureBanners } from "@/components/feature-banners"
+import { HotCold } from "@/components/hot-cold"
+import { Installation } from "@/components/installation"
+import { ProductInfo } from "@/components/product-info"
+import { Comparison } from "@/components/comparison"
+import { OfferCountdown } from "@/components/offer-countdown"
+import { UseCases } from "@/components/use-cases"
+import { Reviews } from "@/components/reviews"
+import { TrustBar } from "@/components/trust-bar"
 import { Faq } from "@/components/faq"
 import { SiteFooter } from "@/components/site-footer"
 
 export default function Page() {
   return (
-    <main className="flex min-h-screen flex-col">
+    <div className="min-h-screen bg-background">
       <SiteHeader />
-      <Hero />
-      <Benefits />
-      <FeaturedProducts />
-      <Testimonials />
-      <Newsletter />
-      <Faq />
+      <main>
+        <ProductHero />
+        <TrustBar />
+        <FeatureBanners />
+        <HotCold />
+        <Installation />
+        <ProductInfo />
+        <Comparison />
+        <OfferCountdown />
+        <UseCases />
+        <Reviews />
+        <Faq />
+      </main>
       <SiteFooter />
-    </main>
+    </div>
   )
 }

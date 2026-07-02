@@ -1,5 +1,6 @@
 import { Logo } from "@/components/logo"
-import { AtSign, MessageCircle, Mail, ShieldCheck, Truck, CreditCard } from "lucide-react"
+import { PaymentMethods } from "@/components/payment-methods"
+import { Mail, Phone, Clock, Truck } from "lucide-react"
 
 const columns = [
   {
@@ -8,61 +9,47 @@ const columns = [
   },
   {
     title: "Institucional",
-    links: ["Quem Somos", "Dúvidas Frequentes", "Política de Privacidade", "Rastrear Pedido"],
-  },
-  {
-    title: "Atendimento",
-    links: ["Central de Ajuda", "Fale Conosco", "WhatsApp", "contato@aqualux.com.br"],
+    links: ["Quem Somos", "Dúvidas Frequentes", "Política de Privacidade"],
   },
 ]
 
 export function SiteFooter() {
   return (
     <footer className="bg-brand-navy-deep text-primary-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <Logo className="text-primary-foreground" />
-            <p className="mt-4 max-w-xs text-pretty leading-relaxed text-primary-foreground/60">
-              Hidratação com design e qualidade. Garrafas premium para acompanhar você em cada momento do dia.
-            </p>
-            <div className="mt-6 flex gap-3">
-              <a
-                href="#"
-                aria-label="Instagram"
-                className="flex size-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-accent"
-              >
-                <AtSign className="size-5" aria-hidden="true" />
-              </a>
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="flex size-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-accent"
-              >
-                <MessageCircle className="size-5" aria-hidden="true" />
-              </a>
-              <a
-                href="#"
-                aria-label="E-mail"
-                className="flex size-10 items-center justify-center rounded-full bg-white/10 transition-colors hover:bg-accent"
-              >
-                <Mail className="size-5" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
+      <div className="mx-auto max-w-3xl px-6 py-12">
+        {/* Atendimento */}
+        <h3 className="font-heading text-lg font-bold uppercase tracking-wide">Atendimento ao Cliente</h3>
+        <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
+          <li className="flex items-center gap-2.5">
+            <Mail className="size-4 text-primary-foreground/60" />
+            contato@suporteonlinebr.com
+          </li>
+          <li className="flex items-center gap-2.5">
+            <Phone className="size-4 text-primary-foreground/60" />
+            (27) 99988-7436
+          </li>
+          <li className="flex items-center gap-2.5">
+            <Clock className="size-4 text-primary-foreground/60" />
+            Seg-Sex: 08h às 17h
+          </li>
+        </ul>
 
+        <a
+          href="#rastreio"
+          className="mt-5 flex items-center justify-center gap-2 rounded-xl bg-white/10 py-3.5 text-sm font-medium transition-colors hover:bg-white/15"
+        >
+          <Truck className="size-4" /> Rastrear Pedido
+        </a>
+
+        {/* Colunas de links */}
+        <div className="mt-10 grid grid-cols-2 gap-8">
           {columns.map((col) => (
             <div key={col.title}>
-              <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/50">
-                {col.title}
-              </h3>
+              <h4 className="font-heading text-sm font-bold uppercase tracking-wide">{col.title}</h4>
               <ul className="mt-4 flex flex-col gap-3">
                 {col.links.map((link) => (
                   <li key={link}>
-                    <a
-                      href="#"
-                      className="text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground"
-                    >
+                    <a href="#" className="text-sm text-primary-foreground/70 transition-colors hover:text-primary-foreground">
                       {link}
                     </a>
                   </li>
@@ -72,24 +59,34 @@ export function SiteFooter() {
           ))}
         </div>
 
-        <div className="mt-12 grid gap-4 border-y border-white/10 py-6 sm:grid-cols-3">
-          <div className="flex items-center gap-3">
-            <Truck className="size-6 text-accent" aria-hidden="true" />
-            <span className="text-sm text-primary-foreground/70">Envio para todo o Brasil</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <ShieldCheck className="size-6 text-accent" aria-hidden="true" />
-            <span className="text-sm text-primary-foreground/70">Compra 100% segura</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <CreditCard className="size-6 text-accent" aria-hidden="true" />
-            <span className="text-sm text-primary-foreground/70">Cartão, Pix e Boleto</span>
+        {/* Aviso */}
+        <p className="mt-10 border-t border-white/10 pt-8 text-center text-xs leading-relaxed text-primary-foreground/60">
+          Preços e condições exclusivos para compras neste site oficial, podendo variar com o tempo da oferta. Evite
+          comprar produtos mais baratos ou de outras lojas, pois você pode estar sendo enganado(a) por um golpista.
+        </p>
+
+        {/* Formas de pagamento */}
+        <div className="mt-8 text-center">
+          <p className="text-sm font-semibold">Nós aceitamos</p>
+          <div className="mt-4">
+            <PaymentMethods />
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center justify-between gap-2 text-sm text-primary-foreground/50 sm:flex-row">
-          <p>© {new Date().getFullYear()} AquaLux. Todos os direitos reservados.</p>
-          <p>CNPJ 00.000.000/0001-00</p>
+        {/* Logo e endereço */}
+        <div className="mt-10 border-t border-white/10 pt-8 text-center">
+          <div className="flex justify-center">
+            <Logo className="text-primary-foreground" />
+          </div>
+          <p className="mt-4 font-heading text-sm font-bold">AquaLux Ltda</p>
+          <p className="mt-1 text-xs leading-relaxed text-primary-foreground/60">
+            Rua Henry Ford, nº 548
+            <br />
+            Osasco — São Paulo/SP, CEP 06210-100
+          </p>
+          <p className="mt-4 text-xs text-primary-foreground/50">
+            © {new Date().getFullYear()} AquaLux. Todos os direitos reservados.
+          </p>
         </div>
       </div>
     </footer>

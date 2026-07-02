@@ -5,24 +5,36 @@ import { ChevronDown } from "lucide-react"
 
 const faqs = [
   {
-    q: "Qual o prazo de entrega dos produtos?",
-    a: "Trabalhamos com envio imediato. Após a confirmação do pagamento, seu pedido é postado em até 24 horas úteis. O prazo de entrega varia de 3 a 10 dias úteis, dependendo da sua região.",
+    q: "Qual é o comprimento do fio que vem junto?",
+    a: "O AquaLux Digital acompanha um cabo de alimentação de aproximadamente 1 metro, ideal para alcançar tomadas próximas à pia sem necessidade de extensões.",
   },
   {
-    q: "As garrafas mantêm a temperatura por quanto tempo?",
-    a: "Nossas garrafas térmicas de parede dupla a vácuo mantêm bebidas geladas por até 24 horas e quentes por até 12 horas, garantindo a temperatura ideal o dia todo.",
+    q: "Funciona em qualquer torneira?",
+    a: "Funciona na maioria das torneiras com bico externo. Acompanha um kit de adaptadores universais. Não é compatível com torneiras de chuveirinho retrátil ou bica embutida.",
   },
   {
-    q: "Os produtos são livres de BPA?",
-    a: "Sim. Todos os nossos produtos são fabricados com materiais 100% livres de BPA, atóxicos e seguros para o contato com alimentos e bebidas.",
+    q: "Qual a voltagem? Funciona em 110V?",
+    a: "Sim! O aparelho é bivolt automático e funciona em 110V, 127V e 220V, sem necessidade de chave seletora.",
   },
   {
-    q: "Como funciona a troca ou devolução?",
-    a: "Você tem até 7 dias após o recebimento para solicitar troca ou devolução, conforme o Código de Defesa do Consumidor. É simples: entre em contato com nosso suporte e cuidamos de todo o processo.",
+    q: "Quanto tempo leva para esquentar?",
+    a: "A água quente sai em apenas 3 segundos após abrir o fluxo, graças à resistência de alta eficiência e ao aquecimento instantâneo.",
   },
   {
-    q: "O pagamento é seguro?",
-    a: "Totalmente. Utilizamos criptografia de ponta e gateways de pagamento certificados. Aceitamos cartão de crédito, Pix e boleto com total segurança.",
+    q: "Precisa de encanador para instalar?",
+    a: "Não. A instalação é feita em poucos minutos, sem obras e sem ferramentas especiais. Basta desrosquear o bico aerador e encaixar o aquecedor.",
+  },
+  {
+    q: "É seguro? Tem proteção?",
+    a: "Sim. O AquaLux Digital possui proteção inteligente contra superaquecimento, vedação eficiente contra vazamentos e desligamento automático de segurança.",
+  },
+  {
+    q: "Em quanto tempo recebo?",
+    a: "Enviamos em até 24h úteis após a confirmação do pagamento. O prazo de entrega é de 3 a 10 dias úteis, dependendo da sua região, com frete grátis para todo o Brasil.",
+  },
+  {
+    q: "E se eu não gostar do produto?",
+    a: "Você conta com garantia de 30 dias. Se não ficar satisfeito, entre em contato com nosso suporte que resolvemos a troca ou devolução de forma simples.",
   },
 ]
 
@@ -30,14 +42,12 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="bg-secondary/40 py-16 md:py-24">
+    <section id="faq" className="scroll-mt-24 bg-background py-12 md:py-16">
       <div className="mx-auto max-w-3xl px-4">
-        <div className="mb-10 text-center">
-          <span className="text-sm font-semibold uppercase tracking-widest text-accent">Suporte</span>
-          <h2 className="mt-2 text-balance text-3xl font-bold text-foreground md:text-4xl">Dúvidas Frequentes</h2>
-          <p className="mx-auto mt-3 max-w-xl text-pretty leading-relaxed text-muted-foreground">
-            Reunimos as perguntas mais comuns para você comprar com total tranquilidade.
-          </p>
+        <div className="mb-8 text-center">
+          <h2 className="text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
+            Perguntas Frequentes
+          </h2>
         </div>
 
         <div className="flex flex-col gap-3">
