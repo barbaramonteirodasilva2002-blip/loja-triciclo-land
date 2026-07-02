@@ -121,7 +121,7 @@ export function SiteHeader() {
         aria-hidden={!menuOpen}
       >
         <div
-          className="absolute inset-0 bg-primary/40 backdrop-blur-sm"
+          className="absolute inset-0 bg-brand-navy-deep/70 backdrop-blur-sm"
           onClick={() => setMenuOpen(false)}
         />
 
