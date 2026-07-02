@@ -82,7 +82,7 @@ export function SiteFooter() {
         <div className="mt-8 text-center">
           <p className="text-sm font-semibold">Nós aceitamos</p>
           <div className="mt-4">
-            <PaymentMethods />
+            <PaymentMethods variant="strip" />
           </div>
         </div>
 
