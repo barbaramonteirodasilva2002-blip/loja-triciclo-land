@@ -28,19 +28,19 @@ export function PaymentMethods({ variant = "badges" }: { variant?: "badges" | "s
   }
 
   return (
-    <ul className="mx-auto flex max-w-md items-center justify-center gap-1.5">
+    <ul className="mx-auto flex max-w-md flex-nowrap items-center justify-center gap-1">
       {cards.map((c) => (
         <li
           key={c.file}
-          className="flex h-7 flex-1 items-center justify-center overflow-hidden rounded bg-white shadow-sm"
+          className="flex h-8 w-9 shrink-0 items-center justify-center overflow-hidden rounded-md bg-white px-1 shadow-sm"
         >
           <Image
             src={`/images/cards/${c.file}.png`}
             alt={c.name}
             width={120}
             height={40}
-            sizes="52px"
-            className="h-full w-full object-contain"
+            sizes="44px"
+            className="h-auto w-full object-contain"
           />
         </li>
       ))}
