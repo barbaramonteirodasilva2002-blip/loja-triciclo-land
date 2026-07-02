@@ -14,9 +14,9 @@ const cards = [
 export function PaymentMethods({ variant = "badges" }: { variant?: "badges" | "strip" }) {
   if (variant === "strip") {
     return (
-      <div className="mx-auto inline-flex max-w-md items-center justify-center rounded-xl bg-white px-4 py-3 shadow-sm">
+      <div className="mx-auto flex max-w-md items-center justify-center">
         <Image
-          src="/images/cards-strip-source.png"
+          src="/images/cards-strip-transparent.png"
           alt="Formas de pagamento aceitas: Pix, Visa, Mastercard, Elo, American Express, Hipercard, Discover e Diners Club"
           width={336}
           height={42}
