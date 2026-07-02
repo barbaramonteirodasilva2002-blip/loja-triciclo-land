@@ -92,7 +92,7 @@ export default function Page() {
       </section>
 
       {/* Card de rastreio */}
-      <div className="mx-auto -mt-8 max-w-2xl px-4 pb-4">
+      <div className="relative z-10 mx-auto -mt-8 max-w-2xl px-4 pb-4">
         <div className="rounded-2xl bg-white p-5 shadow-xl sm:p-7">
           <div className="flex items-center gap-3">
             <div className="flex size-12 shrink-0 items-center justify-center rounded-xl bg-[#13234d]">
