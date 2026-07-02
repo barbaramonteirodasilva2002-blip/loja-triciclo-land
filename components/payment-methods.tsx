@@ -32,7 +32,7 @@ export function PaymentMethods({ variant = "badges" }: { variant?: "badges" | "s
       {cards.map((c) => (
         <li
           key={c.file}
-          className="flex h-10 min-w-0 max-w-[52px] flex-1 items-center justify-center overflow-hidden rounded-md bg-white px-0.5 shadow-sm"
+          className="flex h-10 min-w-0 max-w-[52px] flex-1 items-center justify-center overflow-hidden rounded-md bg-white shadow-sm"
         >
           <Image
             src={`/images/cards/${c.file}.png`}
