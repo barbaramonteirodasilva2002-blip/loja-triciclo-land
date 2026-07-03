@@ -21,21 +21,9 @@ export const metadata: Metadata = {
     'Garrafas premium AquaLux que mantêm sua bebida na temperatura ideal. Design elegante, livre de BPA, frete grátis e envio imediato para todo o Brasil.',
   generator: 'v0.app',
   icons: {
-    icon: [
-      {
-        url: '/icon-light-32x32.png',
-        media: '(prefers-color-scheme: light)',
-      },
-      {
-        url: '/icon-dark-32x32.png',
-        media: '(prefers-color-scheme: dark)',
-      },
-      {
-        url: '/icon.svg',
-        type: 'image/svg+xml',
-      },
-    ],
-    apple: '/apple-icon.png',
+    icon: '/aqualux-badge.png',
+    shortcut: '/aqualux-badge.png',
+    apple: '/aqualux-badge.png',
   },
 }
 
