@@ -97,7 +97,7 @@ export function Reviews() {
         </div>
 
         {/* Selos */}
-        <div className="mt-8 grid grid-cols-3 gap-3">
+        <div id="oferta-final" className="mt-8 grid scroll-mt-20 grid-cols-3 gap-3">
           <SmallBadge icon={ShieldCheck} title="Compra 100% segura" />
           <SmallBadge icon={Star} title="4.9 de avaliação" />
           <SmallBadge icon={Truck} title="Entrega rápida" />
@@ -105,7 +105,7 @@ export function Reviews() {
 
         {/* CTA */}
         <a
-          href="#comprar"
+          href="#oferta-final"
           className="mt-6 flex items-center justify-center rounded-xl bg-brand-navy py-4 font-heading text-lg font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
         >
           APROVEITAR OFERTA
