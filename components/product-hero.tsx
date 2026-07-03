@@ -169,7 +169,7 @@ export function ProductHero() {
           </div>
 
           {/* Seletor de kit */}
-          <div className="mt-6">
+          <div id="escolha-kit" className="mt-6 scroll-mt-24">
             <div className="flex items-center justify-between">
               <h2 className="text-sm font-bold uppercase tracking-wide text-foreground">Escolha seu kit</h2>
               <span className="text-xs text-muted-foreground">3 opções</span>
