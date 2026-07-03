@@ -13,6 +13,7 @@ import {
   Clock,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { openCheckout, type KitId } from "@/lib/checkout"
 
 const gallery = [
   { src: "/images/hero-produto-real.png", alt: "AquaLux Digital instalado na torneira com display marcando 45 graus" },
@@ -238,13 +239,14 @@ export function ProductHero() {
           </div>
 
           {/* CTA */}
-          <a
+          <button
             id="comprar"
-            href="#comprar"
-            className="mt-5 flex scroll-mt-24 items-center justify-center rounded-xl bg-brand-navy py-4 font-heading text-lg font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
+            type="button"
+            onClick={() => openCheckout(kit as KitId)}
+            className="mt-5 flex w-full scroll-mt-24 items-center justify-center rounded-xl bg-brand-navy py-4 font-heading text-lg font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
           >
             COMPRAR AGORA
-          </a>
+          </button>
 
           {/* Selos */}
           <div className="mt-5 grid grid-cols-3 gap-2 border-t border-border pt-5 text-center">

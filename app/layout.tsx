@@ -1,6 +1,7 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Poppins } from 'next/font/google'
+import Script from 'next/script'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -56,6 +57,26 @@ export default function RootLayout({
       <body className="font-sans antialiased">
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
+
+        {/* Utmify - Script de UTMs */}
+        <Script
+          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+          data-utmify-prevent-xcod-sck=""
+          data-utmify-prevent-subids=""
+          strategy="afterInteractive"
+        />
+
+        {/* Utmify - Pixel de rastreamento de vendas */}
+        <Script id="utmify-pixel" strategy="afterInteractive">
+          {`
+            window.pixelId = "6a4708779f6cfb5229ae436b";
+            var a = document.createElement("script");
+            a.setAttribute("async", "");
+            a.setAttribute("defer", "");
+            a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+            document.head.appendChild(a);
+          `}
+        </Script>
       </body>
     </html>
   )
