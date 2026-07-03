@@ -1,10 +1,6 @@
 // Links de checkout dos produtos (página de vendas).
 // Cada kit aponta para o link de compra correspondente.
-//
-// ATENÇÃO: os links fornecidos vêm com o domínio "https://undefined/".
-// Assim que você informar o domínio correto da loja/checkout, basta
-// atualizar a constante CHECKOUT_BASE abaixo — os links serão remontados.
-const CHECKOUT_BASE = "https://undefined"
+const CHECKOUT_BASE = "https://seguro.aqualuxtorneiras.site"
 
 export type KitId = "1un" | "2un" | "3un"
 
