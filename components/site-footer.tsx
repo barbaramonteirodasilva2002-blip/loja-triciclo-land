@@ -89,7 +89,7 @@ export function SiteFooter() {
         {/* Logo e endereço */}
         <div className="mt-10 border-t border-white/10 pt-8 text-center">
           <div className="flex justify-center">
-            <Logo className="text-primary-foreground" />
+            <Logo variant="light" className="h-10" />
           </div>
           <p className="mt-4 font-heading text-sm font-bold">AquaLux Ltda</p>
           <p className="mt-1 text-xs leading-relaxed text-primary-foreground/60">

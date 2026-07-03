@@ -143,7 +143,7 @@ export function SiteHeader() {
               <X className="size-5" />
             </button>
             <div className="flex justify-center">
-              <Logo variant="light" className="text-2xl" />
+              <Logo variant="light" className="h-10" />
             </div>
             <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à AquaLux</p>
           </div>
