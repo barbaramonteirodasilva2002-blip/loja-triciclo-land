@@ -1,10 +1,6 @@
 // Links de checkout dos produtos (página de vendas).
 // Cada kit aponta para o link de compra correspondente.
-//
-// ATENÇÃO: os links fornecidos vêm com o domínio "https://undefined/".
-// Assim que você informar o domínio correto da loja/checkout, basta
-// atualizar a constante CHECKOUT_BASE abaixo — os links serão remontados.
-const CHECKOUT_BASE = "https://undefined"
+const CHECKOUT_BASE = "https://seguro.aqualuxtorneiras.site"
 
 export type KitId = "1un" | "2un" | "3un"
 
@@ -12,6 +8,62 @@ const PRODUCT_IDS: Record<KitId, string> = {
   "1un": "3394124211431",
   "2un": "3394139274438",
   "3un": "3394182432433",
+}
+
+export type Kit = {
+  id: KitId
+  units: string
+  subtitle: string
+  old: string
+  price: string
+  priceValue: number
+  off: string
+  img: string
+  bestSeller?: boolean
+}
+
+// Catálogo de kits compartilhado entre o seletor (ProductHero),
+// o bloco de preço e a barra fixa (StickyBuyBar).
+export const KITS: Kit[] = [
+  {
+    id: "1un",
+    units: "1 unidade",
+    subtitle: "Para uso individual",
+    old: "R$ 199,90",
+    price: "R$ 97,14",
+    priceValue: 97.14,
+    off: "51%",
+    img: "/images/kit-1.png",
+  },
+  {
+    id: "2un",
+    units: "2 unidades",
+    subtitle: "Ideal para casa toda",
+    old: "R$ 399,80",
+    price: "R$ 149,21",
+    priceValue: 149.21,
+    off: "63%",
+    img: "/images/kit-2.png",
+    bestSeller: true,
+  },
+  {
+    id: "3un",
+    units: "3 unidades",
+    subtitle: "Melhor custo-benefício",
+    old: "R$ 599,70",
+    price: "R$ 195,90",
+    priceValue: 195.9,
+    off: "67%",
+    img: "/images/kit-3.png",
+  },
+]
+
+export function getKit(kit: KitId): Kit {
+  return KITS.find((k) => k.id === kit) ?? KITS[1]
+}
+
+export function formatBRL(value: number): string {
+  return value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }
 
 const STORE_ID = "33941"
