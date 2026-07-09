@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
+import Link from "next/link"
 import { Logo } from "@/components/logo"
 import { CheckoutClient } from "@/components/checkout/checkout-client"
 
@@ -27,7 +28,9 @@ export default function CheckoutPage() {
     <div className="min-h-screen bg-secondary/30">
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3.5">
-          <Logo />
+          <Link href="/" aria-label="DriftKids - página inicial">
+            <Logo />
+          </Link>
           <span className="flex items-center gap-1.5 text-right uppercase leading-[1.15] tracking-wide">
             <SolidLockIcon className="size-3.5 shrink-0 text-[#1a1a2e]" />
             <span className="flex flex-col">
