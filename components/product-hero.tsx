@@ -11,30 +11,34 @@ import {
   ShieldCheck,
   Truck,
   Clock,
+  ShoppingCart,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { openCheckout, formatBRL, KITS } from "@/lib/checkout"
+import { formatBRL, KITS } from "@/lib/checkout"
 import { useKit } from "@/components/kit-provider"
+import { useCart } from "@/components/cart-provider"
+import { PaymentMethods } from "@/components/payment-methods"
 
 const gallery = [
-  { src: "/images/hero-produto-real.png", alt: "AquaLux Digital instalado na torneira com display marcando 45 graus" },
-  { src: "/images/banner-aquecimento.png", alt: "Aquecedor AquaLux com água quente saindo na pia da cozinha" },
-  { src: "/images/banner-instalacao-simples.png", alt: "Aquecedor AquaLux Digital em destaque de instalação" },
-  { src: "/images/banner-agua-quente-fria.png", alt: "AquaLux Digital com seletor de água quente e fria" },
-  { src: "/images/banner-instalacao-facil.png", alt: "Passo a passo de instalação do AquaLux Digital" },
-  { src: "/images/banner-compativel.png", alt: "Torneiras compatíveis com o AquaLux Digital" },
+  { src: "/images/drift-produto-rosa.webp", alt: "Triciclo Infantil Elétrico Drift na estampa Rosa Galáxia" },
+  { src: "/images/drift-produto-preto-dimensoes.webp", alt: "Triciclo Elétrico Drift preto com dimensões: 94cm de comprimento, 44cm de largura, 57cm de altura e banco a 35cm" },
+  { src: "/images/drift-produto-cores.webp", alt: "Triciclo Elétrico Drift disponível nas estampas azul, rosa e preto" },
+  { src: "/images/drift-lifestyle-parque.webp", alt: "Criança pilotando o Triciclo Elétrico Drift azul em um parque" },
+  { src: "/images/drift-banner-rosa.webp", alt: "Detalhes do Triciclo Elétrico Drift: comando no guidão, banco confortável, motor elétrico e ajuste entre eixos" },
+  { src: "/images/drift-banner-azul.webp", alt: "Detalhes do Triciclo Elétrico Drift: comandos no guidão, banco fixo, motor elétrico no eixo dianteiro e ajuste entre eixos" },
 ]
 
 const benefits = [
-  "Água quente instantânea em apenas 3 segundos",
-  "Display digital com temperatura em tempo real",
-  "Instalação simples, sem ferramentas ou obras",
-  "Compatível com a maioria das torneiras (bivolt 110V/127V/220V)",
+  "Motor elétrico de 300W no eixo dianteiro",
+  "3 velocidades ajustáveis para cada fase da criançada",
+  "Caixa de som Bluetooth com entrada MP3",
+  "Banco giratório tipo kart com rodas de drift e bandeirinha inclusa",
 ]
 
 export function ProductHero() {
   const [active, setActive] = useState(0)
   const { kitId, setKitId, kit } = useKit()
+  const cart = useCart()
   const installment = formatBRL(kit.priceValue / 12)
 
   const total = gallery.length
@@ -111,11 +115,11 @@ export function ProductHero() {
               ))}
             </div>
             <span className="text-sm font-semibold text-foreground">4.9</span>
-            <span className="text-sm text-muted-foreground">(3.127 avaliações)</span>
+            <span className="text-sm text-muted-foreground">(2.480 avaliações)</span>
           </div>
 
           <h1 className="mt-3 text-balance font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl">
-            AquaLux Digital — Aquecedor Instantâneo Premium para Torneira (BIVOLT)
+            Triciclo Infantil Elétrico Drift — Bluetooth, MP3 e Bandeirinha (300W)
           </h1>
 
           {/* Bloco de preço */}
@@ -139,10 +143,10 @@ export function ProductHero() {
             </p>
           </div>
 
-          {/* Seletor de kit */}
+          {/* Seletor de cor */}
           <div id="escolha-kit" className="mt-6 scroll-mt-24">
             <div className="flex items-center justify-between">
-              <h2 className="text-sm font-bold uppercase tracking-wide text-foreground">Escolha seu kit</h2>
+              <h2 className="text-sm font-bold uppercase tracking-wide text-foreground">Escolha a cor</h2>
               <span className="text-xs text-muted-foreground">3 opções</span>
             </div>
             <div className="mt-3 grid grid-cols-3 gap-2.5">
@@ -196,13 +200,13 @@ export function ProductHero() {
           {/* Brinde */}
           <div className="mt-4 flex items-center gap-3 rounded-2xl border border-dashed border-emerald-400/60 bg-emerald-50 p-4">
             <div className="relative size-14 shrink-0 overflow-hidden rounded-lg bg-white">
-              <Image src="/images/kit-1.png" alt="Kit de adaptadores brinde" fill sizes="56px" className="object-contain" />
+              <Image src="/images/drift-produto-cores.webp" alt="Bandeirinha e carregador brinde" fill sizes="56px" className="object-contain" />
             </div>
             <div>
               <p className="flex items-center gap-1.5 text-sm font-bold text-emerald-600">
                 <Gift className="size-4" /> BRINDE GRÁTIS
               </p>
-              <p className="text-sm font-semibold text-foreground">Kit de adaptadores + bico aerador</p>
+              <p className="text-sm font-semibold text-foreground">Bandeirinha personalizada + carregador de bateria</p>
               <p className="text-xs text-muted-foreground">
                 Incluso <span className="font-semibold text-emerald-600">no</span> seu pedido hoje
               </p>
@@ -210,14 +214,28 @@ export function ProductHero() {
           </div>
 
           {/* CTA */}
-          <button
-            id="comprar"
-            type="button"
-            onClick={() => openCheckout(kitId)}
-            className="mt-5 flex w-full scroll-mt-24 items-center justify-center rounded-xl bg-brand-navy py-4 font-heading text-lg font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
-          >
-            COMPRAR AGORA
-          </button>
+          <div id="comprar" className="mt-5 scroll-mt-24 space-y-2.5">
+            <button
+              type="button"
+              onClick={() => {
+                cart.addItem(kitId, 1)
+                window.location.href = "/checkout"
+              }}
+              className="flex w-full items-center justify-center rounded-xl bg-brand-navy py-4 font-heading text-lg font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
+            >
+              COMPRAR AGORA
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                cart.addItem(kitId, 1)
+                cart.open()
+              }}
+              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-brand-navy py-3.5 font-heading text-sm font-bold text-brand-navy transition hover:bg-secondary"
+            >
+              <ShoppingCart className="size-4" /> Adicionar ao Carrinho
+            </button>
+          </div>
 
           {/* Selos */}
           <div className="mt-5 grid grid-cols-3 gap-2 border-t border-border pt-5 text-center">
@@ -228,14 +246,7 @@ export function ProductHero() {
 
           {/* Bandeiras aceitas em uma única linha */}
           <div className="mt-4 flex justify-center">
-            <Image
-              src="/images/cards-strip-source.png"
-              alt="Formas de pagamento aceitas: Pix, Visa, Mastercard, Elo, American Express, Hipercard, Discover e Diners Club"
-              width={336}
-              height={42}
-              sizes="(max-width: 480px) 80vw, 300px"
-              className="h-auto w-full max-w-[300px]"
-            />
+            <PaymentMethods />
           </div>
         </div>
       </div>

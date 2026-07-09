@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | AquaLux",
-  description: "Conheça os termos e condições de uso do site e das compras realizadas na AquaLux.",
+  title: "Termos de Uso | DriftKids",
+  description: "Conheça os termos e condições de uso do site e das compras realizadas na DriftKids.",
 }
 
 export default function Page() {
@@ -42,8 +42,8 @@ export default function Page() {
 
       <Section heading="Propriedade intelectual">
         <p>
-          Todo o conteúdo do site, incluindo textos, imagens e marca, pertence à AquaLux e não pode ser reproduzido sem
-          autorização prévia.
+          Todo o conteúdo do site, incluindo textos, imagens e marca, pertence à DriftKids e não pode ser reproduzido
+          sem autorização prévia.
         </p>
       </Section>
     </PageShell>

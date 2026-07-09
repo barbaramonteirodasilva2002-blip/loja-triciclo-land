@@ -1,12 +1,12 @@
-import { Utensils, Hand, Baby, Sparkles, Coffee, CookingPot } from "lucide-react"
+import { Trees, PartyPopper, Users, Sun, Home, Trophy } from "lucide-react"
 
 const uses = [
-  { icon: Utensils, label: "Lavar louça" },
-  { icon: Hand, label: "Lavar as mãos" },
-  { icon: Baby, label: "Banho do bebê" },
-  { icon: Sparkles, label: "Higienizar" },
-  { icon: Coffee, label: "Bebidas quentes" },
-  { icon: CookingPot, label: "Cozinha" },
+  { icon: Trees, label: "Parques e praças" },
+  { icon: PartyPopper, label: "Festas de aniversário" },
+  { icon: Users, label: "Brincar com amigos" },
+  { icon: Sun, label: "Fins de semana ao ar livre" },
+  { icon: Home, label: "Quintal de casa" },
+  { icon: Trophy, label: "Corridinhas de drift" },
 ]
 
 export function UseCases() {
@@ -14,9 +14,9 @@ export function UseCases() {
     <section className="bg-background py-10">
       <div className="mx-auto max-w-2xl px-4">
         <div className="text-center">
-          <h2 className="font-heading text-2xl font-bold text-foreground">Água quente para o dia a dia</h2>
+          <h2 className="font-heading text-2xl font-bold text-foreground">Diversão elétrica para o dia a dia</h2>
           <p className="mt-2 text-pretty text-sm text-muted-foreground">
-            Ideal para diversas situações com praticidade e economia de energia
+            Ideal para diversas ocasiões, com muita adrenalina e segurança
           </p>
         </div>
 

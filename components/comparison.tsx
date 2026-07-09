@@ -1,13 +1,13 @@
 import { Check, X } from "lucide-react"
 
 const rows = [
-  "Água quente instantânea em 3 segundos",
-  "Display digital com temperatura em tempo real",
-  "Barra LED RGB indicadora",
-  "Instalação sem ferramentas e sem obras",
-  "Compatível com a maioria das torneiras",
-  "Temperatura constante enquanto o fluxo ativo",
-  "Proteção contra superaquecimento",
+  "Motor elétrico de 300W no eixo dianteiro",
+  "3 velocidades ajustáveis",
+  "Caixa de som Bluetooth com entrada MP3",
+  "Banco giratório tipo kart para manobras de drift",
+  "Ajuste de eixo entre banco e guidão",
+  "Visor de bateria no guidão",
+  "Bandeirinha decorativa inclusa",
 ]
 
 export function Comparison() {
@@ -16,10 +16,10 @@ export function Comparison() {
       <div className="mx-auto max-w-3xl px-4">
         <div className="text-center">
           <h2 className="text-balance font-heading text-2xl font-bold text-foreground">
-            Por que escolher o AquaLux Digital?
+            Por que escolher o Triciclo Elétrico Drift?
           </h2>
           <p className="mx-auto mt-2 max-w-md text-pretty text-sm text-muted-foreground">
-            Mais tecnologia, mais economia e instalação mais simples do que aquecedores comuns.
+            Mais potência, mais diversão e muito mais recursos do que os triciclos elétricos comuns.
           </p>
         </div>
 
@@ -41,7 +41,7 @@ export function Comparison() {
                 </span>
               </span>
               <span className="flex w-16 justify-center px-2 py-3">
-                <span className="flex size-6 items-center justify-center rounded-full bg-[#e11d2a]/10 text-[#e11d2a]">
+                <span className="flex size-6 items-center justify-center rounded-full bg-[#d9534f]/10 text-[#d9534f]">
                   <X className="size-3.5" />
                 </span>
               </span>

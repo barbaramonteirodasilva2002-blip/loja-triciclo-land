@@ -1,37 +1,36 @@
 import { Star, BadgeCheck, Flame, ShieldCheck, Truck } from "lucide-react"
 import Image from "next/image"
-import { ReviewPhotosCarousel } from "@/components/review-photos-carousel"
 
 const reviews = [
   {
     name: "Marcos A.",
     city: "São Paulo/SP",
     photo: "/images/reviews/marcos.png",
-    text: "Instalei em menos de 5 minutos, sem ferramentas. A água sai quente quase imediato e o display digital é muito útil.",
+    text: "Meu filho não desgruda do triciclo! As 3 velocidades ajudaram ele a ganhar confiança aos poucos.",
   },
   {
     name: "Fernanda C.",
     city: "Belo Horizonte/MG",
     photo: "/images/reviews/fernanda.png",
-    text: "Resolveu o problema da minha cozinha que não tinha água quente. Lavar louça ficou muito melhor no inverno.",
+    text: "A qualidade surpreendeu, roda super bem e ainda toca música no Bluetooth. Show de bola!",
   },
   {
     name: "Ricardo M.",
     city: "Curitiba/PR",
     photo: "/images/reviews/ricardo.png",
-    text: "Veio tudo direitinho, com os adaptadores. Encaixou perfeito na minha torneira e a temperatura sobe rapidinho.",
+    text: "Veio tudo certinho, a bateria dura bastante e o carregamento é rápido. Recomendo.",
   },
   {
     name: "André P.",
     city: "Porto Alegre/RS",
     photo: "/images/reviews/andre.png",
-    text: "Aquecimento muito rápido, temperatura constante, design moderno. Economia de energia comparado ao boiler antigo.",
+    text: "Comprei pro aniversário de 6 anos do meu filho e foi a festa mais animada do bairro.",
   },
   {
     name: "Juliana S.",
     city: "Goiânia/GO",
     photo: "/images/reviews/juliana.png",
-    text: "Nota 1000! Display mostra a temperatura certinha, a barra LED muda de cor, e instalei sozinha sem ajuda. Recomendo demais!",
+    text: "Fácil de montar, resistente e o design com estampa de galáxia é lindo. Nota 1000!",
   },
 ]
 
@@ -40,7 +39,7 @@ export function Reviews() {
     <section id="avaliacoes" className="scroll-mt-24 bg-secondary/40 py-12">
       <div className="mx-auto max-w-3xl px-4">
         <div className="text-center">
-          <p className="flex items-center justify-center gap-1.5 text-sm font-bold uppercase tracking-wide text-[#e11d2a]">
+          <p className="flex items-center justify-center gap-1.5 text-sm font-bold uppercase tracking-wide text-[#d9534f]">
             <Flame className="size-4" /> Mais de 3 mil clientes satisfeitos
           </p>
           <h2 className="mt-2 text-balance font-heading text-2xl font-bold text-foreground">
@@ -56,9 +55,6 @@ export function Reviews() {
             <span className="text-muted-foreground">— 3.127 avaliações verificadas</span>
           </p>
         </div>
-
-        {/* Fotos em carrossel automático */}
-        <ReviewPhotosCarousel />
 
         {/* Avaliações */}
         <div className="mt-6 space-y-3">

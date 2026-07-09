@@ -1,0 +1,68 @@
+"use client"
+
+import { useState } from "react"
+import { MessageCircle, X } from "lucide-react"
+import { PaymentMethods } from "@/components/payment-methods"
+
+const WHATSAPP_NUMBER = "5527999887436"
+
+export function CheckoutFooter() {
+  const [showInfo, setShowInfo] = useState(false)
+
+  return (
+    <>
+      <footer className="border-t border-border bg-brand-navy-deep py-8 text-primary-foreground">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <p className="text-sm font-semibold">Formas de pagamento</p>
+          <div className="mt-3 flex justify-center">
+            <PaymentMethods />
+          </div>
+          <button
+            type="button"
+            onClick={() => setShowInfo(true)}
+            className="mt-4 text-xs font-medium text-primary-foreground/70 underline underline-offset-2 transition hover:text-primary-foreground"
+          >
+            Informações da loja
+          </button>
+          <p className="mt-3 text-xs text-primary-foreground/50">DriftKids Ltda | Todos os direitos reservados</p>
+        </div>
+      </footer>
+
+      {showInfo && (
+        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/50 p-4 sm:items-center" onClick={() => setShowInfo(false)}>
+          <div
+            className="w-full max-w-sm rounded-2xl bg-card p-5 shadow-xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-center justify-between">
+              <p className="font-heading text-sm font-bold text-foreground">Informações de contato</p>
+              <button type="button" onClick={() => setShowInfo(false)} aria-label="Fechar" className="text-muted-foreground hover:text-foreground">
+                <X className="size-4" />
+              </button>
+            </div>
+            <div className="mt-3 space-y-1 text-sm text-muted-foreground">
+              <p className="font-semibold text-foreground">DriftKids Ltda</p>
+              <p>Rua Henry Ford, 548 — Osasco - São Paulo</p>
+              <p className="pt-2">
+                <span className="font-semibold text-foreground">Telefone:</span> (27) 99988-7436
+              </p>
+              <p>
+                <span className="font-semibold text-foreground">E-mail:</span> contato@suporteonlinebr.com
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <a
+        href={`https://wa.me/${WHATSAPP_NUMBER}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Falar no WhatsApp"
+        className="fixed bottom-5 right-5 z-40 flex size-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg transition hover:brightness-105"
+      >
+        <MessageCircle className="size-6 fill-current" />
+      </a>
+    </>
+  )
+}

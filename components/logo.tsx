@@ -1,4 +1,4 @@
-import Image from "next/image"
+import { Zap } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 interface LogoProps {
@@ -6,20 +6,18 @@ interface LogoProps {
   variant?: "light" | "dark"
 }
 
+// Logo provisória em texto — substituir quando a nova marca da loja de brinquedos estiver pronta.
 export function Logo({ className, variant = "dark" }: LogoProps) {
   return (
-    <Image
-      src="/images/aqualux-logo.png"
-      alt="AquaLux"
-      width={350}
-      height={110}
-      priority
+    <span
       className={cn(
-        "h-8 w-auto",
-        // No fundo escuro (menu/rodapé) deixa a logo branca para manter contraste
-        variant === "light" && "brightness-0 invert",
+        "inline-flex items-center gap-1.5 font-heading text-xl font-extrabold tracking-tight",
+        variant === "light" ? "text-white" : "text-brand-navy",
         className,
       )}
-    />
+    >
+      <Zap className={cn("size-5 fill-current", variant === "light" ? "text-white" : "text-accent")} />
+      Drift<span className={variant === "light" ? "text-white/70" : "text-accent"}>Kids</span>
+    </span>
   )
 }

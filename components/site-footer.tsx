@@ -82,7 +82,7 @@ export function SiteFooter() {
         <div className="mt-8 text-center">
           <p className="text-sm font-semibold">Nós aceitamos</p>
           <div className="mt-4">
-            <PaymentMethods variant="badges" />
+            <PaymentMethods />
           </div>
         </div>
 
@@ -91,14 +91,14 @@ export function SiteFooter() {
           <div className="flex justify-center">
             <Logo variant="light" className="h-10" />
           </div>
-          <p className="mt-4 font-heading text-sm font-bold">AquaLux Ltda</p>
+          <p className="mt-4 font-heading text-sm font-bold">DriftKids Ltda</p>
           <p className="mt-1 text-xs leading-relaxed text-primary-foreground/60">
             Rua Henry Ford, nº 548
             <br />
             Osasco — São Paulo/SP, CEP 06210-100
           </p>
           <p className="mt-4 text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} AquaLux. Todos os direitos reservados.
+            © {new Date().getFullYear()} DriftKids. Todos os direitos reservados.
           </p>
         </div>
       </div>

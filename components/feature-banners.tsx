@@ -2,16 +2,16 @@ import Image from "next/image"
 
 const banners = [
   {
-    src: "/images/banner-aquecimento.png",
-    alt: "Aquecimento rápido em 3 segundos com o AquaLux Digital instalado na torneira",
-    width: 520,
-    height: 492,
+    src: "/images/drift-banner-rosa.webp",
+    alt: "Drift Elétrico estampa Galáxia Rosa: comando no guidão, banco confortável, motor elétrico e ajuste entre eixos",
+    width: 1254,
+    height: 1254,
   },
   {
-    src: "/images/banner-instalacao-simples.png",
-    alt: "Instalação simples e compatibilidade máxima do AquaLux Digital",
-    width: 520,
-    height: 482,
+    src: "/images/drift-banner-azul.webp",
+    alt: "Drift Elétrico estampa Galáxia Azul: comandos no guidão, banco fixo, motor elétrico no eixo dianteiro e ajuste entre eixos",
+    width: 1000,
+    height: 1000,
   },
 ]
 

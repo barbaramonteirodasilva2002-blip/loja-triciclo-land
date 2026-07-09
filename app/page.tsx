@@ -1,9 +1,9 @@
 import { SiteHeader } from "@/components/site-header"
 import { ProductHero } from "@/components/product-hero"
 import { FeatureBanners } from "@/components/feature-banners"
-import { HotCold } from "@/components/hot-cold"
+import { ColorOptions } from "@/components/color-options"
 import { Installation } from "@/components/installation"
-import { Compatibility } from "@/components/compatibility"
+import { AgeGuide } from "@/components/age-guide"
 import { ProductInfo } from "@/components/product-info"
 import { Comparison } from "@/components/comparison"
 import { OfferCountdown } from "@/components/offer-countdown"
@@ -22,9 +22,9 @@ export default function Page() {
         <main>
           <ProductHero />
           <FeatureBanners />
-          <HotCold />
+          <ColorOptions />
           <Installation />
-          <Compatibility />
+          <AgeGuide />
           <ProductInfo />
           <Comparison />
           <OfferCountdown />

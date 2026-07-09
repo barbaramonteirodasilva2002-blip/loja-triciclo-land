@@ -5,28 +5,28 @@ import { ChevronDown } from "lucide-react"
 
 const faqs = [
   {
-    q: "Qual é o comprimento do fio que vem junto?",
-    a: "O AquaLux Digital acompanha um cabo de alimentação de aproximadamente 1 metro, ideal para alcançar tomadas próximas à pia sem necessidade de extensões.",
+    q: "Qual a autonomia da bateria e quanto tempo leva para carregar?",
+    a: "A bateria recarregável acompanha um carregador próprio. Recomendamos carregar totalmente antes do primeiro uso para garantir a melhor autonomia nas pilotagens.",
   },
   {
-    q: "Funciona em qualquer torneira?",
-    a: "Funciona na maioria das torneiras com bico externo. Acompanha um kit de adaptadores universais. Não é compatível com torneiras de chuveirinho retrátil ou bica embutida.",
+    q: "Quantas velocidades tem e a partir de qual idade posso usar?",
+    a: "São 3 velocidades ajustáveis, ideais para a criança evoluir aos poucos. Indicado para crianças de 3 a 8 anos, com até 50kg.",
   },
   {
-    q: "Qual a voltagem? Funciona em 110V?",
-    a: "Sim! O aparelho é bivolt automático e funciona em 110V, 127V e 220V, sem necessidade de chave seletora.",
+    q: "O triciclo tem som Bluetooth? Como funciona?",
+    a: "Sim! Ele conta com uma caixa de som Bluetooth com entrada MP3, para tocar as músicas favoritas da criançada direto do celular.",
   },
   {
-    q: "Quanto tempo leva para esquentar?",
-    a: "A água quente sai em apenas 3 segundos após abrir o fluxo, graças à resistência de alta eficiência e ao aquecimento instantâneo.",
+    q: "Precisa montar quando chega?",
+    a: "O triciclo vem praticamente pronto de fábrica. Basta encaixar o guidão e ajustar o eixo entre banco e guidão para o tamanho da criança.",
   },
   {
-    q: "Precisa de encanador para instalar?",
-    a: "Não. A instalação é feita em poucos minutos, sem obras e sem ferramentas especiais. Basta desrosquear o bico aerador e encaixar o aquecedor.",
+    q: "É seguro? Tem algum limite de peso?",
+    a: "Sim. A estrutura é reforçada e conta com 3 velocidades ajustáveis para começar devagar. Suporta até 50kg e o uso deve ser sempre supervisionado por um adulto.",
   },
   {
-    q: "É seguro? Tem proteção?",
-    a: "Sim. O AquaLux Digital possui proteção inteligente contra superaquecimento, vedação eficiente contra vazamentos e desligamento automático de segurança.",
+    q: "A bandeirinha e o carregador já vêm inclusos?",
+    a: "Sim! A bandeirinha decorativa e o carregador de bateria acompanham o produto sem custo adicional.",
   },
   {
     q: "Em quanto tempo recebo?",

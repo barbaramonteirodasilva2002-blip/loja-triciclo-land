@@ -9,10 +9,13 @@ import {
   Home,
   ChevronRight,
   ShoppingBag,
+  ShoppingCart,
   Zap,
 } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { cn } from "@/lib/utils"
+import { useCart } from "@/components/cart-provider"
+import { CartDrawer } from "@/components/cart-drawer"
 
 const mainLinks = [
   { label: "Início", href: "/#inicio", icon: Home },
@@ -35,6 +38,7 @@ const institutionalLinks = [
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const cart = useCart()
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : ""
@@ -65,7 +69,7 @@ export function SiteHeader() {
             <Menu className="size-6" />
           </button>
 
-          <a href="#inicio" aria-label="AquaLux - página inicial">
+          <a href="#inicio" aria-label="DriftKids - página inicial">
             <Logo />
           </a>
 
@@ -84,6 +88,19 @@ export function SiteHeader() {
               aria-label="Buscar produtos"
             >
               <Search className="size-5" />
+            </button>
+            <button
+              type="button"
+              onClick={cart.open}
+              className="relative inline-flex size-10 items-center justify-center rounded-md text-primary transition-colors hover:bg-secondary"
+              aria-label="Abrir carrinho"
+            >
+              <ShoppingCart className="size-5" />
+              {cart.totalCount > 0 && (
+                <span className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
+                  {cart.totalCount}
+                </span>
+              )}
             </button>
           </div>
         </div>
@@ -145,7 +162,7 @@ export function SiteHeader() {
             <div className="flex justify-center">
               <Logo variant="light" className="h-10" />
             </div>
-            <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à AquaLux</p>
+            <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à DriftKids</p>
           </div>
 
           {/* Corpo do menu */}
@@ -185,6 +202,8 @@ export function SiteHeader() {
           </div>
         </nav>
       </div>
+
+      <CartDrawer />
     </>
   )
 }

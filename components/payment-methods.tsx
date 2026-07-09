@@ -1,32 +1,17 @@
 import Image from "next/image"
 
 const cards = [
-  { name: "Pix", file: "pix" },
   { name: "Visa", file: "visa" },
   { name: "Mastercard", file: "mastercard" },
-  { name: "Elo", file: "elo" },
   { name: "American Express", file: "amex" },
-  { name: "Hipercard", file: "hipercard" },
-  { name: "Discover", file: "discover" },
   { name: "Diners Club", file: "diners" },
+  { name: "Hipercard", file: "hipercard" },
+  { name: "Boleto", file: "boleto" },
+  { name: "Elo", file: "elo" },
+  { name: "Pix", file: "pix" },
 ]
 
-export function PaymentMethods({ variant = "badges" }: { variant?: "badges" | "strip" }) {
-  if (variant === "strip") {
-    return (
-      <div className="flex justify-center">
-        <Image
-          src="/images/cards-strip-transparent.png"
-          alt="Formas de pagamento aceitas: Pix, Visa, Mastercard, Elo, American Express, Hipercard, Discover e Diners Club"
-          width={336}
-          height={42}
-          sizes="(max-width: 480px) 90vw, 300px"
-          className="h-auto w-full max-w-[300px] rounded-sm bg-white"
-        />
-      </div>
-    )
-  }
-
+export function PaymentMethods() {
   return (
     <ul className="mx-auto flex w-full max-w-[340px] flex-nowrap items-center justify-center gap-1">
       {cards.map((c) => (
@@ -35,7 +20,7 @@ export function PaymentMethods({ variant = "badges" }: { variant?: "badges" | "s
           className="flex h-7 min-w-0 max-w-[38px] flex-1 items-center justify-center overflow-hidden rounded bg-white px-1 py-1 shadow-sm"
         >
           <Image
-            src={`/images/cards/${c.file}.png`}
+            src={`/images/cards/${c.file}.svg`}
             alt={c.name}
             width={120}
             height={40}

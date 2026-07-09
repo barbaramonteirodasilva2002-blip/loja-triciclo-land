@@ -25,7 +25,7 @@ export function PageShell({
             <ArrowLeft className="size-4" />
             Voltar
           </Link>
-          <Link href="/" aria-label="AquaLux - página inicial">
+          <Link href="/" aria-label="DriftKids - página inicial">
             <Logo />
           </Link>
         </div>

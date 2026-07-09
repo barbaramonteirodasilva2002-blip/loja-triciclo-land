@@ -1,17 +1,17 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import {
-  Droplet,
+  Bluetooth,
   Gauge,
-  Wrench,
+  Rocket,
   ShieldCheck,
   Zap,
-  Plug,
-  Thermometer,
-  Flame,
+  BatteryCharging,
   Ruler,
-  Package,
+  Weight,
+  Cake,
   ChevronDown,
   FileText,
   Tag,
@@ -21,37 +21,38 @@ import {
 } from "lucide-react"
 
 const chips = [
-  { icon: Droplet, title: "Água quente em 3 segundos" },
-  { icon: Gauge, title: "Display digital de temperatura" },
-  { icon: Wrench, title: "Instalação sem ferramentas" },
-  { icon: ShieldCheck, title: "Proteção contra superaquecimento" },
+  { icon: Zap, title: "Motor 300W de alta potência" },
+  { icon: Gauge, title: "3 velocidades ajustáveis" },
+  { icon: Bluetooth, title: "Caixa de som Bluetooth + MP3" },
+  { icon: ShieldCheck, title: "Estrutura reforçada e segura" },
 ]
 
 const specs = [
-  { icon: Wrench, label: "Modelo", value: "AquaLux Digital Premium" },
-  { icon: Zap, label: "Potência", value: "3500W" },
-  { icon: Plug, label: "Voltagem", value: "110V/127V/220V (Bivolt)" },
-  { icon: Thermometer, label: "Temperatura", value: "Até 60°C ajustável" },
-  { icon: Flame, label: "Aquecimento", value: "Instantâneo em 3 segundos" },
-  { icon: Ruler, label: "Dimensões", value: "15 × 13 cm" },
-  { icon: Package, label: "Peso", value: "Aprox. 0,5 KG" },
+  { icon: Rocket, label: "Modelo", value: "Triciclo Elétrico Drift 300W" },
+  { icon: Zap, label: "Potência", value: "300W no eixo dianteiro" },
+  { icon: Gauge, label: "Velocidades", value: "3 níveis ajustáveis" },
+  { icon: BatteryCharging, label: "Bateria", value: "Recarregável, com carregador incluso" },
+  { icon: Bluetooth, label: "Conectividade", value: "Bluetooth com entrada MP3" },
+  { icon: Ruler, label: "Dimensões", value: "94 × 44 × 57 cm (banco a 35cm do chão)" },
+  { icon: Weight, label: "Peso suportado", value: "Até 50kg" },
+  { icon: Cake, label: "Idade recomendada", value: "3 a 8 anos" },
 ]
 
 const details = [
   {
     icon: FileText,
     title: "Descrição",
-    body: "O AquaLux Digital é um aquecedor de água instantâneo que se encaixa diretamente na sua torneira, entregando água quente em apenas 3 segundos sem a necessidade de boiler ou obras. Ideal para cozinhas e banheiros que não possuem água quente.",
+    body: "O Triciclo Infantil Elétrico Drift traz motor de 300W no eixo dianteiro, 3 velocidades ajustáveis, banco giratório tipo kart e rodas de drift que deslizam com segurança. Vem com caixa de som Bluetooth e entrada MP3, bandeirinha decorativa e ajuste de eixo entre o banco e o guidão para acompanhar o crescimento da criança.",
   },
   {
     icon: Tag,
     title: "Especificações Técnicas",
-    body: "Potência de 3500W, voltagem bivolt automática (110V/127V/220V), temperatura ajustável até 60°C, display digital com barra LED RGB indicadora e proteção inteligente contra superaquecimento.",
+    body: "Motor elétrico de 300W, 3 velocidades ajustáveis, bateria recarregável com carregador incluso, visor de bateria no guidão, caixa de som Bluetooth com entrada MP3 e rodas traseiras de drift.",
   },
   {
     icon: Box,
     title: "O Que Vem na Caixa",
-    body: "1x Aquecedor AquaLux Digital, 1x Kit de adaptadores universais, 1x Bico aerador, 1x Manual de instalação em português.",
+    body: "1x Triciclo Elétrico Drift, 1x Carregador de bateria, 1x Bandeirinha decorativa, 1x Manual de instruções em português.",
   },
   {
     icon: Truck,
@@ -61,12 +62,12 @@ const details = [
   {
     icon: ShieldCheck,
     title: "Garantia e Segurança",
-    body: "Garantia de 30 dias. Produto com proteção contra superaquecimento e vedação eficiente. Compra 100% segura com pagamento criptografado.",
+    body: "Garantia de 30 dias. As 3 velocidades ajustáveis permitem começar devagar e evoluir com segurança conforme a criança ganha confiança. Compra 100% segura com pagamento criptografado.",
   },
   {
     icon: Info,
     title: "Importante",
-    body: "Compatível apenas com torneiras que possuem bico externo. Verifique o formato da sua torneira antes da compra. Não serve em torneiras com chuveirinho retrátil ou bica embutida.",
+    body: "Uso recomendado sob supervisão de um adulto, em superfícies planas e pavimentadas. Indicado para crianças de 3 a 8 anos com até 50kg. O uso de capacete e proteções é recomendado.",
   },
 ]
 
@@ -91,14 +92,26 @@ export function ProductInfo() {
         {/* Tecnologia premium */}
         <div className="mt-4 rounded-2xl bg-card p-6 shadow-sm">
           <h2 className="text-balance font-heading text-xl font-bold text-foreground">
-            Tecnologia premium para água quente instantânea na sua torneira
+            Potência, som e diversão em um só triciclo
           </h2>
           <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">
-            O AquaLux Digital aquece a água em apenas 3 segundos com resistência de alta eficiência e mantém a temperatura
-            constante enquanto o fluxo estiver ativo. Display digital com leitura em tempo real, barra LED RGB que indica a
-            temperatura e proteção inteligente contra superaquecimento. Encaixe direto na bica da torneira — sem obras, sem
-            encanador.
+            O motor de 300W no eixo dianteiro entrega 3 velocidades ajustáveis, do ritmo mais tranquilo ao modo drift
+            completo. O banco giratório tipo kart e as rodas traseiras deslizantes permitem manobras e derrapagens com
+            segurança, enquanto a caixa de som Bluetooth com entrada MP3 deixa a brincadeira ainda mais animada. O visor
+            de bateria fica no guidão, junto dos comandos, e a bandeirinha decorativa vem inclusa.
           </p>
+        </div>
+
+        {/* Dimensões */}
+        <div className="mt-4 overflow-hidden rounded-2xl bg-white shadow-sm">
+          <Image
+            src="/images/drift-produto-preto-dimensoes.webp"
+            alt="Dimensões do Triciclo Elétrico Drift: 94cm de comprimento, 44cm de largura, 57cm de altura e banco a 35cm do chão"
+            width={1000}
+            height={1000}
+            sizes="(max-width: 768px) 100vw, 768px"
+            className="h-auto w-full"
+          />
         </div>
 
         {/* CTA */}

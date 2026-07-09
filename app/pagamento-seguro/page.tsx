@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Pagamento Seguro | AquaLux",
-  description: "Entenda como protegemos os seus dados e quais formas de pagamento são aceitas na AquaLux.",
+  title: "Pagamento Seguro | DriftKids",
+  description: "Entenda como protegemos os seus dados e quais formas de pagamento são aceitas na DriftKids.",
 }
 
 export default function Page() {
@@ -22,7 +22,8 @@ export default function Page() {
       <Section heading="Formas de pagamento aceitas">
         <ul className="list-disc space-y-1 pl-5">
           <li>Pix (aprovação imediata)</li>
-          <li>Cartão de crédito: Visa, Mastercard, Elo, American Express, Hipercard, Discover e Diners</li>
+          <li>Cartão de crédito: Visa, Mastercard, Elo, American Express, Hipercard e Diners</li>
+          <li>Boleto bancário</li>
           <li>Parcelamento em até 12x no cartão</li>
         </ul>
       </Section>

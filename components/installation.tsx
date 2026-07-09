@@ -1,26 +1,26 @@
 import Image from "next/image"
-import { Wrench, Settings, Droplet, Thermometer, Zap } from "lucide-react"
+import { PackageOpen, BatteryCharging, Settings, Zap } from "lucide-react"
 
 const steps = [
   {
-    icon: Wrench,
-    title: "1. Desparafuse a saída da torneira",
-    desc: "Retire o bico aerador original da sua torneira. Não precisa de ferramentas especiais — só girar com a mão.",
+    icon: PackageOpen,
+    title: "1. Retire da caixa e encaixe o guidão",
+    desc: "O triciclo vem pré-montado — basta encaixar o guidão na estrutura, sem ferramentas especiais.",
+  },
+  {
+    icon: BatteryCharging,
+    title: "2. Carregue a bateria antes do primeiro uso",
+    desc: "Conecte o carregador que acompanha o produto e deixe carregar totalmente antes da primeira pilotagem.",
   },
   {
     icon: Settings,
-    title: "2. Encaixe a porca prateada",
-    desc: "Rosqueie a porca prateada de acoplamento na torneira. Se necessário, use o adaptador universal que vem na caixa.",
+    title: "3. Ajuste o eixo para o tamanho da criança",
+    desc: "Regule a distância entre o banco e o guidão nos furos de ajuste, deixando a postura confortável e segura.",
   },
   {
-    icon: Droplet,
-    title: "3. Trave o aquecedor",
-    desc: "Encaixe o AquaLux Digital na porca prateada e trave girando até ficar firme. Pronto para conectar na tomada (bivolt 110V/127V/220V).",
-  },
-  {
-    icon: Thermometer,
-    title: "4. Ligue e ajuste a temperatura",
-    desc: "Abra o fluxo de água, gire o seletor para cima para água quente ou para baixo para água fria. Display mostra a temperatura em tempo real.",
+    icon: Zap,
+    title: "4. Ligue, escolha a velocidade e mande ver",
+    desc: "Aperte o botão liga/desliga no guidão, selecione uma das 3 velocidades e curta o drift com música no Bluetooth.",
   },
 ]
 
@@ -30,10 +30,10 @@ export function Installation() {
       <div className="mx-auto max-w-3xl space-y-6 px-4">
         <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
           <Image
-            src="/images/banner-instalacao-facil.png"
-            alt="Instalação fácil em poucos passos: desparafuse a saída, coloque a porca prateada, trave o encaixe e coloque o aquecedor"
-            width={512}
-            height={464}
+            src="/images/drift-lifestyle-parque.webp"
+            alt="Criança pilotando o Triciclo Elétrico Drift em um parque"
+            width={1199}
+            height={1199}
             sizes="(max-width: 768px) 100vw, 768px"
             className="h-auto w-full"
           />
@@ -42,10 +42,10 @@ export function Installation() {
         <div className="rounded-2xl bg-card p-6 shadow-sm sm:p-8">
           <div className="text-center">
             <h2 className="flex items-center justify-center gap-2 font-heading text-2xl font-bold text-foreground">
-              <Wrench className="size-6 text-accent" /> Instalação fácil em 4 passos
+              <PackageOpen className="size-6 text-accent" /> Pronto para usar em 4 passos
             </h2>
             <p className="mx-auto mt-2 max-w-md text-pretty text-sm text-muted-foreground">
-              Sem obras, sem encanador, sem complicação. Em poucos minutos a sua torneira tem água quente instantânea.
+              Vem praticamente montado de fábrica. Em poucos minutos a criançada já está pilotando.
             </p>
           </div>
 
@@ -67,7 +67,7 @@ export function Installation() {
             <p className="flex items-center justify-center gap-2 text-sm font-medium text-foreground">
               <Zap className="size-4 text-accent" />
               <span>
-                <span className="font-bold">Bivolt (110V/127V/220V)</span> — compatível com a maioria das torneiras com bico externo.
+                <span className="font-bold">Motor 300W</span> com 3 velocidades ajustáveis — ideal para a criança evoluir com segurança.
               </span>
             </p>
           </div>

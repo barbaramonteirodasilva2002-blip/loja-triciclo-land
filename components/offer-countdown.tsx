@@ -24,14 +24,14 @@ export function OfferCountdown() {
   return (
     <section className="bg-background py-8">
       <div className="mx-auto max-w-md px-4">
-        <div className="rounded-2xl border border-[#e11d2a]/30 bg-card p-6 text-center shadow-sm">
-          <p className="flex items-center justify-center gap-2 font-heading font-bold text-[#e11d2a]">
+        <div className="rounded-2xl border border-[#d9534f]/30 bg-card p-6 text-center shadow-sm">
+          <p className="flex items-center justify-center gap-2 font-heading font-bold text-[#d9534f]">
             <AlertTriangle className="size-5" />
             Oferta termina em: {format(h)}:{format(m)}:{format(s)}
           </p>
           <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-foreground">
             <Zap className="size-4 text-accent" />
-            Estoque limitado — depois volta a <span className="font-semibold">R$ 199,90</span>
+            Estoque limitado — depois volta a <span className="font-semibold">R$ 899,90</span>
           </p>
           <a
             href="#escolha-kit"

@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Trocas e Reembolso | AquaLux",
-  description: "Saiba como solicitar trocas, devoluções e reembolsos dos produtos AquaLux.",
+  title: "Trocas e Reembolso | DriftKids",
+  description: "Saiba como solicitar trocas, devoluções e reembolsos dos produtos DriftKids.",
 }
 
 export default function Page() {

@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Poppins } from 'next/font/google'
 import Script from 'next/script'
+import { CartProvider } from '@/components/cart-provider'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -16,20 +17,20 @@ const poppins = Poppins({
 })
 
 export const metadata: Metadata = {
-  title: 'AquaLux | Hidratação com estilo e alta performance',
+  title: 'DriftKids | Triciclo Infantil Elétrico Drift 300W com Bluetooth e MP3',
   description:
-    'Garrafas premium AquaLux que mantêm sua bebida na temperatura ideal. Design elegante, livre de BPA, frete grátis e envio imediato para todo o Brasil.',
+    'Triciclo Infantil Elétrico Drift com Bluetooth MP3, bandeirinha e 300W de alta potência. Três velocidades ajustáveis, banco tipo kart e rodas de drift. Frete grátis e envio imediato para todo o Brasil.',
   generator: 'v0.app',
   icons: {
-    icon: '/aqualux-badge.png',
-    shortcut: '/aqualux-badge.png',
-    apple: '/aqualux-badge.png',
+    icon: '/images/drift-produto-rosa.webp',
+    shortcut: '/images/drift-produto-rosa.webp',
+    apple: '/images/drift-produto-rosa.webp',
   },
 }
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#101a3a',
+  themeColor: '#001f22',
 }
 
 export default function RootLayout({
@@ -43,7 +44,7 @@ export default function RootLayout({
       className={`light ${geistSans.variable} ${geistMono.variable} ${poppins.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        {children}
+        <CartProvider>{children}</CartProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
 
         {/* Utmify - Script de UTMs */}

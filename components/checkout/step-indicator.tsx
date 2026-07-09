@@ -1,0 +1,64 @@
+"use client"
+
+import { Check } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+export type CheckoutStep = 1 | 2 | 3
+
+const steps: { step: CheckoutStep; label: string }[] = [
+  { step: 1, label: "Identificação" },
+  { step: 2, label: "Entrega" },
+  { step: 3, label: "Pagamento" },
+]
+
+export function StepIndicator({
+  current,
+  onStepClick,
+}: {
+  current: CheckoutStep
+  onStepClick: (step: CheckoutStep) => void
+}) {
+  return (
+    <div className="mb-2">
+      <div className="flex items-center justify-between">
+        {steps.map((s, i) => {
+          const isDone = s.step < current
+          const isActive = s.step === current
+          return (
+            <div key={s.step} className="flex flex-1 items-center">
+              <button
+                type="button"
+                disabled={!isDone}
+                onClick={() => isDone && onStepClick(s.step)}
+                className="flex flex-col items-center gap-1.5"
+              >
+                <span
+                  className={cn(
+                    "flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold transition",
+                    isDone && "bg-brand-navy text-white",
+                    isActive && "bg-accent text-accent-foreground",
+                    !isDone && !isActive && "bg-secondary text-muted-foreground",
+                  )}
+                >
+                  {isDone ? <Check className="size-4" /> : s.step}
+                </span>
+                <span
+                  className={cn(
+                    "text-[11px] font-semibold",
+                    isActive ? "text-foreground" : "text-muted-foreground",
+                  )}
+                >
+                  {s.label}
+                </span>
+              </button>
+              {i < steps.length - 1 && (
+                <span className={cn("mx-2 mb-4 h-0.5 flex-1 rounded-full", isDone ? "bg-brand-navy" : "bg-border")} />
+              )}
+            </div>
+          )
+        })}
+      </div>
+      <p className="mt-2 text-center text-xs text-muted-foreground">{current} de 3</p>
+    </div>
+  )
+}
