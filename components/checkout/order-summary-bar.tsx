@@ -24,6 +24,7 @@ export function OrderSummaryBar({
   couponStatus,
   subtotal,
   discountValue,
+  shippingValue,
   total,
 }: {
   lines: SummaryLine[]
@@ -35,6 +36,7 @@ export function OrderSummaryBar({
   couponStatus: CouponStatus
   subtotal: number
   discountValue: number
+  shippingValue: number
   total: number
 }) {
   const [open, setOpen] = useState(false)
@@ -140,6 +142,12 @@ export function OrderSummaryBar({
                 <span>-R$ {formatBRL(discountValue)}</span>
               </div>
             )}
+            <div className="flex items-center justify-between text-muted-foreground">
+              <span>Frete</span>
+              <span className={shippingValue === 0 ? "font-semibold text-emerald-600" : undefined}>
+                {shippingValue === 0 ? "Grátis" : `R$ ${formatBRL(shippingValue)}`}
+              </span>
+            </div>
             <div className="flex items-center justify-between border-t border-border pt-1.5">
               <span className="font-heading font-bold text-foreground">Total</span>
               <div className="text-right">

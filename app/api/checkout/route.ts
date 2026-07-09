@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import { isValidCPF } from "@/lib/format"
-import { getKit, getCouponDiscount, PIX_DISCOUNT_PERCENT, type KitId } from "@/lib/checkout"
+import { getKit, getCouponDiscount, getShippingMethod, PIX_DISCOUNT_PERCENT, DEFAULT_SHIPPING_METHOD, type KitId, type ShippingMethodId } from "@/lib/checkout"
 import {
   createCardCharge,
   createPixCharge,
@@ -23,6 +23,7 @@ type CheckoutBody = {
   }
   installments?: number
   couponCode?: string
+  shippingMethodId?: ShippingMethodId
   card?: {
     number: string
     holderName: string
@@ -58,7 +59,8 @@ export async function POST(request: NextRequest) {
 
   const couponPercent = body.couponCode ? getCouponDiscount(body.couponCode) ?? 0 : 0
   const pixBonusPercent = paymentMethod === "pix" ? PIX_DISCOUNT_PERCENT : 0
-  const total = subtotal * (1 - (couponPercent + pixBonusPercent) / 100)
+  const shippingValue = getShippingMethod(body.shippingMethodId ?? DEFAULT_SHIPPING_METHOD).price
+  const total = subtotal * (1 - (couponPercent + pixBonusPercent) / 100) + shippingValue
 
   const amountInCents = Math.round(total * 100)
   const orderId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`

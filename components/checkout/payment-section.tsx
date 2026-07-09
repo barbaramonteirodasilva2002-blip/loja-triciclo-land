@@ -1,10 +1,10 @@
 "use client"
 
 import Image from "next/image"
-import { CreditCard, QrCode } from "lucide-react"
+import { CreditCard, QrCode, Truck } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { detectCardBrand, formatCardNumber, formatExpiry } from "@/lib/format"
-import { formatBRL } from "@/lib/checkout"
+import { formatBRL, PIX_DISCOUNT_PERCENT } from "@/lib/checkout"
 
 export type CardFields = {
   number: string
@@ -40,16 +40,22 @@ export function PaymentSection({
     <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
       <p className="text-sm font-bold uppercase tracking-wide text-foreground">Forma de pagamento</p>
 
-      <div className="mt-3 grid grid-cols-2 gap-2.5">
+      <div className="mt-4 grid grid-cols-2 gap-2.5">
         <button
           type="button"
           onClick={() => onPaymentMethodChange("pix")}
           className={cn(
-            "flex items-center justify-center gap-2 rounded-xl border-2 py-3 text-sm font-semibold transition",
+            "relative flex flex-col items-center justify-center gap-0.5 rounded-xl border-2 py-3 text-sm font-semibold transition",
             paymentMethod === "pix" ? "border-brand-navy bg-secondary text-brand-navy" : "border-border text-muted-foreground hover:border-brand-navy/40",
           )}
         >
-          <QrCode className="size-4" /> Pix
+          <span className="absolute -top-2.5 right-2 whitespace-nowrap rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-extrabold text-emerald-700">
+            {PIX_DISCOUNT_PERCENT}% DE DESCONTO
+          </span>
+          <span className="flex items-center gap-2">
+            <QrCode className="size-4" /> Pix
+          </span>
+          <span className="text-[11px] font-semibold text-emerald-600">Aprovação imediata</span>
         </button>
         <button
           type="button"
@@ -64,12 +70,21 @@ export function PaymentSection({
       </div>
 
       {paymentMethod === "pix" && (
-        <div className="mt-4 flex items-start gap-3 rounded-xl bg-secondary/60 p-4">
-          <QrCode className="mt-0.5 size-5 shrink-0 text-brand-navy" />
-          <p className="text-sm text-muted-foreground">
-            Ao finalizar o pedido, geramos um QR Code Pix para você pagar pelo app do seu banco. A confirmação costuma
-            ser em poucos segundos.
-          </p>
+        <div className="mt-4 space-y-2.5">
+          <div className="flex items-start gap-3 rounded-xl bg-secondary/60 p-4">
+            <QrCode className="mt-0.5 size-5 shrink-0 text-brand-navy" />
+            <p className="text-sm text-muted-foreground">
+              Ao finalizar o pedido, geramos um QR Code Pix para você pagar pelo app do seu banco. A confirmação
+              costuma ser em poucos segundos.
+            </p>
+          </div>
+          <div className="flex items-start gap-3 rounded-xl bg-secondary/60 p-4">
+            <Truck className="mt-0.5 size-5 shrink-0 text-brand-navy" />
+            <p className="text-sm text-muted-foreground">
+              Pedidos pagos via Pix têm <span className="font-semibold text-foreground">envio imediato</span>, sem
+              esperar a compensação.
+            </p>
+          </div>
         </div>
       )}
 

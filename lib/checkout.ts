@@ -60,7 +60,7 @@ export function formatBRL(value: number): string {
 export const DEFAULT_KIT: KitId = "rosa"
 
 // Desconto extra aplicado quando o cliente escolhe pagar via Pix no checkout.
-export const PIX_DISCOUNT_PERCENT = 5
+export const PIX_DISCOUNT_PERCENT = 10
 
 // Cupons de desconto válidos no checkout. Vazio por padrão — adicione os seus
 // aqui (ex: { code: "BEMVINDO10", percent: 10 }) para ativá-los.
@@ -70,3 +70,25 @@ export function getCouponDiscount(code: string): number | null {
   const coupon = COUPONS.find((c) => c.code.toUpperCase() === code.trim().toUpperCase())
   return coupon ? coupon.percent : null
 }
+
+export type ShippingMethodId = "pac" | "sedex" | "full"
+
+export type ShippingMethod = {
+  id: ShippingMethodId
+  label: string
+  eta: string
+  price: number
+}
+
+// Opções de frete oferecidas na etapa de Entrega do checkout.
+export const SHIPPING_METHODS: ShippingMethod[] = [
+  { id: "pac", label: "PAC", eta: "3 a 7 dias", price: 0 },
+  { id: "sedex", label: "SEDEX", eta: "1 a 3 dias", price: 9.81 },
+  { id: "full", label: "ENVIO FULL", eta: "Entrega garantida", price: 17.9 },
+]
+
+export function getShippingMethod(id: ShippingMethodId): ShippingMethod {
+  return SHIPPING_METHODS.find((s) => s.id === id) ?? SHIPPING_METHODS[0]
+}
+
+export const DEFAULT_SHIPPING_METHOD: ShippingMethodId = "pac"

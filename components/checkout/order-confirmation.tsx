@@ -14,6 +14,8 @@ export type ConfirmationData = {
   cardLast4?: string
   lines: { kit: Kit; quantity: number }[]
   subtotal: number
+  shippingLabel: string
+  shippingValue: number
   total: number
 }
 
@@ -100,8 +102,10 @@ export function OrderConfirmation({ data }: { data: ConfirmationData }) {
             <span>R$ {formatBRL(data.subtotal)}</span>
           </div>
           <div className="flex items-center justify-between text-muted-foreground">
-            <span>Frete</span>
-            <span className="font-semibold text-emerald-600">Grátis</span>
+            <span>Frete ({data.shippingLabel})</span>
+            <span className={data.shippingValue === 0 ? "font-semibold text-emerald-600" : undefined}>
+              {data.shippingValue === 0 ? "Grátis" : `R$ ${formatBRL(data.shippingValue)}`}
+            </span>
           </div>
           <div className="flex items-center justify-between border-t border-border pt-1.5">
             <span className="font-heading font-bold text-foreground">Total</span>

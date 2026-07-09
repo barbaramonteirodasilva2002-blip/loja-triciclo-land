@@ -1,10 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import { MessageCircle, X } from "lucide-react"
+import { X } from "lucide-react"
 import { PaymentMethods } from "@/components/payment-methods"
-
-const WHATSAPP_NUMBER = "5527999887436"
 
 export function CheckoutFooter() {
   const [showInfo, setShowInfo] = useState(false)
@@ -53,16 +51,6 @@ export function CheckoutFooter() {
           </div>
         </div>
       )}
-
-      <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Falar no WhatsApp"
-        className="fixed bottom-5 right-5 z-40 flex size-14 items-center justify-center rounded-full bg-emerald-500 text-white shadow-lg transition hover:brightness-105"
-      >
-        <MessageCircle className="size-6 fill-current" />
-      </a>
     </>
   )
 }

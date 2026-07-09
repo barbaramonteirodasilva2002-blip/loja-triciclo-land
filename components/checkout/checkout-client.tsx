@@ -2,13 +2,16 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowLeft, ArrowRight, Lock, ShoppingBag } from "lucide-react"
-import { getKit, PIX_DISCOUNT_PERCENT } from "@/lib/checkout"
+import Image from "next/image"
+import { ArrowLeft, ArrowRight, Lock, ShoppingBag, Check } from "lucide-react"
+import { getKit, getShippingMethod, PIX_DISCOUNT_PERCENT, DEFAULT_SHIPPING_METHOD, type ShippingMethodId } from "@/lib/checkout"
 import { formatCEP, formatCPF, formatPhone, isValidCPF, isValidExpiry, luhnCheck, detectCardBrand } from "@/lib/format"
 import { useCart } from "@/components/cart-provider"
 import { StepIndicator, type CheckoutStep } from "@/components/checkout/step-indicator"
 import { OrderSummaryBar, type CouponStatus } from "@/components/checkout/order-summary-bar"
 import { ReviewsMiniCarousel } from "@/components/checkout/reviews-mini-carousel"
+import { ShippingSelector } from "@/components/checkout/shipping-selector"
+import { TrustCarousel } from "@/components/checkout/trust-carousel"
 import { PaymentSection, type CardFields, type PaymentMethod } from "@/components/checkout/payment-section"
 import { PixPayment } from "@/components/checkout/pix-payment"
 import { OrderConfirmation, type ConfirmationData } from "@/components/checkout/order-confirmation"
@@ -45,6 +48,8 @@ export function CheckoutClient() {
   const [customer, setCustomer] = useState<Customer>(emptyCustomer)
   const [address, setAddress] = useState<Address>(emptyAddress)
   const [cepLoading, setCepLoading] = useState(false)
+  const [cepConfirmed, setCepConfirmed] = useState<{ city: string; state: string } | null>(null)
+  const [shippingMethodId, setShippingMethodId] = useState<ShippingMethodId>(DEFAULT_SHIPPING_METHOD)
   const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("pix")
   const [card, setCard] = useState<CardFields>(emptyCard)
   const [installments, setInstallments] = useState(1)
@@ -60,7 +65,8 @@ export function CheckoutClient() {
   const pixBonusPercent = paymentMethod === "pix" ? PIX_DISCOUNT_PERCENT : 0
   const totalDiscountPercent = couponPercent + pixBonusPercent
   const discountValue = subtotal * (totalDiscountPercent / 100)
-  const total = subtotal - discountValue
+  const shippingValue = getShippingMethod(shippingMethodId).price
+  const total = subtotal - discountValue + shippingValue
 
   async function handleApplyCoupon() {
     setCouponStatus("loading")
@@ -88,6 +94,7 @@ export function CheckoutClient() {
     const digits = address.cep.replace(/\D/g, "")
     if (digits.length !== 8) return
     setCepLoading(true)
+    setCepConfirmed(null)
     try {
       const res = await fetch(`https://viacep.com.br/ws/${digits}/json/`)
       const data = await res.json()
@@ -99,6 +106,7 @@ export function CheckoutClient() {
           city: data.localidade || a.city,
           state: data.uf || a.state,
         }))
+        setCepConfirmed({ city: data.localidade, state: data.uf })
       }
     } catch {
       // Falha de rede na consulta de CEP não deve travar o checkout — o cliente pode preencher manualmente.
@@ -124,7 +132,6 @@ export function CheckoutClient() {
     if (!address.number.trim()) errors.number = "Informe o número."
     if (!address.neighborhood.trim()) errors.neighborhood = "Informe o bairro."
     if (!address.city.trim()) errors.city = "Informe a cidade."
-    if (!address.state.trim()) errors.state = "Informe o estado."
     setFieldErrors(errors)
     return Object.keys(errors).length === 0
   }
@@ -163,6 +170,7 @@ export function CheckoutClient() {
           paymentMethod,
           customer,
           address,
+          shippingMethodId,
           installments,
           couponCode: couponStatus === "applied" ? couponCode : undefined,
           card:
@@ -210,6 +218,8 @@ export function CheckoutClient() {
       cardLast4: last4,
       lines,
       subtotal,
+      shippingLabel: getShippingMethod(shippingMethodId).label,
+      shippingValue,
       total,
     })
     cart.clear()
@@ -280,6 +290,7 @@ export function CheckoutClient() {
         couponStatus={couponStatus}
         subtotal={subtotal}
         discountValue={discountValue}
+        shippingValue={shippingValue}
         total={total}
       />
 
@@ -341,8 +352,13 @@ export function CheckoutClient() {
               </div>
 
               {pixBonusPercent > 0 && (
-                <div className="mt-4 rounded-xl bg-secondary/60 p-3 text-center text-xs font-semibold text-brand-navy">
-                  ✨ Você ganha {pixBonusPercent}% de desconto pagando com Pix
+                <div className="mt-4 flex items-center gap-2.5 rounded-xl bg-secondary/60 p-3">
+                  <div className="relative size-5 shrink-0">
+                    <Image src="/images/cards/pix.svg" alt="Pix" fill sizes="20px" className="object-contain" />
+                  </div>
+                  <p className="text-xs font-semibold text-foreground">
+                    Você ganhou <span className="text-accent">{pixBonusPercent}% de desconto</span> pagando com Pix
+                  </p>
                 </div>
               )}
 
@@ -360,21 +376,35 @@ export function CheckoutClient() {
         )}
 
         {step === 2 && (
+          <div className="space-y-4">
           <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
             <p className="text-sm font-bold text-foreground">Para onde enviamos o seu pedido?</p>
             <div className="mt-3 space-y-3">
               <Field id="cep" label="CEP" error={fieldErrors.cep} hint={cepLoading ? "Buscando endereço..." : undefined}>
-                <input
-                  id="cep"
-                  name="postal-code"
-                  autoComplete="postal-code"
-                  inputMode="numeric"
-                  placeholder="00000-000"
-                  value={address.cep}
-                  onChange={(e) => setAddress((a) => ({ ...a, cep: formatCEP(e.target.value) }))}
-                  onBlur={handleCepBlur}
-                  className={`${inputClass} max-w-[160px]`}
-                />
+                <div className="flex items-center gap-2.5">
+                  <input
+                    id="cep"
+                    name="postal-code"
+                    autoComplete="postal-code"
+                    inputMode="numeric"
+                    placeholder="00000-000"
+                    value={address.cep}
+                    onChange={(e) => {
+                      setCepConfirmed(null)
+                      setAddress((a) => ({ ...a, cep: formatCEP(e.target.value) }))
+                    }}
+                    onBlur={handleCepBlur}
+                    className={`${inputClass} max-w-[160px]`}
+                  />
+                  {cepConfirmed && (
+                    <span className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
+                      <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
+                        <Check className="size-2.5" />
+                      </span>
+                      {cepConfirmed.state}/{cepConfirmed.city}
+                    </span>
+                  )}
+                </div>
               </Field>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_120px]">
                 <Field id="street" label="Endereço" error={fieldErrors.street}>
@@ -418,29 +448,21 @@ export function CheckoutClient() {
                   />
                 </Field>
               </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-[1fr_100px]">
-                <Field id="city" label="Cidade" error={fieldErrors.city}>
-                  <input
-                    id="city"
-                    name="address-level2"
-                    autoComplete="address-level2"
-                    value={address.city}
-                    onChange={(e) => setAddress((a) => ({ ...a, city: e.target.value }))}
-                    className={inputClass}
-                  />
-                </Field>
-                <Field id="state" label="UF" error={fieldErrors.state}>
-                  <input
-                    id="state"
-                    name="address-level1"
-                    autoComplete="address-level1"
-                    maxLength={2}
-                    value={address.state}
-                    onChange={(e) => setAddress((a) => ({ ...a, state: e.target.value.toUpperCase() }))}
-                    className={inputClass}
-                  />
-                </Field>
-              </div>
+              <Field id="city" label="Cidade" error={fieldErrors.city}>
+                <input
+                  id="city"
+                  name="address-level2"
+                  autoComplete="address-level2"
+                  value={address.city}
+                  onChange={(e) => setAddress((a) => ({ ...a, city: e.target.value }))}
+                  className={inputClass}
+                />
+              </Field>
+              <input type="hidden" name="address-level1" value={address.state} />
+            </div>
+
+            <div className="mt-5 border-t border-border pt-5">
+              <ShippingSelector selected={shippingMethodId} onSelect={setShippingMethodId} />
             </div>
 
             <div className="mt-5 flex gap-3">
@@ -459,6 +481,9 @@ export function CheckoutClient() {
                 Ir Para Pagamento <ArrowRight className="size-4" />
               </button>
             </div>
+          </div>
+
+          <TrustCarousel />
           </div>
         )}
 
