@@ -59,7 +59,6 @@ export function StepIndicator({
           )
         })}
       </div>
-      <p className="mt-2 text-center text-xs text-muted-foreground">{current} de 3</p>
     </div>
   )
 }
