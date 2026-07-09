@@ -15,11 +15,11 @@ export default function CheckoutPage() {
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3.5">
           <Logo />
-          <span className="flex items-center gap-1.5 text-right text-[11px] font-bold uppercase leading-tight">
-            <Lock className="size-4 shrink-0 text-brand-navy" />
+          <span className="flex items-center gap-1.5 text-right uppercase leading-[1.15] tracking-wide">
+            <Lock className="size-3.5 shrink-0 text-foreground/70" />
             <span className="flex flex-col">
-              <span className="text-brand-navy">Pagamento</span>
-              <span className="text-brand-navy/70">100% seguro</span>
+              <span className="text-[10px] font-extrabold text-foreground/80">Pagamento</span>
+              <span className="text-[10px] font-bold text-accent">100% seguro</span>
             </span>
           </span>
         </div>
