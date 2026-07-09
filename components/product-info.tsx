@@ -34,7 +34,7 @@ const specs = [
   { icon: BatteryCharging, label: "Bateria", value: "Recarregável, com carregador incluso" },
   { icon: Bluetooth, label: "Conectividade", value: "Bluetooth com entrada MP3" },
   { icon: Ruler, label: "Dimensões", value: "94 × 44 × 57 cm (banco a 35cm do chão)" },
-  { icon: Weight, label: "Peso suportado", value: "Até 50kg" },
+  { icon: Weight, label: "Peso suportado", value: "Até 80kg" },
   { icon: Cake, label: "Idade recomendada", value: "3 a 8 anos" },
 ]
 
@@ -67,7 +67,7 @@ const details = [
   {
     icon: Info,
     title: "Importante",
-    body: "Uso recomendado sob supervisão de um adulto, em superfícies planas e pavimentadas. Indicado para crianças de 3 a 8 anos com até 50kg. O uso de capacete e proteções é recomendado.",
+    body: "Uso recomendado sob supervisão de um adulto, em superfícies planas e pavimentadas. Indicado para crianças de 3 a 8 anos com até 80kg. O uso de capacete e proteções é recomendado.",
   },
 ]
 
