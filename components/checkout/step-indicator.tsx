@@ -1,15 +1,15 @@
 "use client"
 
 import { Fragment } from "react"
-import { Check } from "lucide-react"
+import { Check, User, Truck, CreditCard } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export type CheckoutStep = 1 | 2 | 3
 
-const steps: { step: CheckoutStep; label: string }[] = [
-  { step: 1, label: "Identificação" },
-  { step: 2, label: "Entrega" },
-  { step: 3, label: "Pagamento" },
+const steps: { step: CheckoutStep; label: string; icon: typeof User }[] = [
+  { step: 1, label: "Identificação", icon: User },
+  { step: 2, label: "Entrega", icon: Truck },
+  { step: 3, label: "Pagamento", icon: CreditCard },
 ]
 
 export function StepIndicator({
@@ -41,7 +41,7 @@ export function StepIndicator({
                     !isDone && !isActive && "bg-secondary text-muted-foreground",
                   )}
                 >
-                  {isDone ? <Check className="size-4" /> : s.step}
+                  {isDone ? <Check className="size-4" /> : <s.icon className="size-4" />}
                 </span>
                 <span
                   className={cn(
