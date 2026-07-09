@@ -1,6 +1,6 @@
 import type { Metadata } from "next"
 import { Suspense } from "react"
-import { ShieldCheck } from "lucide-react"
+import { Lock } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { CheckoutClient } from "@/components/checkout/checkout-client"
 
@@ -16,7 +16,7 @@ export default function CheckoutPage() {
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3.5">
           <Logo />
           <span className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
-            <ShieldCheck className="size-4 text-brand-navy" /> Ambiente seguro
+            <Lock className="size-4 text-brand-navy" /> Pagamento 100% seguro
           </span>
         </div>
       </header>

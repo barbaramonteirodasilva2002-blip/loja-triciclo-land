@@ -1,9 +1,7 @@
 "use client"
 
-import { useState } from "react"
 import Image from "next/image"
-import { ChevronDown, Minus, Plus, Tag, Trash2 } from "lucide-react"
-import { cn } from "@/lib/utils"
+import { Minus, Plus, Tag, Trash2 } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import type { Kit, KitId } from "@/lib/checkout"
 
@@ -39,25 +37,16 @@ export function OrderSummaryBar({
   shippingValue: number
   total: number
 }) {
-  const [open, setOpen] = useState(false)
   const itemCount = lines.reduce((sum, l) => sum + l.quantity, 0)
 
   return (
-    <div className="sticky top-0 z-30 border-b border-border bg-card shadow-sm">
-      <button
-        type="button"
-        onClick={() => setOpen((v) => !v)}
-        className="mx-auto flex w-full max-w-3xl items-center justify-between px-4 py-3"
-      >
+    <div className="border-b border-border bg-card shadow-sm">
+      <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-4 py-3">
         <span className="text-sm font-semibold text-foreground">Resumo do pedido</span>
-        <span className="flex items-center gap-2">
-          <span className="font-heading text-lg font-extrabold text-brand-navy">R$ {formatBRL(total)}</span>
-          <ChevronDown className={cn("size-4 text-muted-foreground transition-transform", open && "rotate-180")} />
-        </span>
-      </button>
+        <span className="font-heading text-lg font-extrabold text-brand-navy">R$ {formatBRL(total)}</span>
+      </div>
 
-      {open && (
-        <div className="mx-auto max-w-3xl space-y-4 border-t border-border px-4 pb-4 pt-3">
+      <div className="mx-auto max-w-3xl space-y-4 border-t border-border px-4 pb-4 pt-3">
           <div className="space-y-3">
             {lines.map(({ kit, quantity }) => (
               <div key={kit.id} className="flex items-center gap-3">
@@ -112,6 +101,7 @@ export function OrderSummaryBar({
                 <input
                   id="coupon-code"
                   name="coupon-code"
+                  autoComplete="off"
                   value={couponCode}
                   onChange={(e) => onCouponCodeChange(e.target.value.toUpperCase())}
                   placeholder="Digite um cupom"
@@ -157,7 +147,6 @@ export function OrderSummaryBar({
             </div>
           </div>
         </div>
-      )}
     </div>
   )
 }

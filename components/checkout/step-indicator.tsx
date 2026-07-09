@@ -1,5 +1,6 @@
 "use client"
 
+import { Fragment } from "react"
 import { Check } from "lucide-react"
 import { cn } from "@/lib/utils"
 
@@ -20,17 +21,17 @@ export function StepIndicator({
 }) {
   return (
     <div className="mb-2">
-      <div className="flex items-center justify-between">
+      <div className="flex items-start">
         {steps.map((s, i) => {
           const isDone = s.step < current
           const isActive = s.step === current
           return (
-            <div key={s.step} className="flex flex-1 items-center">
+            <Fragment key={s.step}>
               <button
                 type="button"
                 disabled={!isDone}
                 onClick={() => isDone && onStepClick(s.step)}
-                className="flex flex-col items-center gap-1.5"
+                className="flex shrink-0 flex-col items-center gap-1.5"
               >
                 <span
                   className={cn(
@@ -44,7 +45,7 @@ export function StepIndicator({
                 </span>
                 <span
                   className={cn(
-                    "text-[11px] font-semibold",
+                    "whitespace-nowrap text-[11px] font-semibold",
                     isActive ? "text-foreground" : "text-muted-foreground",
                   )}
                 >
@@ -52,9 +53,9 @@ export function StepIndicator({
                 </span>
               </button>
               {i < steps.length - 1 && (
-                <span className={cn("mx-2 mb-4 h-0.5 flex-1 rounded-full", isDone ? "bg-brand-navy" : "bg-border")} />
+                <span className={cn("mx-2 mt-4 h-0.5 flex-1 rounded-full", isDone ? "bg-brand-navy" : "bg-border")} />
               )}
-            </div>
+            </Fragment>
           )
         })}
       </div>
