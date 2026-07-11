@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import {
   Star,
@@ -14,19 +14,33 @@ import {
   ShoppingCart,
 } from "lucide-react"
 import { cn } from "@/lib/utils"
-import { formatBRL, KITS } from "@/lib/checkout"
+import { formatBRL, KITS, type KitId } from "@/lib/checkout"
 import { useKit } from "@/components/kit-provider"
 import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
 
-const gallery = [
-  { src: "/images/drift-produto-rosa.webp", alt: "Triciclo Infantil Elétrico Drift na estampa Rosa Galáxia" },
+const sharedGallery = [
   { src: "/images/drift-produto-preto-dimensoes.webp", alt: "Triciclo Elétrico Drift preto com dimensões: 94cm de comprimento, 44cm de largura, 57cm de altura e banco a 35cm" },
   { src: "/images/drift-produto-cores.webp", alt: "Triciclo Elétrico Drift disponível nas estampas azul, rosa e preto" },
   { src: "/images/drift-lifestyle-parque.webp", alt: "Criança pilotando o Triciclo Elétrico Drift azul em um parque" },
-  { src: "/images/drift-banner-rosa.webp", alt: "Detalhes do Triciclo Elétrico Drift: comando no guidão, banco confortável, motor elétrico e ajuste entre eixos" },
-  { src: "/images/drift-banner-azul.webp", alt: "Detalhes do Triciclo Elétrico Drift: comandos no guidão, banco fixo, motor elétrico no eixo dianteiro e ajuste entre eixos" },
 ]
+
+const galleryByKit: Record<KitId, { src: string; alt: string }[]> = {
+  rosa: [
+    { src: "/images/drift-produto-rosa.webp", alt: "Triciclo Infantil Elétrico Drift na estampa Rosa Galáxia" },
+    { src: "/images/drift-banner-rosa.webp", alt: "Detalhes do Triciclo Elétrico Drift: comando no guidão, banco confortável, motor elétrico e ajuste entre eixos" },
+    ...sharedGallery,
+  ],
+  azul: [
+    { src: "/images/drift-produto-azul.jpg", alt: "Triciclo Infantil Elétrico Drift na estampa Azul Galáxia" },
+    { src: "/images/drift-banner-azul.webp", alt: "Detalhes do Triciclo Elétrico Drift: comandos no guidão, banco fixo, motor elétrico no eixo dianteiro e ajuste entre eixos" },
+    ...sharedGallery,
+  ],
+  preto: [
+    { src: "/images/drift-produto-preto.jpg", alt: "Triciclo Infantil Elétrico Drift na estampa Preto Raios" },
+    ...sharedGallery,
+  ],
+}
 
 const benefits = [
   "Motor elétrico de 300W no eixo dianteiro",
@@ -40,6 +54,12 @@ export function ProductHero() {
   const { kitId, setKitId, kit } = useKit()
   const cart = useCart()
   const installment = formatBRL(kit.priceValue / 12)
+
+  const gallery = galleryByKit[kitId]
+
+  useEffect(() => {
+    setActive(0)
+  }, [kitId])
 
   const total = gallery.length
   const prev = () => setActive((i) => (i - 1 + total) % total)

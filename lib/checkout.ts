@@ -34,7 +34,7 @@ export const KITS: Kit[] = [
     price: "R$ 497,90",
     priceValue: 497.9,
     off: "45%",
-    img: "/images/drift-lifestyle-parque.webp",
+    img: "/images/drift-produto-azul.jpg",
   },
   {
     id: "preto",
@@ -44,7 +44,7 @@ export const KITS: Kit[] = [
     price: "R$ 497,90",
     priceValue: 497.9,
     off: "45%",
-    img: "/images/drift-produto-preto-dimensoes.webp",
+    img: "/images/drift-produto-preto.jpg",
   },
 ]
 
