@@ -220,7 +220,7 @@ export function ProductHero() {
           {/* Brinde */}
           <div className="mt-4 flex items-center gap-3 rounded-2xl border border-dashed border-emerald-400/60 bg-emerald-50 p-4">
             <div className="relative size-14 shrink-0 overflow-hidden rounded-lg bg-white">
-              <Image src="/images/drift-produto-cores.webp" alt="Mini capacete e cotoveleira brinde" fill sizes="56px" className="object-contain" />
+              <Image src="/images/kit-capacete-protecao.webp" alt="Mini capacete e cotoveleira brinde" fill sizes="56px" className="object-contain" />
             </div>
             <div>
               <p className="flex items-center gap-1.5 text-sm font-bold text-emerald-600">
