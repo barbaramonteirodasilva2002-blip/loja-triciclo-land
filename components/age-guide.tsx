@@ -7,8 +7,8 @@ export function AgeGuide() {
       <div className="mx-auto max-w-3xl px-4">
         <div className="overflow-hidden rounded-2xl bg-white shadow-sm">
           <Image
-            src="/images/drift-lifestyle-parque.webp"
-            alt="Criança pilotando o Triciclo Elétrico Drift em um parque, com cones de manobra ao redor"
+            src="/images/drift-lifestyle-playroom.webp"
+            alt="Crianças se divertindo com o Triciclo Elétrico Drift em um espaço colorido e seguro"
             width={1199}
             height={1199}
             sizes="(max-width: 768px) 100vw, 768px"

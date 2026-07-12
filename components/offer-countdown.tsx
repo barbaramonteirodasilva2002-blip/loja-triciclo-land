@@ -31,7 +31,7 @@ export function OfferCountdown() {
           </p>
           <p className="mt-2 flex items-center justify-center gap-1.5 text-sm text-foreground">
             <Zap className="size-4 text-accent" />
-            Estoque limitado — depois volta a <span className="font-semibold">R$ 899,90</span>
+            Estoque limitado — depois volta a <span className="font-semibold">R$ 249,90</span>
           </p>
           <a
             href="#escolha-kit"
