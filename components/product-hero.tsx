@@ -220,13 +220,13 @@ export function ProductHero() {
           {/* Brinde */}
           <div className="mt-4 flex items-center gap-3 rounded-2xl border border-dashed border-emerald-400/60 bg-emerald-50 p-4">
             <div className="relative size-14 shrink-0 overflow-hidden rounded-lg bg-white">
-              <Image src="/images/drift-produto-cores.webp" alt="Bandeirinha e carregador brinde" fill sizes="56px" className="object-contain" />
+              <Image src="/images/drift-produto-cores.webp" alt="Mini capacete e cotoveleira brinde" fill sizes="56px" className="object-contain" />
             </div>
             <div>
               <p className="flex items-center gap-1.5 text-sm font-bold text-emerald-600">
                 <Gift className="size-4" /> BRINDE GRÁTIS
               </p>
-              <p className="text-sm font-semibold text-foreground">Bandeirinha personalizada + carregador de bateria</p>
+              <p className="text-sm font-semibold text-foreground">Mini capacete + cotoveleira</p>
               <p className="text-xs text-muted-foreground">
                 Incluso <span className="font-semibold text-emerald-600">no</span> seu pedido hoje
               </p>
