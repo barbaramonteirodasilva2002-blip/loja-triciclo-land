@@ -19,6 +19,12 @@ import { useKit } from "@/components/kit-provider"
 import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
 
+const colorPhotos: Record<KitId, { src: string; alt: string }> = {
+  rosa: { src: "/images/drift-produto-rosa.webp", alt: "Triciclo Infantil Elétrico Drift na estampa Rosa Galáxia" },
+  azul: { src: "/images/drift-produto-azul.jpg", alt: "Triciclo Infantil Elétrico Drift na estampa Azul Galáxia" },
+  preto: { src: "/images/drift-produto-preto.jpg", alt: "Triciclo Infantil Elétrico Drift na estampa Preto Raios" },
+}
+
 const sharedGallery = [
   { src: "/images/drift-produto-preto-dimensoes.webp", alt: "Triciclo Elétrico Drift preto com dimensões: 94cm de comprimento, 44cm de largura, 57cm de altura e banco a 35cm" },
   { src: "/images/drift-produto-cores.webp", alt: "Triciclo Elétrico Drift disponível nas estampas azul, rosa e preto" },
@@ -27,17 +33,23 @@ const sharedGallery = [
 
 const galleryByKit: Record<KitId, { src: string; alt: string }[]> = {
   rosa: [
-    { src: "/images/drift-produto-rosa.webp", alt: "Triciclo Infantil Elétrico Drift na estampa Rosa Galáxia" },
+    colorPhotos.rosa,
+    colorPhotos.azul,
+    colorPhotos.preto,
     { src: "/images/drift-banner-rosa.webp", alt: "Detalhes do Triciclo Elétrico Drift: comando no guidão, banco confortável, motor elétrico e ajuste entre eixos" },
     ...sharedGallery,
   ],
   azul: [
-    { src: "/images/drift-produto-azul.jpg", alt: "Triciclo Infantil Elétrico Drift na estampa Azul Galáxia" },
+    colorPhotos.azul,
+    colorPhotos.rosa,
+    colorPhotos.preto,
     { src: "/images/drift-banner-azul.webp", alt: "Detalhes do Triciclo Elétrico Drift: comandos no guidão, banco fixo, motor elétrico no eixo dianteiro e ajuste entre eixos" },
     ...sharedGallery,
   ],
   preto: [
-    { src: "/images/drift-produto-preto.jpg", alt: "Triciclo Infantil Elétrico Drift na estampa Preto Raios" },
+    colorPhotos.preto,
+    colorPhotos.rosa,
+    colorPhotos.azul,
     ...sharedGallery,
   ],
 }
