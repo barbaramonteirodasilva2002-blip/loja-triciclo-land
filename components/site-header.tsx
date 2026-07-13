@@ -10,7 +10,9 @@ import {
   ChevronRight,
   ShoppingBag,
   ShoppingCart,
-  Zap,
+  Package,
+  ShieldCheck,
+  Heart,
 } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { cn } from "@/lib/utils"
@@ -20,6 +22,13 @@ import { CartDrawer } from "@/components/cart-drawer"
 const mainLinks = [
   { label: "Início", href: "/#inicio", icon: Home },
   { label: "Rastrear Pedido", href: "/rastrear-pedido", icon: Truck },
+]
+
+const marqueeItems = [
+  { icon: Truck, label: "Frete grátis para todo o Brasil" },
+  { icon: Package, label: "Envio imediato" },
+  { icon: Heart, label: "Mais de 3 mil clientes satisfeitos" },
+  { icon: ShieldCheck, label: "Garantia de 30 dias" },
 ]
 
 const policyLinks = [
@@ -50,10 +59,18 @@ export function SiteHeader() {
   return (
     <>
       {/* Barra de anúncio */}
-      <div className="bg-brand-navy-deep text-white">
-        <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2 text-center text-xs font-semibold tracking-wide sm:text-sm">
-          <Zap className="size-4 shrink-0 fill-brand-sky text-brand-sky" />
-          <span className="text-pretty">Frete Grátis + Envio Imediato</span>
+      <div className="overflow-hidden bg-brand-navy-deep text-white">
+        <div aria-hidden="true" className="flex w-max animate-marquee py-2">
+          {[...marqueeItems, ...marqueeItems].map((item, i) => (
+            <span
+              key={i}
+              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2 text-xs font-bold uppercase tracking-wide sm:text-sm"
+            >
+              <item.icon className="size-4 shrink-0 text-accent" />
+              {item.label}
+              <span className="mx-4 text-white/30">•</span>
+            </span>
+          ))}
         </div>
       </div>
 
