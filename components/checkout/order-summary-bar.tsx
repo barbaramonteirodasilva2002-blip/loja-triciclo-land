@@ -22,6 +22,7 @@ export function OrderSummaryBar({
   couponStatus,
   subtotal,
   discountValue,
+  pixDiscountPercent,
   shippingValue,
   total,
 }: {
@@ -34,6 +35,7 @@ export function OrderSummaryBar({
   couponStatus: CouponStatus
   subtotal: number
   discountValue: number
+  pixDiscountPercent: number
   shippingValue: number
   total: number
 }) {
@@ -43,7 +45,7 @@ export function OrderSummaryBar({
     <div className="border-b border-border bg-card shadow-sm">
       <div className="bg-brand-navy-deep">
         <div className="mx-auto flex max-w-3xl items-center justify-center gap-2 px-4 py-2.5 text-center text-xs font-semibold text-white sm:text-sm">
-          <Image src="/images/icone-caminhao-colorido.png" alt="" width={108} height={84} className="h-5 w-auto shrink-0 object-contain" />
+          <span aria-hidden="true" className="text-base leading-none">🚚</span>
           <span>
             Você ganhou <span className="text-accent">FRETE GRÁTIS</span> + Brinde exclusivo hoje!
           </span>
@@ -150,7 +152,14 @@ export function OrderSummaryBar({
             </div>
             {discountValue > 0 && (
               <div className="flex items-center justify-between text-emerald-600">
-                <span>Desconto</span>
+                <span className="flex items-center gap-1.5">
+                  Desconto
+                  {pixDiscountPercent > 0 && (
+                    <span className="rounded-full bg-emerald-100 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-emerald-700">
+                      Pix
+                    </span>
+                  )}
+                </span>
                 <span>-R$ {formatBRL(discountValue)}</span>
               </div>
             )}

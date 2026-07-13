@@ -333,6 +333,7 @@ export function CheckoutClient() {
         couponStatus={couponStatus}
         subtotal={subtotal}
         discountValue={discountValue}
+        pixDiscountPercent={pixBonusPercent}
         shippingValue={shippingValue}
         total={total}
       />
