@@ -1,4 +1,4 @@
-import { Zap } from "lucide-react"
+import Image from "next/image"
 import { cn } from "@/lib/utils"
 
 interface LogoProps {
@@ -6,18 +6,24 @@ interface LogoProps {
   variant?: "light" | "dark"
 }
 
-// Logo provisória em texto — substituir quando a nova marca da loja de brinquedos estiver pronta.
+// Sobre fundos escuros, a logo ganha uma base branca arredondada — a arte tem
+// o texto "Drift" em azul-marinho, que fica ilegível direto sobre fundo escuro.
 export function Logo({ className, variant = "dark" }: LogoProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center gap-1.5 font-heading text-xl font-extrabold tracking-tight",
-        variant === "light" ? "text-white" : "text-brand-navy",
-        className,
+        "inline-flex items-center",
+        variant === "light" && "rounded-xl bg-white px-3 py-1.5",
       )}
     >
-      <Zap className={cn("size-5 fill-current", variant === "light" ? "text-white" : "text-accent")} />
-      Drift<span className={variant === "light" ? "text-white/70" : "text-accent"}>Kids</span>
+      <Image
+        src="/images/logo-driftkids.png"
+        alt="DriftKids"
+        width={1250}
+        height={629}
+        priority
+        className={cn("h-8 w-auto object-contain", className)}
+      />
     </span>
   )
 }

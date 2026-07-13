@@ -22,9 +22,9 @@ export const metadata: Metadata = {
     'Triciclo Infantil Elétrico Drift com Bluetooth MP3, bandeirinha e 300W de alta potência. Três velocidades ajustáveis, banco tipo kart e rodas de drift. Frete grátis e envio imediato para todo o Brasil.',
   generator: 'v0.app',
   icons: {
-    icon: '/images/drift-produto-rosa.webp',
-    shortcut: '/images/drift-produto-rosa.webp',
-    apple: '/images/drift-produto-rosa.webp',
+    icon: '/images/logo-driftkids.png',
+    shortcut: '/images/logo-driftkids.png',
+    apple: '/images/logo-driftkids.png',
   },
 }
 
