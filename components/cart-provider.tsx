@@ -3,6 +3,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 import { getKit, type KitId } from "@/lib/checkout"
 import { readCartFromStorage, writeCartToStorage, MAX_ITEM_QUANTITY, type CartItem } from "@/lib/cart"
+import { getSessionId } from "@/lib/session"
 
 type CartContextValue = {
   items: CartItem[]
@@ -33,6 +34,23 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (hydrated) writeCartToStorage(items)
+  }, [items, hydrated])
+
+  // Envia um retrato do carrinho para o painel admin identificar carrinhos
+  // abandonados — não bloqueia a experiência de compra em caso de falha.
+  useEffect(() => {
+    if (!hydrated) return
+    const sessionId = getSessionId()
+    if (!sessionId) return
+    const timeout = setTimeout(() => {
+      fetch("/api/track/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ sessionId, items }),
+        keepalive: true,
+      }).catch(() => {})
+    }, 800)
+    return () => clearTimeout(timeout)
   }, [items, hydrated])
 
   function addItem(kitId: KitId, quantity = 1) {

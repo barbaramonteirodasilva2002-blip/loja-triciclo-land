@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Poppins } from 'next/font/google'
 import Script from 'next/script'
 import { CartProvider } from '@/components/cart-provider'
+import { AnalyticsProvider } from '@/components/analytics-provider'
 import './globals.css'
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
@@ -44,7 +45,9 @@ export default function RootLayout({
       className={`light ${geistSans.variable} ${geistMono.variable} ${poppins.variable} bg-background`}
     >
       <body className="font-sans antialiased">
-        <CartProvider>{children}</CartProvider>
+        <AnalyticsProvider>
+          <CartProvider>{children}</CartProvider>
+        </AnalyticsProvider>
         {process.env.NODE_ENV === 'production' && <Analytics />}
 
         {/* Utmify - Script de UTMs */}

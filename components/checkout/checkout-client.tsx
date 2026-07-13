@@ -1,11 +1,12 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { ArrowLeft, ArrowRight, Lock, ShoppingBag, Check } from "lucide-react"
 import { getKit, getShippingMethod, PIX_DISCOUNT_PERCENT, DEFAULT_SHIPPING_METHOD, type ShippingMethodId } from "@/lib/checkout"
 import { formatCEP, formatCPF, formatPhone, isValidCPF, isValidExpiry, luhnCheck, detectCardBrand } from "@/lib/format"
+import { getSessionId } from "@/lib/session"
 import { useCart } from "@/components/cart-provider"
 import { StepIndicator, type CheckoutStep } from "@/components/checkout/step-indicator"
 import { OrderSummaryBar, type CouponStatus } from "@/components/checkout/order-summary-bar"
@@ -60,6 +61,25 @@ export function CheckoutClient() {
 
   const [pixResult, setPixResult] = useState<PixChargeResult | null>(null)
   const [confirmation, setConfirmation] = useState<ConfirmationData | null>(null)
+
+  function trackStep(step: "checkout" | "dados_pessoais" | "entrega" | "pagamento" | "comprou") {
+    const sessionId = getSessionId()
+    if (!sessionId) return
+    fetch("/api/track/event", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ sessionId, step }),
+      keepalive: true,
+    }).catch(() => {})
+  }
+
+  const trackedMount = useRef(false)
+  useEffect(() => {
+    if (trackedMount.current) return
+    trackedMount.current = true
+    trackStep("checkout")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   const subtotal = lines.reduce((sum, l) => sum + l.kit.priceValue * l.quantity, 0)
   const pixBonusPercent = paymentMethod === "pix" ? PIX_DISCOUNT_PERCENT : 0
@@ -155,6 +175,13 @@ export function CheckoutClient() {
     }
     setFieldErrors({})
     setStep(target)
+    if (target > step) {
+      if (target === 2) trackStep("dados_pessoais")
+      if (target === 3) {
+        trackStep("entrega")
+        trackStep("pagamento")
+      }
+    }
   }
 
   async function requestCharge() {
@@ -230,6 +257,22 @@ export function CheckoutClient() {
     if (!validateStep3()) {
       setErrorMessage("Confira os campos do cartão antes de continuar.")
       return
+    }
+    const sessionId = getSessionId()
+    if (sessionId) {
+      fetch("/api/checkout/order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          sessionId,
+          items: cart.items,
+          paymentMethod,
+          customer,
+          shippingMethodId,
+          couponCode: couponStatus === "applied" ? couponCode : undefined,
+        }),
+        keepalive: true,
+      }).catch(() => {})
     }
     await requestCharge()
   }
