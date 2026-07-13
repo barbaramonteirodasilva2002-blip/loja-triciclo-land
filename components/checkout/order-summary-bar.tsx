@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Minus, Plus, Tag, Trash2 } from "lucide-react"
+import { Minus, Plus, Tag, Trash2, Gift } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import type { Kit, KitId } from "@/lib/checkout"
 
@@ -41,6 +41,15 @@ export function OrderSummaryBar({
 
   return (
     <div className="border-b border-border bg-card shadow-sm">
+      <div className="bg-brand-navy-deep">
+        <div className="mx-auto flex max-w-3xl items-center justify-center gap-2 px-4 py-2.5 text-center text-xs font-semibold text-white sm:text-sm">
+          <Image src="/images/icone-caminhao-colorido.png" alt="" width={108} height={84} className="h-5 w-auto shrink-0 object-contain" />
+          <span>
+            Você ganhou <span className="text-accent">FRETE GRÁTIS</span> + Brinde exclusivo hoje!
+          </span>
+        </div>
+      </div>
+
       <div className="mx-auto flex w-full max-w-3xl items-center justify-between px-4 py-3">
         <span className="text-sm font-semibold text-foreground">Resumo do pedido</span>
         <span className="font-heading text-lg font-extrabold text-brand-navy">R$ {formatBRL(total)}</span>
@@ -89,6 +98,19 @@ export function OrderSummaryBar({
                 </button>
               </div>
             ))}
+          </div>
+
+          <div className="flex items-center gap-3 rounded-xl border border-dashed border-emerald-400/60 bg-emerald-50 p-3">
+            <div className="relative size-11 shrink-0 overflow-hidden rounded-lg bg-white">
+              <Image src="/images/kit-capacete-protecao.webp" alt="Kit de proteção" fill sizes="44px" className="object-contain" />
+            </div>
+            <div className="flex-1">
+              <p className="text-sm font-bold text-foreground">Kit de proteção: mini capacete + cotoveleira</p>
+              <p className="text-xs text-emerald-600">Incluso grátis no seu pedido</p>
+            </div>
+            <span className="flex shrink-0 items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-700">
+              <Gift className="size-3" /> Brinde
+            </span>
           </div>
 
           <div>
