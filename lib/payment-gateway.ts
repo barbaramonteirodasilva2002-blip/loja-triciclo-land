@@ -109,6 +109,8 @@ function buildCustomerPayload(customer: CustomerInfo) {
   }
 }
 
+const PIX_EXPIRES_IN_DAYS = 1
+
 /**
  * Cria uma cobrança Pix e devolve o QR Code para o cliente pagar.
  */
@@ -121,7 +123,7 @@ export async function createPixCharge(params: PixChargeParams): Promise<PixCharg
       paymentMethod: "PIX",
       customer: buildCustomerPayload(params.customer),
       items: [{ title: "Pedido DriftKids", unitPrice: params.amountInCents, quantity: 1, tangible: true }],
-      pix: { expiresInDays: 1 },
+      pix: { expiresInDays: PIX_EXPIRES_IN_DAYS },
       postbackUrl: params.postbackUrl,
       traceable: true,
       metadata: JSON.stringify({ orderId: params.orderId }),
@@ -135,7 +137,10 @@ export async function createPixCharge(params: PixChargeParams): Promise<PixCharg
     chargeId: data.id,
     qrCodeImage,
     copyPasteCode,
-    expiresAt: data.pix?.expirationDate ?? new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+    // A HyperCash retorna "expirationDate" com um fuso horário incorreto (fica
+    // ~3h no passado, fazendo o QR Code nascer "vencido"). Calculamos a
+    // expiração nós mesmos a partir do que pedimos (expiresInDays acima).
+    expiresAt: new Date(Date.now() + PIX_EXPIRES_IN_DAYS * 24 * 60 * 60 * 1000).toISOString(),
   }
 }
 
