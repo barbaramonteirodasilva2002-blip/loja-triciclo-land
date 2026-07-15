@@ -1,22 +1,13 @@
 // ============================================================================
-// PONTO ÚNICO DE INTEGRAÇÃO COM A GATEWAY DE PAGAMENTO
+// INTEGRAÇÃO COM A GATEWAY DE PAGAMENTO — HYPERCASH
 //
-// Este arquivo é o único lugar do projeto que deve saber como conversar com a
-// sua gateway de pagamento. Toda a UI do checkout (app/checkout,
-// components/checkout/*, app/api/checkout/route.ts) já está pronta e chama
-// apenas as duas funções abaixo — createPixCharge e createCardCharge.
-//
-// Para ativar pagamentos reais:
-// 1. Adicione as credenciais da sua gateway em variáveis de ambiente
-//    (crie um arquivo .env.local — nunca commite chaves secretas no git).
-// 2. Implemente as chamadas HTTP reais dentro das duas funções abaixo,
-//    usando a API/SDK da sua gateway.
-// 3. Ajuste os tipos de retorno se a sua gateway devolver campos diferentes.
-//
-// Enquanto as funções não forem implementadas, elas lançam
-// PaymentGatewayNotConfiguredError, e a API route devolve isso de forma
-// amigável para a tela de checkout (ver app/api/checkout/route.ts).
+// Documentação: https://docs.hypercash.com.br
+// Autenticação: Basic Auth com "x:CHAVE_SECRETA" em base64.
+// Cartão: a tokenização acontece no navegador (components/checkout/payment-section.tsx)
+// via SDK da FastSoft — o número/CVV nunca chegam a este servidor, só o token.
 // ============================================================================
+
+import QRCode from "qrcode"
 
 export class PaymentGatewayNotConfiguredError extends Error {
   constructor(method: "pix" | "cartão") {
@@ -46,6 +37,7 @@ export type PixChargeParams = {
   amountInCents: number
   orderId: string
   customer: CustomerInfo
+  postbackUrl: string
 }
 
 export type PixChargeResult = {
@@ -63,13 +55,9 @@ export type CardChargeParams = {
   installments: number
   orderId: string
   customer: CustomerInfo
-  card: {
-    number: string
-    holderName: string
-    expiryMonth: string
-    expiryYear: string
-    cvv: string
-  }
+  postbackUrl: string
+  /** Token gerado no navegador via FastSoft.encrypt() — nunca o cartão em texto puro. */
+  cardToken: string
 }
 
 export type CardChargeResult = {
@@ -77,37 +65,122 @@ export type CardChargeResult = {
   status: "approved" | "pending" | "refused"
 }
 
-/**
- * Cria uma cobrança Pix e devolve o QR Code para o cliente pagar.
- * TODO: substituir pela chamada real à API da sua gateway.
- */
-export async function createPixCharge(_params: PixChargeParams): Promise<PixChargeResult> {
-  throw new PaymentGatewayNotConfiguredError("pix")
-}
-
 export type ChargeStatus = "pending" | "paid" | "expired"
 
-/**
- * Consulta o status atual de uma cobrança Pix (usado pela tela de "aguardando
- * pagamento" para saber quando confirmar o pedido).
- * TODO: substituir pela chamada real à API da sua gateway.
- */
-export async function checkChargeStatus(_chargeId: string): Promise<ChargeStatus> {
-  throw new PaymentGatewayNotConfiguredError("pix")
+const BASE_URL = "https://api.hypercashbrasil.com.br"
+
+function getAuthHeader(): string {
+  const secretKey = process.env.HYPERCASH_SECRET_KEY
+  if (!secretKey) throw new PaymentGatewayNotConfiguredError("pix")
+  const token = Buffer.from(`x:${secretKey}`).toString("base64")
+  return `Basic ${token}`
+}
+
+type HyperCashTransaction = {
+  id: string
+  status: string
+  pix?: { qrcode: string; expirationDate: string } | null
+}
+
+async function hypercashRequest<T>(path: string, init?: RequestInit): Promise<T> {
+  const res = await fetch(`${BASE_URL}${path}`, {
+    ...init,
+    headers: {
+      Authorization: getAuthHeader(),
+      "Content-Type": "application/json",
+      Accept: "application/json",
+      ...init?.headers,
+    },
+  })
+  const body = await res.json()
+  if (!res.ok) {
+    const reason = body?.error?.refusedReason || body?.message || "Erro desconhecido na gateway."
+    throw new Error(`HyperCash: ${reason}`)
+  }
+  return body.data as T
+}
+
+function buildCustomerPayload(customer: CustomerInfo) {
+  return {
+    name: customer.name,
+    email: customer.email,
+    document: { number: customer.cpf.replace(/\D/g, ""), type: "CPF" as const },
+    phone: customer.phone.replace(/\D/g, ""),
+  }
 }
 
 /**
- * Cobra o cartão de crédito informado.
- * TODO: substituir pela chamada real à API/SDK da sua gateway.
- *
- * Atenção: a maioria das gateways (Mercado Pago, Pagar.me, Stripe, Asaas etc.)
- * exige que o número do cartão seja tokenizado no navegador através do SDK
- * JS da própria gateway, para que o dado sensível nunca passe pelo nosso
- * servidor (exigência de compliance PCI-DSS). Se for esse o caso da sua
- * gateway, o formulário em components/checkout/payment-section.tsx precisará
- * ser ajustado para gerar o token no cliente e enviar apenas o token aqui,
- * em vez do número do cartão em texto puro.
+ * Cria uma cobrança Pix e devolve o QR Code para o cliente pagar.
  */
-export async function createCardCharge(_params: CardChargeParams): Promise<CardChargeResult> {
-  throw new PaymentGatewayNotConfiguredError("cartão")
+export async function createPixCharge(params: PixChargeParams): Promise<PixChargeResult> {
+  const data = await hypercashRequest<HyperCashTransaction>("/api/user/transactions", {
+    method: "POST",
+    body: JSON.stringify({
+      amount: params.amountInCents,
+      currency: "BRL",
+      paymentMethod: "PIX",
+      customer: buildCustomerPayload(params.customer),
+      items: [{ title: "Pedido DriftKids", unitPrice: params.amountInCents, quantity: 1, tangible: true }],
+      pix: { expiresInDays: 1 },
+      postbackUrl: params.postbackUrl,
+      traceable: true,
+      metadata: JSON.stringify({ orderId: params.orderId }),
+    }),
+  })
+
+  const copyPasteCode = data.pix?.qrcode ?? ""
+  const qrCodeImage = copyPasteCode ? await QRCode.toDataURL(copyPasteCode, { margin: 1, width: 320 }) : ""
+
+  return {
+    chargeId: data.id,
+    qrCodeImage,
+    copyPasteCode,
+    expiresAt: data.pix?.expirationDate ?? new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+  }
+}
+
+const PAID_STATUSES = new Set(["PAID"])
+const FAILED_STATUSES = new Set(["REFUSED", "CANCELED", "CHARGEDBACK"])
+
+/**
+ * Consulta o status atual de uma cobrança (usado como reforço além do webhook).
+ */
+export async function checkChargeStatus(chargeId: string): Promise<ChargeStatus> {
+  const data = await hypercashRequest<HyperCashTransaction>(`/api/user/transactions/${chargeId}`, {
+    method: "GET",
+  })
+  const status = (data.status ?? "").toUpperCase()
+  if (PAID_STATUSES.has(status)) return "paid"
+  if (FAILED_STATUSES.has(status)) return "expired"
+  return "pending"
+}
+
+/**
+ * Cobra o cartão de crédito a partir do token gerado no navegador.
+ */
+export async function createCardCharge(params: CardChargeParams): Promise<CardChargeResult> {
+  const data = await hypercashRequest<HyperCashTransaction>("/api/user/transactions", {
+    method: "POST",
+    body: JSON.stringify({
+      amount: params.amountInCents,
+      currency: "BRL",
+      paymentMethod: "CREDIT_CARD",
+      installments: params.installments,
+      card: { hash: params.cardToken },
+      customer: buildCustomerPayload(params.customer),
+      items: [{ title: "Pedido DriftKids", unitPrice: params.amountInCents, quantity: 1, tangible: true }],
+      postbackUrl: params.postbackUrl,
+      traceable: true,
+      metadata: JSON.stringify({ orderId: params.orderId }),
+    }),
+  })
+
+  const status = (data.status ?? "").toUpperCase()
+  const mapped: CardChargeResult["status"] = PAID_STATUSES.has(status)
+    ? "approved"
+    : FAILED_STATUSES.has(status)
+      ? "refused"
+      : "pending"
+
+  return { chargeId: data.id, status: mapped }
 }

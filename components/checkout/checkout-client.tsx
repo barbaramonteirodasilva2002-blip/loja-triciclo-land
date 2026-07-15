@@ -30,6 +30,11 @@ type Address = {
   state: string
 }
 
+type FastSoftSDK = {
+  setPublicKey: (key: string) => Promise<void>
+  encrypt: (card: { number: string; holderName: string; expMonth: string; expYear: string; cvv: string }) => Promise<string>
+}
+
 const emptyCustomer: Customer = { name: "", email: "", phone: "", cpf: "" }
 const emptyAddress: Address = { cep: "", street: "", number: "", complement: "", neighborhood: "", city: "", state: "" }
 const emptyCard: CardFields = { number: "", holderName: "", expiry: "", cvv: "" }
@@ -61,6 +66,10 @@ export function CheckoutClient() {
 
   const [pixResult, setPixResult] = useState<PixChargeResult | null>(null)
   const [confirmation, setConfirmation] = useState<ConfirmationData | null>(null)
+  // Ref (não state): precisa ser lido de forma síncrona logo após ser gravado,
+  // dentro da mesma função async (handleSubmitPayment -> requestCharge) e também
+  // depois, quando o Pix é regenerado — um state batching atrasaria a leitura.
+  const internalOrderIdRef = useRef<number | undefined>(undefined)
 
   function trackStep(step: "checkout" | "dados_pessoais" | "entrega" | "pagamento" | "comprou") {
     const sessionId = getSessionId()
@@ -184,11 +193,34 @@ export function CheckoutClient() {
     }
   }
 
+  async function tokenizeCard(): Promise<string> {
+    const FastSoft = (window as unknown as { FastSoft?: FastSoftSDK }).FastSoft
+    if (!FastSoft) throw new Error("SDK de pagamento não carregado. Recarregue a página e tente novamente.")
+    const [expMonth, expYear] = card.expiry.split("/")
+    await FastSoft.setPublicKey(process.env.NEXT_PUBLIC_HYPERCASH_PUBLIC_KEY ?? "")
+    return FastSoft.encrypt({
+      number: card.number.replace(/\D/g, ""),
+      holderName: card.holderName,
+      expMonth,
+      expYear: `20${expYear}`,
+      cvv: card.cvv,
+    })
+  }
+
   async function requestCharge() {
     setSubmitting(true)
     setErrorMessage(null)
     try {
-      const [expiryMonth, expiryYear] = card.expiry.split("/")
+      let cardToken: string | undefined
+      if (paymentMethod === "cartao") {
+        try {
+          cardToken = await tokenizeCard()
+        } catch {
+          setErrorMessage("Não foi possível validar o cartão. Confira os dados e tente novamente.")
+          return
+        }
+      }
+
       const res = await fetch("/api/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -200,10 +232,8 @@ export function CheckoutClient() {
           shippingMethodId,
           installments,
           couponCode: couponStatus === "applied" ? couponCode : undefined,
-          card:
-            paymentMethod === "cartao"
-              ? { number: card.number, holderName: card.holderName, expiryMonth, expiryYear, cvv: card.cvv }
-              : undefined,
+          internalOrderId: internalOrderIdRef.current,
+          cardToken,
         }),
       })
       const data = await res.json()
@@ -258,21 +288,29 @@ export function CheckoutClient() {
       setErrorMessage("Confira os campos do cartão antes de continuar.")
       return
     }
-    const sessionId = getSessionId()
-    if (sessionId) {
-      fetch("/api/checkout/order", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          sessionId,
-          items: cart.items,
-          paymentMethod,
-          customer,
-          shippingMethodId,
-          couponCode: couponStatus === "applied" ? couponCode : undefined,
-        }),
-        keepalive: true,
-      }).catch(() => {})
+    if (internalOrderIdRef.current === undefined) {
+      const sessionId = getSessionId()
+      if (sessionId) {
+        try {
+          const res = await fetch("/api/checkout/order", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              sessionId,
+              items: cart.items,
+              paymentMethod,
+              customer,
+              shippingMethodId,
+              couponCode: couponStatus === "applied" ? couponCode : undefined,
+            }),
+          })
+          const data = await res.json()
+          if (data.ok && data.orderId) internalOrderIdRef.current = data.orderId
+        } catch {
+          // Falha ao registrar o pedido não deve impedir a tentativa de cobrança —
+          // o pedido só fica sem gateway_charge_id vinculado para conferência manual.
+        }
+      }
     }
     await requestCharge()
   }

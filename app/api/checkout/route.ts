@@ -7,6 +7,7 @@ import {
   PaymentGatewayNotConfiguredError,
   type CustomerInfo,
 } from "@/lib/payment-gateway"
+import { sql, ensureSchema } from "@/lib/db"
 
 type CheckoutBody = {
   items: { kitId: KitId; quantity: number }[]
@@ -24,13 +25,10 @@ type CheckoutBody = {
   installments?: number
   couponCode?: string
   shippingMethodId?: ShippingMethodId
-  card?: {
-    number: string
-    holderName: string
-    expiryMonth: string
-    expiryYear: string
-    cvv: string
-  }
+  /** ID do pedido criado em /api/checkout/order — usado para vincular a cobrança. */
+  internalOrderId?: number
+  /** Token do cartão gerado no navegador via FastSoft.encrypt() (ver payment-section.tsx). */
+  cardToken?: string
 }
 
 export async function POST(request: NextRequest) {
@@ -63,25 +61,29 @@ export async function POST(request: NextRequest) {
   const total = subtotal * (1 - (couponPercent + pixBonusPercent) / 100) + shippingValue
 
   const amountInCents = Math.round(total * 100)
-  const orderId = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+  const orderRef = body.internalOrderId ? String(body.internalOrderId) : `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
+  const postbackUrl = `${request.nextUrl.origin}/api/webhooks/hypercash`
 
   try {
     if (paymentMethod === "pix") {
-      const result = await createPixCharge({ amountInCents, orderId, customer })
+      const result = await createPixCharge({ amountInCents, orderId: orderRef, customer, postbackUrl })
+      await linkChargeToOrder(body.internalOrderId, result.chargeId)
       return NextResponse.json({ ok: true, pix: result })
     }
 
     if (paymentMethod === "cartao") {
-      if (!body.card) {
+      if (!body.cardToken) {
         return NextResponse.json({ ok: false, error: "invalid_card", message: "Confira os dados do cartão." }, { status: 422 })
       }
       const result = await createCardCharge({
         amountInCents,
         installments: body.installments ?? 1,
-        orderId,
+        orderId: orderRef,
         customer,
-        card: body.card,
+        postbackUrl,
+        cardToken: body.cardToken,
       })
+      await linkChargeToOrder(body.internalOrderId, result.chargeId)
       return NextResponse.json({ ok: true, card: result })
     }
 
@@ -97,6 +99,13 @@ export async function POST(request: NextRequest) {
         { status: 503 },
       )
     }
-    return NextResponse.json({ ok: false, error: "unknown", message: "Não foi possível processar o pagamento." }, { status: 500 })
+    const message = err instanceof Error ? err.message : "Não foi possível processar o pagamento."
+    return NextResponse.json({ ok: false, error: "unknown", message }, { status: 500 })
   }
+}
+
+async function linkChargeToOrder(internalOrderId: number | undefined, chargeId: string) {
+  if (!internalOrderId) return
+  await ensureSchema()
+  await sql`update orders set gateway_charge_id = ${chargeId}, updated_at = now() where id = ${internalOrderId}`
 }

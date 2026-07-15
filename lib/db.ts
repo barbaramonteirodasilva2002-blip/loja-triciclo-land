@@ -59,10 +59,13 @@ export function ensureSchema(): Promise<void> {
           updated_at timestamptz not null default now()
         )
       `
+      await sql`alter table orders add column if not exists gateway_charge_id text`
+      await sql`alter table orders add column if not exists gateway_status text`
       await sql`create index if not exists checkout_events_session_idx on checkout_events (session_id)`
       await sql`create index if not exists checkout_events_created_idx on checkout_events (created_at)`
       await sql`create index if not exists orders_status_idx on orders (status)`
       await sql`create index if not exists orders_created_idx on orders (created_at)`
+      await sql`create unique index if not exists orders_gateway_charge_idx on orders (gateway_charge_id) where gateway_charge_id is not null`
     })()
   }
   return schemaReady
