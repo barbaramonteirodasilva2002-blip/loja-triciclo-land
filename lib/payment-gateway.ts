@@ -109,7 +109,10 @@ function buildCustomerPayload(customer: CustomerInfo) {
   }
 }
 
+// A HyperCash só aceita expiração em dias inteiros (mínimo 1), mas queremos
+// que o cliente veja e sinta uma janela bem mais curta — ver PIX_EXPIRES_IN_MINUTES.
 const PIX_EXPIRES_IN_DAYS = 1
+const PIX_EXPIRES_IN_MINUTES = 40
 
 /**
  * Cria uma cobrança Pix e devolve o QR Code para o cliente pagar.
@@ -138,9 +141,10 @@ export async function createPixCharge(params: PixChargeParams): Promise<PixCharg
     qrCodeImage,
     copyPasteCode,
     // A HyperCash retorna "expirationDate" com um fuso horário incorreto (fica
-    // ~3h no passado, fazendo o QR Code nascer "vencido"). Calculamos a
-    // expiração nós mesmos a partir do que pedimos (expiresInDays acima).
-    expiresAt: new Date(Date.now() + PIX_EXPIRES_IN_DAYS * 24 * 60 * 60 * 1000).toISOString(),
+    // ~3h no passado, fazendo o QR Code nascer "vencido") — por isso calculamos
+    // a expiração nós mesmos, numa janela mais curta que a cobrada na HyperCash
+    // (PIX_EXPIRES_IN_DAYS) para criar senso de urgência no cliente.
+    expiresAt: new Date(Date.now() + PIX_EXPIRES_IN_MINUTES * 60 * 1000).toISOString(),
   }
 }
 

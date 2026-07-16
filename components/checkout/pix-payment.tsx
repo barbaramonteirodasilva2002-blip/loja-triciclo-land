@@ -134,7 +134,8 @@ export function PixPayment({
       <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-brand-navy/20 bg-secondary/60 p-3.5 text-left">
         <Info className="mt-0.5 size-4 shrink-0 text-brand-navy" />
         <p className="text-xs leading-relaxed text-muted-foreground">
-          O beneficiário do Pix é a DriftKids, cuja gateway de pagamentos gerencia o recebimento de forma segura.
+          O beneficiário do Pix é a WORD IMPORTS LTDA, cuja gateway de pagamentos gerencia o recebimento de forma
+          segura.
         </p>
       </div>
 
