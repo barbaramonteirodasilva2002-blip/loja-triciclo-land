@@ -33,11 +33,19 @@ export type ShippingAddress = {
   state: string
 }
 
+export type ChargeLineItem = {
+  title: string
+  unitPriceInCents: number
+  quantity: number
+}
+
 export type PixChargeParams = {
   amountInCents: number
   orderId: string
   customer: CustomerInfo
   postbackUrl: string
+  items: ChargeLineItem[]
+  shippingFeeInCents?: number
 }
 
 export type PixChargeResult = {
@@ -56,6 +64,8 @@ export type CardChargeParams = {
   orderId: string
   customer: CustomerInfo
   postbackUrl: string
+  items: ChargeLineItem[]
+  shippingFeeInCents?: number
   /** Token gerado no navegador via FastSoft.encrypt() — nunca o cartão em texto puro. */
   cardToken: string
 }
@@ -109,6 +119,19 @@ function buildCustomerPayload(customer: CustomerInfo) {
   }
 }
 
+function buildItemsPayload(items: ChargeLineItem[]) {
+  return items.map((item) => ({
+    title: item.title,
+    unitPrice: item.unitPriceInCents,
+    quantity: item.quantity,
+    tangible: true,
+  }))
+}
+
+function buildShippingPayload(shippingFeeInCents: number | undefined) {
+  return shippingFeeInCents !== undefined ? { fee: shippingFeeInCents } : undefined
+}
+
 // A HyperCash só aceita expiração em dias inteiros (mínimo 1), mas queremos
 // que o cliente veja e sinta uma janela bem mais curta — ver PIX_EXPIRES_IN_MINUTES.
 const PIX_EXPIRES_IN_DAYS = 1
@@ -125,7 +148,8 @@ export async function createPixCharge(params: PixChargeParams): Promise<PixCharg
       currency: "BRL",
       paymentMethod: "PIX",
       customer: buildCustomerPayload(params.customer),
-      items: [{ title: "Pedido DriftKids", unitPrice: params.amountInCents, quantity: 1, tangible: true }],
+      items: buildItemsPayload(params.items),
+      shipping: buildShippingPayload(params.shippingFeeInCents),
       pix: { expiresInDays: PIX_EXPIRES_IN_DAYS },
       postbackUrl: params.postbackUrl,
       traceable: true,
@@ -177,7 +201,8 @@ export async function createCardCharge(params: CardChargeParams): Promise<CardCh
       installments: params.installments,
       card: { hash: params.cardToken },
       customer: buildCustomerPayload(params.customer),
-      items: [{ title: "Pedido DriftKids", unitPrice: params.amountInCents, quantity: 1, tangible: true }],
+      items: buildItemsPayload(params.items),
+      shipping: buildShippingPayload(params.shippingFeeInCents),
       postbackUrl: params.postbackUrl,
       traceable: true,
       metadata: JSON.stringify({ orderId: params.orderId }),

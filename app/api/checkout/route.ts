@@ -53,7 +53,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: false, error: "empty_cart", message: "Seu carrinho está vazio." }, { status: 422 })
   }
 
-  const subtotal = items.reduce((sum, item) => sum + getKit(item.kitId).priceValue * Math.min(5, Math.max(1, item.quantity)), 0)
+  const lines = items.map((item) => ({ kit: getKit(item.kitId), quantity: Math.min(5, Math.max(1, item.quantity)) }))
+  const subtotal = lines.reduce((sum, l) => sum + l.kit.priceValue * l.quantity, 0)
 
   const couponPercent = body.couponCode ? getCouponDiscount(body.couponCode) ?? 0 : 0
   const pixBonusPercent = paymentMethod === "pix" ? PIX_DISCOUNT_PERCENT : 0
@@ -63,10 +64,23 @@ export async function POST(request: NextRequest) {
   const amountInCents = Math.round(total * 100)
   const orderRef = body.internalOrderId ? String(body.internalOrderId) : `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
   const postbackUrl = `${request.nextUrl.origin}/api/webhooks/hypercash`
+  const gatewayItems = lines.map((l) => ({
+    title: `Triciclo Elétrico Drift - ${l.kit.units}`,
+    unitPriceInCents: Math.round(l.kit.priceValue * 100),
+    quantity: l.quantity,
+  }))
+  const shippingFeeInCents = Math.round(shippingValue * 100)
 
   try {
     if (paymentMethod === "pix") {
-      const result = await createPixCharge({ amountInCents, orderId: orderRef, customer, postbackUrl })
+      const result = await createPixCharge({
+        amountInCents,
+        orderId: orderRef,
+        customer,
+        postbackUrl,
+        items: gatewayItems,
+        shippingFeeInCents,
+      })
       await linkChargeToOrder(body.internalOrderId, result.chargeId)
       return NextResponse.json({ ok: true, pix: result })
     }
@@ -82,6 +96,8 @@ export async function POST(request: NextRequest) {
         customer,
         postbackUrl,
         cardToken: body.cardToken,
+        items: gatewayItems,
+        shippingFeeInCents,
       })
       await linkChargeToOrder(body.internalOrderId, result.chargeId)
       return NextResponse.json({ ok: true, card: result })
