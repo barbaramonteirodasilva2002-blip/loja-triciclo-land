@@ -46,10 +46,10 @@ export function PageShell({
         <div className="mt-12 rounded-2xl border border-border bg-secondary/50 p-6 text-center">
           <p className="text-sm text-muted-foreground">Precisa de ajuda? Fale com o nosso atendimento.</p>
           <a
-            href="mailto:contato@suporteonlinebr.com"
+            href="mailto:contato@driftkids.site"
             className="mt-3 inline-flex items-center justify-center rounded-xl bg-brand-navy px-6 py-3 font-heading text-sm font-bold text-white transition hover:brightness-110"
           >
-            contato@suporteonlinebr.com
+            contato@driftkids.site
           </a>
         </div>
       </main>

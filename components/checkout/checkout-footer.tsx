@@ -42,10 +42,10 @@ export function CheckoutFooter() {
               <p className="font-semibold text-foreground">DriftKids Ltda</p>
               <p>Rua Henry Ford, 548 — Osasco - São Paulo</p>
               <p className="pt-2">
-                <span className="font-semibold text-foreground">Telefone:</span> (27) 99988-7436
+                <span className="font-semibold text-foreground">Telefone:</span> (11) 99833-7561
               </p>
               <p>
-                <span className="font-semibold text-foreground">E-mail:</span> contato@suporteonlinebr.com
+                <span className="font-semibold text-foreground">E-mail:</span> contato@driftkids.site
               </p>
             </div>
           </div>

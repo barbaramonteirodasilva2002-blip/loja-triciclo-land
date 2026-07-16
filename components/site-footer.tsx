@@ -32,11 +32,11 @@ export function SiteFooter() {
         <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
           <li className="flex items-center gap-2.5">
             <Mail className="size-4 text-primary-foreground/60" />
-            contato@suporteonlinebr.com
+            contato@driftkids.site
           </li>
           <li className="flex items-center gap-2.5">
             <Phone className="size-4 text-primary-foreground/60" />
-            (27) 99988-7436
+            (11) 99833-7561
           </li>
           <li className="flex items-center gap-2.5">
             <Clock className="size-4 text-primary-foreground/60" />
