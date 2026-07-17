@@ -10,7 +10,7 @@ const faqs = [
   },
   {
     q: "Quantas velocidades tem e a partir de qual idade posso usar?",
-    a: "São 3 velocidades ajustáveis, ideais para a criança evoluir aos poucos. Indicado para crianças de 3 a 8 anos, com até 80kg.",
+    a: "São 3 velocidades ajustáveis, ideais para a criança evoluir aos poucos. Indicado para crianças de 3 a 8 anos, com até 100kg.",
   },
   {
     q: "O triciclo tem som Bluetooth? Como funciona?",
@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     q: "É seguro? Tem algum limite de peso?",
-    a: "Sim. A estrutura é reforçada e conta com 3 velocidades ajustáveis para começar devagar. Suporta até 80kg e o uso deve ser sempre supervisionado por um adulto.",
+    a: "Sim. A estrutura é reforçada e conta com 3 velocidades ajustáveis para começar devagar. Suporta até 100kg e o uso deve ser sempre supervisionado por um adulto.",
   },
   {
     q: "A bandeirinha e o carregador já vêm inclusos?",
