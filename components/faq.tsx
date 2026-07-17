@@ -9,8 +9,8 @@ const faqs = [
     a: "A bateria recarregável acompanha um carregador próprio. Recomendamos carregar totalmente antes do primeiro uso para garantir a melhor autonomia nas pilotagens.",
   },
   {
-    q: "Quantas velocidades tem e a partir de qual idade posso usar?",
-    a: "São 3 velocidades ajustáveis, ideais para a criança evoluir aos poucos. Indicado para crianças de 3 a 8 anos, com até 100kg.",
+    q: "Quantas velocidades tem e quem pode usar?",
+    a: "São 3 velocidades ajustáveis, ideais para evoluir aos poucos. Indicado para crianças e adultos, com até 100kg.",
   },
   {
     q: "O triciclo tem som Bluetooth? Como funciona?",
