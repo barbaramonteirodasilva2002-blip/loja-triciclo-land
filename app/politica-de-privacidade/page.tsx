@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade | DriftKids",
-  description: "Entenda como a DriftKids coleta, usa e protege os seus dados pessoais.",
+  title: "Política de Privacidade | Tangle Teezer Brasil",
+  description: "Entenda como coletamos, usamos e protegemos os seus dados pessoais.",
 }
 
 export default function Page() {

@@ -6,8 +6,8 @@ import { Faq } from "@/components/faq"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "Dúvidas Frequentes | DriftKids",
-  description: "Respostas para as principais dúvidas sobre o Triciclo Elétrico Drift: bateria, velocidades, entrega e garantia.",
+  title: "Dúvidas Frequentes | Tangle Teezer Brasil",
+  description: "Respostas para as principais dúvidas sobre as escovas Tangle Teezer: uso, tipos de fio, entrega e garantia.",
 }
 
 export default function Page() {
@@ -22,7 +22,7 @@ export default function Page() {
             <ArrowLeft className="size-4" />
             Voltar
           </Link>
-          <Link href="/" aria-label="DriftKids - página inicial">
+          <Link href="/" aria-label="Tangle Teezer - página inicial">
             <Logo />
           </Link>
         </div>
@@ -32,7 +32,7 @@ export default function Page() {
         <div className="mx-auto max-w-3xl px-4 py-10">
           <h1 className="text-balance font-heading text-2xl font-bold sm:text-3xl">Dúvidas Frequentes</h1>
           <p className="mt-3 text-pretty text-sm leading-relaxed text-white/75">
-            Reunimos as perguntas mais comuns sobre o Triciclo Elétrico Drift. Se ainda ficar com dúvida, fale com o
+            Reunimos as perguntas mais comuns sobre as escovas Tangle Teezer. Se ainda ficar com dúvida, fale com o
             nosso atendimento.
           </p>
         </div>

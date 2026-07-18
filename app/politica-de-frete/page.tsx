@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Política de Frete | DriftKids",
-  description: "Saiba como funcionam os prazos de envio, entrega e frete grátis dos produtos DriftKids.",
+  title: "Política de Frete | Tangle Teezer Brasil",
+  description: "Saiba como funcionam os prazos de envio, entrega e frete grátis dos produtos Tangle Teezer.",
 }
 
 export default function Page() {

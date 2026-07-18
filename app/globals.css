@@ -24,6 +24,8 @@
   --color-brand-navy: var(--brand-navy);
   --color-brand-navy-deep: var(--brand-navy-deep);
   --color-brand-sky: var(--brand-sky);
+  --color-brand-teal-soft: var(--brand-teal-soft);
+  --color-brand-pink-deep: var(--brand-pink-deep);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -53,33 +55,38 @@
 
 :root {
   color-scheme: light;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.24 0.02 220);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.24 0.02 220);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.24 0.02 220);
-  --primary: oklch(0.32 0.07 200);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.96 0.015 200);
-  --secondary-foreground: oklch(0.32 0.07 200);
-  --muted: oklch(0.97 0.008 200);
-  --muted-foreground: oklch(0.52 0.02 210);
-  --accent: oklch(0.7 0.15 45);
-  --accent-foreground: oklch(0.99 0 0);
+  /* Paleta Tangle Teezer: papel/tinta como base neutra, pink como cor primária
+     e verde-menta como acento secundário. --brand-navy* mantêm o nome histórico
+     do token (era a cor da marca anterior) mas agora carregam pink/tinta. */
+  --background: #fdf6ef;
+  --foreground: #141414;
+  --card: #ffffff;
+  --card-foreground: #141414;
+  --popover: #ffffff;
+  --popover-foreground: #141414;
+  --primary: #ec1d6e;
+  --primary-foreground: #ffffff;
+  --secondary: #f2ead9;
+  --secondary-foreground: #141414;
+  --muted: #f2ead9;
+  --muted-foreground: #6b6558;
+  --accent: #1f7a5c;
+  --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.92 0.008 200);
-  --input: oklch(0.92 0.008 200);
-  --ring: oklch(0.7 0.15 45);
-  --brand-navy: oklch(0.32 0.07 200);
-  --brand-navy-deep: oklch(0.21 0.055 200);
-  --brand-sky: oklch(0.7 0.15 45);
-  --chart-1: oklch(0.7 0.15 45);
-  --chart-2: oklch(0.32 0.07 200);
-  --chart-3: oklch(0.55 0.09 200);
-  --chart-4: oklch(0.75 0.12 60);
-  --chart-5: oklch(0.4 0.08 210);
-  --radius: 0.75rem;
+  --border: #1414141f;
+  --input: #1414141f;
+  --ring: #ec1d6e;
+  --brand-navy: #ec1d6e;
+  --brand-navy-deep: #141414;
+  --brand-sky: #a8e6d0;
+  --brand-teal-soft: #a8e6d0;
+  --brand-pink-deep: #b8134f;
+  --chart-1: #ec1d6e;
+  --chart-2: #1f7a5c;
+  --chart-3: #a8e6d0;
+  --chart-4: #b8134f;
+  --chart-5: #6b6558;
+  --radius: 0.875rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
   --sidebar-primary: oklch(0.205 0 0);

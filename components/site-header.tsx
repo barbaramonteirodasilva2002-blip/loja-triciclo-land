@@ -7,6 +7,7 @@ import {
   Search,
   Truck,
   Home,
+  Layers,
   ChevronRight,
   ShoppingBag,
   ShoppingCart,
@@ -18,11 +19,15 @@ import { Logo } from "@/components/logo"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/components/cart-provider"
 import { CartDrawer } from "@/components/cart-drawer"
+import { COLLECTIONS } from "@/lib/products"
 
 const mainLinks = [
-  { label: "Início", href: "/#inicio", icon: Home },
+  { label: "Início", href: "/", icon: Home },
+  { label: "Coleções", href: "/#colecoes", icon: Layers },
   { label: "Rastrear Pedido", href: "/rastrear-pedido", icon: Truck },
 ]
+
+const collectionLinks = COLLECTIONS.map((c) => ({ label: c.name, href: `/colecoes/${c.slug}` }))
 
 const marqueeItems = [
   { icon: Truck, label: "Frete grátis para todo o Brasil" },
@@ -86,7 +91,7 @@ export function SiteHeader() {
             <Menu className="size-6" />
           </button>
 
-          <a href="#inicio" aria-label="DriftKids - página inicial">
+          <a href="/" aria-label="Tangle Teezer - página inicial">
             <Logo />
           </a>
 
@@ -177,9 +182,9 @@ export function SiteHeader() {
               <X className="size-5" />
             </button>
             <div className="flex justify-center">
-              <Logo variant="light" className="h-10" />
+              <Logo variant="light" />
             </div>
-            <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à DriftKids</p>
+            <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à Tangle Teezer</p>
           </div>
 
           {/* Corpo do menu */}
@@ -202,6 +207,7 @@ export function SiteHeader() {
               ))}
             </ul>
 
+            <MenuSection title="Coleções" links={collectionLinks} onNavigate={() => setMenuOpen(false)} />
             <MenuSection title="Políticas" links={policyLinks} onNavigate={() => setMenuOpen(false)} />
             <MenuSection title="Institucional" links={institutionalLinks} onNavigate={() => setMenuOpen(false)} />
           </div>
@@ -209,12 +215,12 @@ export function SiteHeader() {
           {/* Rodapé do menu */}
           <div className="border-t border-border px-6 py-4">
             <a
-              href="/#escolha-kit"
+              href="/#colecoes"
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-center gap-2 rounded-xl bg-accent py-3 font-semibold text-accent-foreground transition-colors hover:brightness-95"
+              className="flex items-center justify-center gap-2 rounded-xl bg-primary py-3 font-semibold text-primary-foreground transition-colors hover:brightness-95"
             >
               <ShoppingBag className="size-5" />
-              Comprar Agora
+              Ver Produtos
             </a>
           </div>
         </nav>

@@ -60,7 +60,7 @@ export async function reportOrderToUtmify(order: UtmifyOrderInput): Promise<void
       },
       body: JSON.stringify({
         orderId: order.orderId,
-        platform: "DriftKids",
+        platform: "TangleTeezerBR",
         paymentMethod: order.paymentMethod,
         status: order.status,
         createdAt: formatUtcTimestamp(order.createdAt),
@@ -76,7 +76,7 @@ export async function reportOrderToUtmify(order: UtmifyOrderInput): Promise<void
         },
         products: [
           {
-            id: "triciclo-drift-300w",
+            id: "tangle-teezer",
             name: order.productName,
             planId: null,
             planName: null,

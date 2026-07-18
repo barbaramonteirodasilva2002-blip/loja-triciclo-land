@@ -8,17 +8,17 @@ const testimonials = [
   {
     name: "Cliente Satisfeita",
     photo: "/images/reviews/fernanda.png",
-    text: "A qualidade surpreendeu, roda super bem e ainda toca música no Bluetooth. Show de bola!",
+    text: "Chegou certinho e original, com selo de autenticidade. Escova excelente, desembaraça sem puxar.",
   },
   {
     name: "Cliente Verificado",
     photo: "/images/reviews/ricardo.png",
-    text: "Veio tudo certinho, a bateria dura bastante e o carregamento é rápido. Recomendo.",
+    text: "Comprei mais de uma vez, entrega rápida e produto sempre original. Recomendo.",
   },
   {
-    name: "Cliente Satisfeito",
+    name: "Cliente Satisfeita",
     photo: "/images/reviews/marcos.png",
-    text: "Meu filho não desgruda do triciclo! As 3 velocidades ajudaram ele a ganhar confiança aos poucos.",
+    text: "Uso todo dia depois do banho e não quebra mais o cabelo como a escova antiga.",
   },
 ]
 

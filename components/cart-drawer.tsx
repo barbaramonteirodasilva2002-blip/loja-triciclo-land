@@ -64,8 +64,8 @@ export function CartDrawer() {
                         <Image src={kit.img} alt={kit.units} fill sizes="64px" className="object-contain" />
                       </div>
                       <div className="flex-1">
-                        <p className="text-sm font-semibold text-foreground">Triciclo Elétrico Drift</p>
-                        <p className="text-xs text-muted-foreground">{kit.units}</p>
+                        <p className="text-sm font-semibold text-foreground">{kit.units}</p>
+                        <p className="text-xs text-muted-foreground">{kit.subtitle}</p>
                         <div className="mt-2 flex items-center justify-between">
                           <div className="flex items-center gap-1 rounded-lg border border-border">
                             <button

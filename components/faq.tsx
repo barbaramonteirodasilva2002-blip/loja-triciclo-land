@@ -5,28 +5,24 @@ import { ChevronDown } from "lucide-react"
 
 const faqs = [
   {
-    q: "Qual a autonomia da bateria e quanto tempo leva para carregar?",
-    a: "A bateria recarregável acompanha um carregador próprio. Recomendamos carregar totalmente antes do primeiro uso para garantir a melhor autonomia nas pilotagens.",
+    q: "Funciona em cabelo cacheado ou crespo?",
+    a: "Sim. A linha Desembaraçar tem versões específicas para cachos e fios crespos, com cerdas espaçadas que respeitam o formato natural do cacho sem abrir o fio.",
   },
   {
-    q: "Quantas velocidades tem e quem pode usar?",
-    a: "São 3 velocidades ajustáveis, ideais para evoluir aos poucos. Indicado para crianças e adultos, com até 100kg.",
+    q: "Uso no cabelo molhado ou seco?",
+    a: "As escovas de desembaraço podem ser usadas nos dois casos, inclusive no banho, ajudando a espalhar condicionador e máscara pelos fios sem o puxão da escovação comum.",
   },
   {
-    q: "O triciclo tem som Bluetooth? Como funciona?",
-    a: "Sim! Ele conta com uma caixa de som Bluetooth com entrada MP3, para tocar as músicas favoritas da criançada direto do celular.",
+    q: "Preciso usar creme ou óleo antes de escovar?",
+    a: "Não é obrigatório, mas usar um leave-in ou óleo em fios muito secos facilita ainda mais o deslizar das cerdas.",
   },
   {
-    q: "Precisa montar quando chega?",
-    a: "O triciclo vem praticamente pronto de fábrica. Basta encaixar o guidão e ajustar o eixo entre banco e guidão para o tamanho da criança.",
+    q: "Como sei que é um produto original?",
+    a: "Somos ponto de venda autorizado da marca. Todos os produtos vêm com selo de autenticidade e nota fiscal, sem risco de falsificação.",
   },
   {
-    q: "É seguro? Tem algum limite de peso?",
-    a: "Sim. A estrutura é reforçada e conta com 3 velocidades ajustáveis para começar devagar. Suporta até 100kg e o uso deve ser sempre supervisionado por um adulto.",
-  },
-  {
-    q: "A bandeirinha e o carregador já vêm inclusos?",
-    a: "Sim! A bandeirinha decorativa e o carregador de bateria acompanham o produto sem custo adicional.",
+    q: "Qual escova escolher para o meu tipo de fio?",
+    a: "A linha Desembaraçar é segmentada por tipo de cabelo: finos e frágeis, médios, grossos e volumosos, e cacheados e crespos. Veja as coleções para encontrar a ideal.",
   },
   {
     q: "Em quanto tempo recebo?",

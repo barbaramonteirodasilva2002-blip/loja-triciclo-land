@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { Minus, Plus, Tag, Trash2, Gift } from "lucide-react"
+import { Minus, Plus, Tag, Trash2, ShieldCheck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import type { Kit, KitId } from "@/lib/checkout"
 
@@ -47,7 +47,7 @@ export function OrderSummaryBar({
         <div className="mx-auto flex max-w-3xl items-center justify-center gap-2 px-4 py-2.5 text-center text-xs font-semibold text-white sm:text-sm">
           <span aria-hidden="true" className="text-base leading-none">🚚</span>
           <span>
-            Você ganhou <span className="text-accent">FRETE GRÁTIS</span> + Brinde exclusivo hoje!
+            Produto original com <span className="text-accent">selo de autenticidade</span> Tangle Teezer
           </span>
         </div>
       </div>
@@ -65,8 +65,8 @@ export function OrderSummaryBar({
                   <Image src={kit.img} alt={kit.units} fill sizes="56px" className="object-contain" />
                 </div>
                 <div className="flex-1">
-                  <p className="text-sm font-semibold text-foreground">Triciclo Elétrico Drift</p>
-                  <p className="text-xs text-muted-foreground">{kit.units}</p>
+                  <p className="text-sm font-semibold text-foreground">{kit.units}</p>
+                  <p className="text-xs text-muted-foreground">{kit.subtitle}</p>
                 </div>
                 <div className="flex items-center gap-1 rounded-lg border border-border">
                   <button
@@ -103,16 +103,11 @@ export function OrderSummaryBar({
           </div>
 
           <div className="flex items-center gap-3 rounded-xl border border-dashed border-emerald-400/60 bg-emerald-50 p-3">
-            <div className="relative size-11 shrink-0 overflow-hidden rounded-lg bg-white">
-              <Image src="/images/kit-capacete-protecao.webp" alt="Kit de proteção" fill sizes="44px" className="object-contain" />
-            </div>
+            <ShieldCheck className="size-6 shrink-0 text-emerald-600" />
             <div className="flex-1">
-              <p className="text-sm font-bold text-foreground">Kit de proteção: mini capacete + cotoveleira</p>
-              <p className="text-xs text-emerald-600">Incluso grátis no seu pedido</p>
+              <p className="text-sm font-bold text-foreground">Revenda autorizada Tangle Teezer</p>
+              <p className="text-xs text-emerald-600">Produto original, sem risco de falsificação</p>
             </div>
-            <span className="flex shrink-0 items-center gap-1 rounded-full bg-emerald-100 px-2.5 py-1 text-xs font-bold text-emerald-700">
-              <Gift className="size-3" /> Brinde
-            </span>
           </div>
 
           <div>

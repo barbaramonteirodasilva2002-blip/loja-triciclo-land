@@ -1,37 +1,33 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Geist, Geist_Mono, Poppins } from 'next/font/google'
+import { Inter, DM_Serif_Display } from 'next/font/google'
 import Script from 'next/script'
 import { CartProvider } from '@/components/cart-provider'
 import { AnalyticsProvider } from '@/components/analytics-provider'
 import './globals.css'
 
-const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
-})
-const poppins = Poppins({
+const inter = Inter({ variable: '--font-geist-sans', subsets: ['latin'] })
+const dmSerifDisplay = DM_Serif_Display({
   variable: '--font-heading',
   subsets: ['latin'],
-  weight: ['600', '700', '800'],
+  weight: ['400'],
 })
 
 export const metadata: Metadata = {
-  title: 'DriftKids | Triciclo Infantil Elétrico Drift 300W com Bluetooth e MP3',
+  title: 'Tangle Teezer Brasil | Ponto de Venda Autorizado',
   description:
-    'Triciclo Infantil Elétrico Drift com Bluetooth MP3, bandeirinha e 300W de alta potência. Três velocidades ajustáveis, banco tipo kart e rodas de drift. Frete grátis e envio imediato para todo o Brasil.',
+    'Escovas Tangle Teezer originais: Desembaraçar, Modelar, Finalizar, Bem-Estar, Pet-Teezer e Kits. Revenda autorizada, produto original com selo de autenticidade e frete grátis.',
   generator: 'v0.app',
   icons: {
-    icon: '/images/logo-driftkids.png',
-    shortcut: '/images/logo-driftkids.png',
-    apple: '/images/logo-driftkids.png',
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/apple-icon.png',
   },
 }
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#001f22',
+  themeColor: '#fdf6ef',
 }
 
 export default function RootLayout({
@@ -42,7 +38,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`light ${geistSans.variable} ${geistMono.variable} ${poppins.variable} bg-background`}
+      className={`light ${inter.variable} ${dmSerifDisplay.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         <AnalyticsProvider>

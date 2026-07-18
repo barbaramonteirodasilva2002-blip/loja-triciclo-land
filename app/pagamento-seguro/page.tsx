@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Pagamento Seguro | DriftKids",
-  description: "Entenda como protegemos os seus dados e quais formas de pagamento são aceitas na DriftKids.",
+  title: "Pagamento Seguro | Tangle Teezer Brasil",
+  description: "Entenda como protegemos os seus dados e quais formas de pagamento são aceitas.",
 }
 
 export default function Page() {

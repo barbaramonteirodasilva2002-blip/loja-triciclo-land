@@ -2,27 +2,27 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Quem Somos | DriftKids",
-  description: "Conheça a DriftKids, nossa missão e o compromisso com produtos de qualidade para a diversão da criançada.",
+  title: "Quem Somos | Tangle Teezer Brasil",
+  description: "Conheça nosso ponto de venda autorizado da marca Tangle Teezer no Brasil.",
 }
 
 export default function Page() {
   return (
     <PageShell
       title="Quem Somos"
-      intro="A DriftKids nasceu para levar diversão e adrenalina segura para o dia a dia das crianças brasileiras com produtos divertidos e acessíveis."
+      intro="Somos um ponto de venda autorizado da marca Tangle Teezer no Brasil, levando as escovas originais até a sua casa com entrega rápida e segura."
     >
       <Section heading="Nossa missão">
         <p>
-          Acreditamos que soluções simples podem transformar a rotina. Por isso selecionamos produtos que unem
-          tecnologia, economia e facilidade de uso, sempre pensando no bem-estar da sua família.
+          Facilitar o acesso às escovas Tangle Teezer originais, com autenticidade garantida e atendimento próximo em
+          cada etapa da compra.
         </p>
       </Section>
 
-      <Section heading="Qualidade em primeiro lugar">
+      <Section heading="Produto original em primeiro lugar">
         <p>
-          Cada item passa por testes de qualidade antes de chegar até você. Trabalhamos apenas com produtos que usaríamos
-          em nossas próprias casas.
+          Trabalhamos apenas com produtos originais, adquiridos por canais oficiais, com selo de autenticidade e sem
+          risco de falsificação.
         </p>
       </Section>
 
@@ -35,11 +35,11 @@ export default function Page() {
 
       <Section heading="Dados da empresa">
         <p>
-          DriftKids Ltda
+          [Razão Social da sua loja]
           <br />
-          Rua Henry Ford, nº 548 — Osasco, São Paulo/SP
+          CNPJ [00.000.000/0000-00]
           <br />
-          CEP 06210-100
+          Revendedor(a) autorizado(a) da marca Tangle Teezer
         </p>
       </Section>
     </PageShell>

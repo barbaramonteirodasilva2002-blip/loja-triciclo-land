@@ -1,52 +1,36 @@
-export type KitId = "rosa" | "azul" | "preto"
+import { PRODUCTS, getCollection, FEATURED_PRODUCT_SLUG } from "@/lib/products"
+
+export type KitId = string
 
 export type Kit = {
   id: KitId
+  /** Nome completo do produto (ex: "The Ultimate Detangler"). */
   units: string
+  /** Nome da coleção a que o produto pertence (ex: "Desembaraçar"). */
   subtitle: string
   old: string
   price: string
   priceValue: number
   off: string
   img: string
+  available: boolean
   bestSeller?: boolean
 }
 
-// Catálogo de cores compartilhado entre o seletor (ProductHero),
-// o bloco de preço e a barra fixa (StickyBuyBar).
-export const KITS: Kit[] = [
-  {
-    id: "rosa",
-    units: "Rosa Galáxia",
-    subtitle: "Estampa exclusiva",
-    old: "R$ 249,90",
-    price: "R$ 149,90",
-    priceValue: 149.9,
-    off: "40%",
-    img: "/images/drift-produto-rosa.webp",
-  },
-  {
-    id: "preto",
-    units: "Preto Raios",
-    subtitle: "Estampa exclusiva",
-    old: "R$ 249,90",
-    price: "R$ 149,90",
-    priceValue: 149.9,
-    off: "40%",
-    img: "/images/drift-produto-preto.jpg",
-    bestSeller: true,
-  },
-  {
-    id: "azul",
-    units: "Azul Galáxia",
-    subtitle: "Estampa exclusiva",
-    old: "R$ 249,90",
-    price: "R$ 149,90",
-    priceValue: 149.9,
-    off: "40%",
-    img: "/images/drift-produto-azul.jpg",
-  },
-]
+// Catálogo de produtos compartilhado entre o carrinho, o checkout e as páginas
+// de produto/coleção. Cada entrada de PRODUCTS vira um "kit" (SKU) de uma unidade.
+export const KITS: Kit[] = PRODUCTS.map((p) => ({
+  id: p.slug,
+  units: p.name,
+  subtitle: getCollection(p.collection)?.name ?? "",
+  old: p.oldPrice ? `R$ ${p.oldPrice}` : "",
+  price: `R$ ${p.price}`,
+  priceValue: p.priceValue,
+  off: p.discountPct ? `${p.discountPct}%` : "",
+  img: p.img,
+  available: p.available,
+  bestSeller: p.bestSeller,
+}))
 
 export function getKit(kit: KitId): Kit {
   return KITS.find((k) => k.id === kit) ?? KITS[0]
@@ -56,8 +40,8 @@ export function formatBRL(value: number): string {
   return value.toLocaleString("pt-BR", { minimumFractionDigits: 2, maximumFractionDigits: 2 })
 }
 
-// Cor padrão usada pelos CTAs fora do seletor (barra fixa, oferta, etc.)
-export const DEFAULT_KIT: KitId = "rosa"
+// Produto padrão usado pelos CTAs fora de uma página de produto específica (ex: barra fixa).
+export const DEFAULT_KIT: KitId = FEATURED_PRODUCT_SLUG
 
 // Desconto extra aplicado quando o cliente escolhe pagar via Pix no checkout.
 export const PIX_DISCOUNT_PERCENT = 10

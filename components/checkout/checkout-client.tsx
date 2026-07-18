@@ -347,7 +347,7 @@ export function CheckoutClient() {
       <div className="mx-auto flex max-w-md flex-col items-center gap-4 px-4 py-20 text-center">
         <ShoppingBag className="size-12 text-muted-foreground/50" />
         <h1 className="font-heading text-xl font-bold text-foreground">Seu carrinho está vazio</h1>
-        <p className="text-sm text-muted-foreground">Volte para a loja e escolha a estampa do seu Triciclo Elétrico Drift.</p>
+        <p className="text-sm text-muted-foreground">Volte para a loja e escolha suas escovas Tangle Teezer favoritas.</p>
         <Link
           href="/"
           className="mt-2 rounded-xl bg-brand-navy px-6 py-3 font-heading text-sm font-bold text-white transition hover:brightness-110"

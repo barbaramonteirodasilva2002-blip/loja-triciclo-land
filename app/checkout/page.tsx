@@ -7,8 +7,8 @@ import { Logo } from "@/components/logo"
 import { CheckoutClient } from "@/components/checkout/checkout-client"
 
 export const metadata: Metadata = {
-  title: "Finalizar Compra | DriftKids",
-  description: "Finalize sua compra com segurança na DriftKids.",
+  title: "Finalizar Compra | Tangle Teezer Brasil",
+  description: "Finalize sua compra com segurança no ponto de venda autorizado Tangle Teezer.",
 }
 
 export default function CheckoutPage() {
@@ -20,7 +20,7 @@ export default function CheckoutPage() {
 
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3.5">
-          <Link href="/" aria-label="DriftKids - página inicial">
+          <Link href="/" aria-label="Tangle Teezer - página inicial">
             <Logo />
           </Link>
           <span className="flex items-center gap-1.5 text-right uppercase leading-[1.15] tracking-wide">

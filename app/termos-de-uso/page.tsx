@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | DriftKids",
-  description: "Conheça os termos e condições de uso do site e das compras realizadas na DriftKids.",
+  title: "Termos de Uso | Tangle Teezer Brasil",
+  description: "Conheça os termos e condições de uso do site e das compras realizadas neste ponto de venda autorizado.",
 }
 
 export default function Page() {
@@ -42,8 +42,8 @@ export default function Page() {
 
       <Section heading="Propriedade intelectual">
         <p>
-          Todo o conteúdo do site, incluindo textos, imagens e marca, pertence à DriftKids e não pode ser reproduzido
-          sem autorização prévia.
+          Todo o conteúdo do site, incluindo textos e imagens, não pode ser reproduzido sem autorização prévia. Tangle
+          Teezer é marca registrada de seus respectivos titulares; este site opera como revendedor(a) autorizado(a).
         </p>
       </Section>
     </PageShell>

@@ -1,126 +1,64 @@
-import { Star, BadgeCheck, Flame, ShieldCheck, Truck } from "lucide-react"
-import Image from "next/image"
+import { Star, BadgeCheck, ShieldCheck, Truck } from "lucide-react"
 
+// Depoimentos: troque pelos relatos reais dos seus clientes (com autorização) antes
+// de publicar. Não atribuímos avaliações a nomes específicos para evitar
+// conteúdo que pareça um depoimento real fabricado.
 const reviews = [
   {
-    name: "Marcos A.",
-    city: "São Paulo/SP",
-    photo: "/images/reviews/marcos.png",
-    text: "Meu filho não desgruda do triciclo! As 3 velocidades ajudaram ele a ganhar confiança aos poucos.",
+    name: "Cliente verificado(a)",
+    text: "Escova excelente, desembaraça sem puxar e sem doer. Uso todo dia depois do banho.",
   },
   {
-    name: "Fernanda C.",
-    city: "Belo Horizonte/MG",
-    photo: "/images/reviews/fernanda.png",
-    text: "A qualidade surpreendeu, roda super bem e ainda toca música no Bluetooth. Show de bola!",
+    name: "Cliente verificado(a)",
+    text: "Comprei pela autenticidade da revenda autorizada. Chegou rápido e original, com selo de autenticidade.",
   },
   {
-    name: "Ricardo M.",
-    city: "Curitiba/PR",
-    photo: "/images/reviews/ricardo.png",
-    text: "Veio tudo certinho, a bateria dura bastante e o carregamento é rápido. Recomendo.",
-  },
-  {
-    name: "André P.",
-    city: "Porto Alegre/RS",
-    photo: "/images/reviews/andre.png",
-    text: "Comprei pro aniversário de 6 anos do meu filho e foi a festa mais animada do bairro.",
-  },
-  {
-    name: "Juliana S.",
-    city: "Goiânia/GO",
-    photo: "/images/reviews/juliana.png",
-    text: "Fácil de montar, resistente e o design com estampa de galáxia é lindo. Nota 1000!",
+    name: "Cliente verificado(a)",
+    text: "Meu cabelo cacheado nunca desembaraçou tão fácil. Recomendo a versão Naturally Curly.",
   },
 ]
 
 export function Reviews() {
   return (
-    <section id="avaliacoes" className="scroll-mt-24 bg-secondary/40 py-12">
+    <section id="avaliacoes" className="scroll-mt-24 bg-background py-12 md:py-16">
       <div className="mx-auto max-w-3xl px-4">
         <div className="text-center">
-          <p className="flex items-center justify-center gap-1.5 text-sm font-bold uppercase tracking-wide text-[#d9534f]">
-            <Flame className="size-4" /> Mais de 3 mil clientes satisfeitos
-          </p>
-          <h2 className="mt-2 text-balance font-heading text-2xl font-bold text-foreground">
-            Veja o que nossos clientes estão falando
+          <p className="text-xs font-bold uppercase tracking-widest text-primary">Quem já usa</p>
+          <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+            Espaço para avaliações reais
           </h2>
-          <p className="mt-2 flex items-center justify-center gap-2 text-sm">
-            <span className="flex text-[#f5a623]">
-              {Array.from({ length: 5 }).map((_, i) => (
-                <Star key={i} className="size-4 fill-current" />
-              ))}
-            </span>
-            <span className="font-semibold text-foreground">4.9</span>
-            <span className="text-muted-foreground">— 3.127 avaliações verificadas</span>
-          </p>
         </div>
 
-        {/* Avaliações */}
         <div className="mt-6 space-y-3">
-          {reviews.map((r) => (
-            <div key={r.name} className="rounded-2xl bg-card p-5 shadow-sm">
-              <div className="flex items-center gap-3">
-                <Image
-                  src={r.photo || "/placeholder.svg"}
-                  alt={`Foto de ${r.name}`}
-                  width={40}
-                  height={40}
-                  className="size-10 shrink-0 rounded-full object-cover"
-                />
-                <div>
-                  <p className="flex items-center gap-1.5 text-sm font-bold text-foreground">
-                    {r.name}
-                    <span className="flex items-center gap-1 text-xs font-medium text-brand-navy">
-                      <BadgeCheck className="size-3.5" /> Verificado
-                    </span>
-                  </p>
-                  <p className="text-xs text-muted-foreground">{r.city}</p>
+          {reviews.map((r, i) => (
+            <div key={i} className="rounded-2xl bg-card p-5 shadow-sm">
+              <div className="flex items-center justify-between">
+                <p className="flex items-center gap-1.5 text-sm font-bold text-foreground">
+                  {r.name}
+                  <BadgeCheck className="size-3.5 text-primary" />
+                </p>
+                <div className="flex text-[#f5a623]">
+                  {Array.from({ length: 5 }).map((_, j) => (
+                    <Star key={j} className="size-3.5 fill-current" />
+                  ))}
                 </div>
-              </div>
-              <div className="mt-2 flex text-[#f5a623]">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="size-3.5 fill-current" />
-                ))}
               </div>
               <p className="mt-2 text-sm leading-relaxed text-foreground/90">{r.text}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 text-center">
-          <a
-            href="#comprar"
-            className="inline-flex items-center gap-1 rounded-lg bg-secondary px-5 py-3 text-sm font-medium text-foreground transition hover:bg-secondary/70"
-          >
-            Ver todas as 3.127 avaliações →
-          </a>
+        <div className="mt-8 grid grid-cols-2 gap-3">
+          <div className="flex flex-col items-center gap-1.5 rounded-xl bg-card p-4 text-center shadow-sm">
+            <ShieldCheck className="size-5 text-primary" />
+            <span className="text-xs font-medium text-foreground">Compra 100% segura</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5 rounded-xl bg-card p-4 text-center shadow-sm">
+            <Truck className="size-5 text-primary" />
+            <span className="text-xs font-medium text-foreground">Entrega rápida</span>
+          </div>
         </div>
-
-        {/* Selos */}
-        <div id="oferta-final" className="mt-8 grid scroll-mt-20 grid-cols-3 gap-3">
-          <SmallBadge icon={ShieldCheck} title="Compra 100% segura" />
-          <SmallBadge icon={Star} title="4.9 de avaliação" />
-          <SmallBadge icon={Truck} title="Entrega rápida" />
-        </div>
-
-        {/* CTA */}
-        <a
-          href="#escolha-kit"
-          className="mt-6 flex items-center justify-center rounded-xl bg-brand-navy py-4 font-heading text-lg font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
-        >
-          APROVEITAR OFERTA
-        </a>
       </div>
     </section>
-  )
-}
-
-function SmallBadge({ icon: Icon, title }: { icon: typeof Star; title: string }) {
-  return (
-    <div className="flex flex-col items-center gap-1.5 rounded-xl bg-card p-4 text-center shadow-sm">
-      <Icon className="size-5 text-brand-navy" />
-      <span className="text-xs font-medium text-foreground">{title}</span>
-    </div>
   )
 }

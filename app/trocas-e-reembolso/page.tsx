@@ -2,8 +2,8 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Trocas e Reembolso | DriftKids",
-  description: "Saiba como solicitar trocas, devoluções e reembolsos dos produtos DriftKids.",
+  title: "Trocas e Reembolso | Tangle Teezer Brasil",
+  description: "Saiba como solicitar trocas, devoluções e reembolsos dos produtos Tangle Teezer.",
 }
 
 export default function Page() {
@@ -28,7 +28,7 @@ export default function Page() {
 
       <Section heading="Como solicitar">
         <ul className="list-disc space-y-1 pl-5">
-          <li>Envie um e-mail para contato@driftkids.site com o número do pedido.</li>
+          <li>Envie um e-mail para [email@sualoja.com.br] com o número do pedido.</li>
           <li>Descreva o motivo da troca ou devolução e anexe fotos, se houver defeito.</li>
           <li>Nossa equipe responderá com as instruções de envio em até 2 dias úteis.</li>
         </ul>

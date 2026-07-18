@@ -2,12 +2,12 @@
 
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
-import { useKit } from "@/components/kit-provider"
+import { getKit, type KitId } from "@/lib/checkout"
 import { useCart } from "@/components/cart-provider"
 
-export function StickyBuyBar() {
+export function StickyBuyBar({ kitId }: { kitId: KitId }) {
   const [visible, setVisible] = useState(false)
-  const { kitId, kit } = useKit()
+  const kit = getKit(kitId)
   const cart = useCart()
 
   useEffect(() => {
@@ -17,6 +17,8 @@ export function StickyBuyBar() {
     return () => window.removeEventListener("scroll", onScroll)
   }, [])
 
+  if (!kit.available) return null
+
   return (
     <div
       className={cn(
@@ -25,12 +27,12 @@ export function StickyBuyBar() {
       )}
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
-        <div className="leading-tight">
-          <p className="text-xs text-muted-foreground">
-            <span className="line-through">{kit.old}</span>
+        <div className="min-w-0 leading-tight">
+          <p className="truncate text-xs text-muted-foreground">
+            {kit.old && <span className="line-through">{kit.old}</span>}
             <span className="ml-1.5 font-semibold text-foreground">{kit.units}</span>
           </p>
-          <p className="font-heading text-xl font-extrabold text-brand-navy">{kit.price}</p>
+          <p className="font-heading text-xl font-extrabold text-primary">{kit.price}</p>
         </div>
         <button
           type="button"
@@ -38,9 +40,9 @@ export function StickyBuyBar() {
             cart.addItem(kitId, 1)
             window.location.href = "/checkout"
           }}
-          className="flex flex-1 items-center justify-center rounded-xl bg-brand-navy px-6 py-3.5 font-heading text-base font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110 sm:flex-none"
+          className="flex shrink-0 items-center justify-center rounded-xl bg-primary px-6 py-3.5 font-heading text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition hover:brightness-110"
         >
-          QUERO O MEU
+          QUERO ESTE
         </button>
       </div>
     </div>

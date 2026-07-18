@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
   const orderRef = body.internalOrderId ? String(body.internalOrderId) : `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`
   const postbackUrl = `${request.nextUrl.origin}/api/webhooks/hypercash`
   const gatewayItems = lines.map((l) => ({
-    title: `Triciclo Elétrico Drift - ${l.kit.units}`,
+    title: l.kit.units,
     unitPriceInCents: Math.round(l.kit.priceValue * 100),
     quantity: l.quantity,
   }))

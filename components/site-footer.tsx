@@ -32,11 +32,11 @@ export function SiteFooter() {
         <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">
           <li className="flex items-center gap-2.5">
             <Mail className="size-4 text-primary-foreground/60" />
-            contato@driftkids.site
+            [email@sualoja.com.br]
           </li>
           <li className="flex items-center gap-2.5">
             <Phone className="size-4 text-primary-foreground/60" />
-            (11) 99833-7561
+            [Telefone de contato]
           </li>
           <li className="flex items-center gap-2.5">
             <Clock className="size-4 text-primary-foreground/60" />
@@ -91,14 +91,12 @@ export function SiteFooter() {
           <div className="flex justify-center">
             <Logo variant="light" className="h-10" />
           </div>
-          <p className="mt-4 font-heading text-sm font-bold">DriftKids Ltda</p>
+          <p className="mt-4 font-heading text-sm font-bold">[Razão Social da sua loja]</p>
           <p className="mt-1 text-xs leading-relaxed text-primary-foreground/60">
-            Rua Henry Ford, nº 548
-            <br />
-            Osasco — São Paulo/SP, CEP 06210-100
+            CNPJ [00.000.000/0000-00] · Revendedor(a) autorizado(a) da marca Tangle Teezer
           </p>
           <p className="mt-4 text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} DriftKids. Todos os direitos reservados.
+            © {new Date().getFullYear()} Tangle Teezer Brasil. Todos os direitos reservados.
           </p>
         </div>
       </div>

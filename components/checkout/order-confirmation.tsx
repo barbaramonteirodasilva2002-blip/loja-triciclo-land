@@ -86,9 +86,9 @@ export function OrderConfirmation({ data }: { data: ConfirmationData }) {
                 <Image src={kit.img} alt={kit.units} fill sizes="48px" className="object-contain" />
               </div>
               <div className="flex-1">
-                <p className="text-sm font-medium text-foreground">Triciclo Elétrico Drift</p>
+                <p className="text-sm font-medium text-foreground">{kit.units}</p>
                 <p className="text-xs text-muted-foreground">
-                  {kit.units} · {quantity}x
+                  {kit.subtitle} · {quantity}x
                 </p>
               </div>
               <span className="text-sm font-semibold text-foreground">R$ {formatBRL(kit.priceValue * quantity)}</span>

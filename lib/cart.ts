@@ -5,7 +5,7 @@ export type CartItem = {
   quantity: number
 }
 
-export const CART_STORAGE_KEY = "driftkids-cart"
+export const CART_STORAGE_KEY = "tangleteezer-cart"
 
 export const MAX_ITEM_QUANTITY = 5
 
