@@ -2,11 +2,13 @@
 
 import { useEffect, type ReactNode } from "react"
 import { getSessionId } from "@/lib/session"
+import { captureUtmParams } from "@/lib/utm"
 
 // Envia um "heartbeat" periódico enquanto a aba está visível, usado pelo painel
 // admin para calcular quantos visitantes estão online agora.
 export function AnalyticsProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
+    captureUtmParams()
     const sessionId = getSessionId()
     if (!sessionId) return
 

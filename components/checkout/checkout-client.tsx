@@ -7,6 +7,7 @@ import { ArrowLeft, ArrowRight, Lock, ShoppingBag, Check } from "lucide-react"
 import { getKit, getShippingMethod, PIX_DISCOUNT_PERCENT, DEFAULT_SHIPPING_METHOD, type ShippingMethodId } from "@/lib/checkout"
 import { formatCEP, formatCPF, formatPhone, isValidCPF, isValidExpiry, luhnCheck, detectCardBrand } from "@/lib/format"
 import { getSessionId } from "@/lib/session"
+import { getStoredUtmParams } from "@/lib/utm"
 import { useCart } from "@/components/cart-provider"
 import { StepIndicator, type CheckoutStep } from "@/components/checkout/step-indicator"
 import { OrderSummaryBar, type CouponStatus } from "@/components/checkout/order-summary-bar"
@@ -302,6 +303,7 @@ export function CheckoutClient() {
               customer,
               shippingMethodId,
               couponCode: couponStatus === "applied" ? couponCode : undefined,
+              utm: getStoredUtmParams(),
             }),
           })
           const data = await res.json()

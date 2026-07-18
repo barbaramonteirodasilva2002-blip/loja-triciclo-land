@@ -61,7 +61,7 @@ export default function RootLayout({
         {/* Utmify - Pixel de rastreamento de vendas */}
         <Script id="utmify-pixel" strategy="afterInteractive">
           {`
-            window.pixelId = "6a4708779f6cfb5229ae436b";
+            window.pixelId = "6a5b0a42909812a32f68fa16";
             var a = document.createElement("script");
             a.setAttribute("async", "");
             a.setAttribute("defer", "");

@@ -61,6 +61,15 @@ export function ensureSchema(): Promise<void> {
       `
       await sql`alter table orders add column if not exists gateway_charge_id text`
       await sql`alter table orders add column if not exists gateway_status text`
+      await sql`alter table orders add column if not exists customer_ip text`
+      await sql`alter table orders add column if not exists utm_source text`
+      await sql`alter table orders add column if not exists utm_campaign text`
+      await sql`alter table orders add column if not exists utm_medium text`
+      await sql`alter table orders add column if not exists utm_content text`
+      await sql`alter table orders add column if not exists utm_term text`
+      await sql`alter table orders add column if not exists src text`
+      await sql`alter table orders add column if not exists sck text`
+      await sql`alter table orders add column if not exists utmify_reported_status text`
       await sql`create index if not exists checkout_events_session_idx on checkout_events (session_id)`
       await sql`create index if not exists checkout_events_created_idx on checkout_events (created_at)`
       await sql`create index if not exists orders_status_idx on orders (status)`

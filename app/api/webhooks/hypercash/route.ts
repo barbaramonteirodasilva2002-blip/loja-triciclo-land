@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { sql, ensureSchema } from "@/lib/db"
 import { checkChargeStatus } from "@/lib/payment-gateway"
+import { reportOrderToUtmify } from "@/lib/utmify"
 
 // Recebe as notificações de transação da HyperCash (ver lib/payment-gateway.ts
 // e https://docs.hypercash.com.br/docs/webhook/transaction) e atualiza o
@@ -30,11 +31,41 @@ export async function POST(request: NextRequest) {
   }
 
   await ensureSchema()
-  await sql`
+  const rows = await sql`
     update orders
     set status = ${newStatus}, gateway_status = ${verifiedStatus}, updated_at = now()
     where gateway_charge_id = ${chargeId}
+    returning *
   `
+
+  const order = rows[0]
+  if (order) {
+    await reportOrderToUtmify({
+      orderId: String(order.id),
+      status: newStatus === "pago" ? "paid" : "refused",
+      paymentMethod: order.payment_method === "pix" ? "pix" : "credit_card",
+      createdAt: new Date(order.created_at),
+      approvedAt: newStatus === "pago" ? new Date() : null,
+      customer: {
+        name: order.customer_name,
+        email: order.customer_email ?? "",
+        phone: order.customer_phone,
+        document: order.customer_cpf,
+        ip: order.customer_ip,
+      },
+      productName: order.kit_label,
+      totalInCents: Math.round(Number(order.total) * 100),
+      trackingParameters: {
+        src: order.src,
+        sck: order.sck,
+        utm_source: order.utm_source,
+        utm_campaign: order.utm_campaign,
+        utm_medium: order.utm_medium,
+        utm_content: order.utm_content,
+        utm_term: order.utm_term,
+      },
+    })
+  }
 
   return NextResponse.json({ ok: true })
 }
