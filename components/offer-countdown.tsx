@@ -6,6 +6,7 @@ import { AlertTriangle, ShieldCheck, Clock } from "lucide-react"
 import { getKit } from "@/lib/checkout"
 import { FEATURED_PRODUCT_SLUG } from "@/lib/products"
 import { useCart } from "@/components/cart-provider"
+import { Reveal } from "@/components/reveal"
 
 function format(n: number) {
   return n.toString().padStart(2, "0")
@@ -28,12 +29,12 @@ export function OfferCountdown() {
   const s = seconds % 60
 
   return (
-    <section id="oferta" className="scroll-mt-24 bg-background py-12 md:py-16">
-      <div className="mx-auto max-w-md px-4">
-        <div className="rounded-2xl border border-border bg-card p-6 text-center shadow-sm">
-          <p className="text-xs font-bold uppercase tracking-widest text-primary">The Ultimate Detangler</p>
+    <section id="oferta" className="scroll-mt-24 bg-background py-16 md:py-24">
+      <Reveal className="mx-auto max-w-md px-4">
+        <div className="shadow-premium-hover rounded-2xl border border-border bg-card p-6 text-center shadow-premium">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">The Ultimate Detangler</p>
 
-          <div className="relative mx-auto mt-4 aspect-square w-32 overflow-hidden rounded-xl bg-white">
+          <div className="relative mx-auto mt-4 aspect-square w-32 overflow-hidden rounded-xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)]">
             <Image src={kit.img} alt={kit.units} fill sizes="128px" className="object-contain p-2" />
           </div>
 
@@ -57,7 +58,7 @@ export function OfferCountdown() {
               cart.addItem(kit.id, 1)
               window.location.href = "/checkout"
             }}
-            className="mt-4 flex w-full items-center justify-center rounded-xl bg-primary py-4 font-heading text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition hover:brightness-110"
+            className="mt-4 flex w-full items-center justify-center rounded-xl bg-primary py-4 font-heading text-base font-bold text-primary-foreground shadow-premium transition-all duration-300 hover:shadow-[var(--shadow-pink)] hover:brightness-105 active:scale-[0.98]"
           >
             Ver oferta e finalizar compra
           </button>
@@ -71,7 +72,7 @@ export function OfferCountdown() {
             </span>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   )
 }

@@ -32,8 +32,9 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      <section className="bg-secondary/50 py-10">
-        <div className="mx-auto max-w-6xl px-4">
+      <section className="relative overflow-hidden bg-secondary/50 py-14">
+        <div aria-hidden="true" className="bristle-lines pointer-events-none absolute inset-0 opacity-[0.04]" />
+        <div className="relative mx-auto max-w-6xl px-4">
           <Link
             href="/"
             className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition hover:text-foreground"
@@ -41,7 +42,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
             <ArrowLeft className="size-4" />
             Voltar para a página inicial
           </Link>
-          <p className="mt-4 text-xs font-bold uppercase tracking-widest text-primary">Coleção</p>
+          <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-primary">Coleção</p>
           <h1 className="mt-1 text-balance font-heading text-3xl font-normal text-foreground sm:text-4xl">
             {collection.name}
           </h1>
@@ -51,7 +52,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
               {collection.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground/80"
+                  className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground/80 shadow-premium"
                 >
                   {tag}
                 </li>
@@ -61,7 +62,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
         </div>
       </section>
 
-      <main className="mx-auto max-w-6xl px-4 py-10">
+      <main className="mx-auto max-w-6xl px-4 py-14">
         <p className="mb-5 text-xs text-muted-foreground">
           Nome, preço, disponibilidade e foto reais, usados com autorização de revendedor(a) oficial.
         </p>

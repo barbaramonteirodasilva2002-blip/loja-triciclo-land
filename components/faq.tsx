@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { ChevronDown } from "lucide-react"
+import { Reveal } from "@/components/reveal"
 
 const faqs = [
   {
@@ -38,39 +39,42 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0)
 
   return (
-    <section id="faq" className="scroll-mt-24 bg-background py-12 md:py-16">
+    <section id="faq" className="scroll-mt-24 bg-background py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4">
-        <div className="mb-8 text-center">
-          <h2 className="text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
-            Perguntas Frequentes
+        <Reveal className="mb-10 text-center">
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Antes de comprar</p>
+          <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+            Perguntas frequentes
           </h2>
-        </div>
+        </Reveal>
 
         <div className="flex flex-col gap-3">
           {faqs.map((item, i) => {
             const isOpen = open === i
             return (
-              <div key={item.q} className="overflow-hidden rounded-xl border border-border bg-card">
-                <button
-                  type="button"
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-medium text-foreground">{item.q}</span>
-                  <ChevronDown
-                    className={`size-5 shrink-0 text-accent transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
-                    aria-hidden="true"
-                  />
-                </button>
-                <div
-                  className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
-                >
-                  <div className="overflow-hidden">
-                    <p className="px-5 pb-5 leading-relaxed text-muted-foreground">{item.a}</p>
+              <Reveal key={item.q} delay={Math.min(i, 5) * 40}>
+                <div className="overflow-hidden rounded-xl border border-border bg-card transition-shadow duration-300 hover:shadow-premium">
+                  <button
+                    type="button"
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-medium text-foreground">{item.q}</span>
+                    <ChevronDown
+                      className={`size-5 shrink-0 text-primary transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+                      aria-hidden="true"
+                    />
+                  </button>
+                  <div
+                    className={`grid transition-all duration-300 ${isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}
+                  >
+                    <div className="overflow-hidden">
+                      <p className="px-5 pb-5 leading-relaxed text-muted-foreground">{item.a}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             )
           })}
         </div>

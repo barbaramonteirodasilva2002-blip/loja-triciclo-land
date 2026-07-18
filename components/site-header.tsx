@@ -69,11 +69,11 @@ export function SiteHeader() {
           {[...marqueeItems, ...marqueeItems].map((item, i) => (
             <span
               key={i}
-              className="flex shrink-0 items-center gap-2 whitespace-nowrap px-2 text-xs font-bold uppercase tracking-wide sm:text-sm"
+              className="flex shrink-0 items-center gap-2.5 whitespace-nowrap px-2 text-[11px] font-semibold uppercase tracking-[0.14em] sm:text-xs"
             >
-              <item.icon className="size-4 shrink-0 text-accent" />
+              <item.icon className="size-3.5 shrink-0 text-brand-teal-soft" />
               {item.label}
-              <span className="mx-4 text-white/30">•</span>
+              <span className="mx-4 text-white/20">·</span>
             </span>
           ))}
         </div>

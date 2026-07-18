@@ -1,6 +1,28 @@
-import { neon } from "@neondatabase/serverless"
+import { neon, type NeonQueryFunction } from "@neondatabase/serverless"
 
-export const sql = neon(process.env.DATABASE_URL!)
+// Conexão criada sob demanda, na primeira consulta real — evita que apenas
+// importar este módulo (ex: durante a coleta de dados de build da Vercel)
+// já exija DATABASE_URL configurada.
+let client: NeonQueryFunction<false, false> | null = null
+
+function getClient(): NeonQueryFunction<false, false> {
+  if (!client) {
+    if (!process.env.DATABASE_URL) {
+      throw new Error("DATABASE_URL não configurada. Defina a variável de ambiente para habilitar o banco de dados.")
+    }
+    client = neon(process.env.DATABASE_URL)
+  }
+  return client
+}
+
+export const sql: NeonQueryFunction<false, false> = new Proxy((() => {}) as unknown as NeonQueryFunction<false, false>, {
+  apply(_target, _thisArg, args) {
+    return (getClient() as (...a: unknown[]) => unknown)(...args)
+  },
+  get(_target, prop) {
+    return Reflect.get(getClient(), prop)
+  },
+})
 
 let schemaReady: Promise<void> | null = null
 

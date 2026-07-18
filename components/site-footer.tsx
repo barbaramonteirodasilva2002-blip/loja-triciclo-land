@@ -26,7 +26,7 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="bg-brand-navy-deep text-primary-foreground">
-      <div className="mx-auto max-w-3xl px-6 py-12">
+      <div className="mx-auto max-w-3xl px-6 py-16">
         {/* Atendimento */}
         <h3 className="font-heading text-lg font-bold uppercase tracking-wide">Atendimento ao Cliente</h3>
         <ul className="mt-4 space-y-3 text-sm text-primary-foreground/80">

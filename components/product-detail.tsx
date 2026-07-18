@@ -29,14 +29,14 @@ export function ProductDetail({ product, collection }: { product: Product; colle
           Voltar para {collection.name}
         </Link>
 
-        <div className="relative mt-4 aspect-square overflow-hidden rounded-2xl bg-white">
+        <div className="relative mt-4 aspect-square overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium">
           <Image
             src={product.img || "/placeholder.svg"}
             alt={product.name}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-contain p-6"
+            className="object-contain p-6 drop-shadow-[0_14px_20px_rgba(20,20,20,0.12)]"
           />
           {product.discountPct && (
             <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
@@ -53,7 +53,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
         </h1>
         <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">{product.description}</p>
 
-        <div className="mt-5 rounded-2xl border border-border bg-secondary/60 p-5 shadow-sm">
+        <div className="mt-5 rounded-2xl border border-border bg-secondary/60 p-5 shadow-premium">
           {product.available ? (
             <>
               <div className="flex items-center gap-3">
@@ -98,7 +98,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
               cart.addItem(product.slug, 1)
               window.location.href = "/checkout"
             }}
-            className="flex w-full items-center justify-center rounded-xl bg-primary py-4 font-heading text-lg font-bold text-primary-foreground shadow-lg shadow-primary/20 transition hover:brightness-110 disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none"
+            className="flex w-full items-center justify-center rounded-xl bg-primary py-4 font-heading text-lg font-bold text-primary-foreground shadow-premium transition-all duration-300 hover:shadow-[var(--shadow-pink)] hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none"
           >
             {product.available ? "Quero este" : "Indisponível"}
           </button>
