@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Copy, Check, Clock, ShieldAlert, Info, XCircle, Loader2 } from "lucide-react"
+import { Copy, Check, Clock, ShieldAlert, XCircle, Loader2 } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import type { PixChargeResult } from "@/lib/payment-gateway"
 
@@ -128,14 +128,6 @@ export function PixPayment({
         <p className="text-xs leading-relaxed text-amber-800">
           Alguns bancos podem exibir alertas de segurança ao pagar via Pix para novos recebedores. Essa é uma medida
           preventiva e não indica problema na transação.
-        </p>
-      </div>
-
-      <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-brand-navy/20 bg-secondary/60 p-3.5 text-left">
-        <Info className="mt-0.5 size-4 shrink-0 text-brand-navy" />
-        <p className="text-xs leading-relaxed text-muted-foreground">
-          O beneficiário do Pix é a WORD IMPORTS LTDA, cuja gateway de pagamentos gerencia o recebimento de forma
-          segura.
         </p>
       </div>
 
