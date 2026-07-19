@@ -483,58 +483,6 @@ export const PRODUCTS: Product[] = [
     img: "/products/kits-e-promocoes/kit-wella-cronograma.png",
     available: true,
   },
-  {
-    slug: "kit-desembaracar-modelar-cabelos-finos-frageis",
-    name: "Kit Tangle Teezer Desembaraçar e Modelar Cabelos Finos e Frágeis",
-    collection: "kits-e-promocoes",
-    description:
-      "Combo com uma escova desembaraçadora e uma modeladora, pensado para fios finos e fragilizados que pedem um cuidado mais delicado.",
-    price: "220,80",
-    priceValue: 220.8,
-    oldPrice: "336,80",
-    discountPct: "34",
-    img: "/products/desembaracar/fine-fragile-cinnamon.jpg",
-    available: true,
-  },
-  {
-    slug: "kit-tangle-teezer-cabelos-medios",
-    name: "Kit Tangle Teezer Cabelos Médios",
-    collection: "kits-e-promocoes",
-    description:
-      "Combo com duas escovas essenciais para cabelos de espessura média, uma para desembaraçar e outra para dar volume na finalização.",
-    price: "289,80",
-    priceValue: 289.8,
-    oldPrice: "364,80",
-    discountPct: "21",
-    img: "/products/desembaracar/the-ultimate-detangler.png",
-    available: true,
-  },
-  {
-    slug: "kit-desembaracar-modelar-cabelos-grossos",
-    name: "Kit Tangle Teezer Desembaraçar e Modelar Cabelos Grossos",
-    collection: "kits-e-promocoes",
-    description:
-      "Combo com uma escova desembaraçadora e uma modeladora, feito para fios grossos e volumosos que pedem mais força no desembaraço.",
-    price: "210,80",
-    priceValue: 210.8,
-    oldPrice: "345,80",
-    discountPct: "39",
-    img: "/products/desembaracar/escova-de-cabelo-desembaracadora-the-original.jpg",
-    available: true,
-  },
-  {
-    slug: "kit-desembaracar-modelar-cabelos-crespos",
-    name: "Kit Tangle Teezer Desembaraçar e Modelar Cabelos Crespos",
-    collection: "kits-e-promocoes",
-    description:
-      "Combo com uma escova desembaraçadora e uma modeladora, desenvolvido para cabelos cacheados e crespos, respeitando o formato natural do cacho.",
-    price: "186,80",
-    priceValue: 186.8,
-    oldPrice: "284,80",
-    discountPct: "34",
-    img: "/products/desembaracar/the-ultimate-detangler-naturally-curly.png",
-    available: true,
-  },
 ]
 
 export function getProduct(slug: string): Product | undefined {
