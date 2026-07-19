@@ -1,6 +1,6 @@
-import Image from "next/image"
 import Link from "next/link"
 import { Reveal } from "@/components/reveal"
+import { HeroProductVisual } from "@/components/hero-product-visual"
 
 export function Hero() {
   return (
@@ -41,20 +41,10 @@ export function Hero() {
 
         <Reveal delay={120}>
           <div className="relative">
-            <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-[2rem] bg-white shadow-premium sm:max-w-md">
-              <div
-                aria-hidden="true"
-                className="absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(236,29,110,0.08),transparent_65%)]"
-              />
-              <Image
-                src="/products/desembaracar/ultimate-detangler-purple-hero.png"
-                alt="Tangle Teezer The Ultimate Detangler Fresh Purple"
-                fill
-                priority
-                sizes="(max-width: 1024px) 90vw, 480px"
-                className="relative object-contain p-6 drop-shadow-[0_18px_24px_rgba(20,20,20,0.14)]"
-              />
-            </div>
+            <HeroProductVisual
+              src="/products/desembaracar/ultimate-detangler-purple-hero.png"
+              alt="Tangle Teezer The Ultimate Detangler Fresh Purple"
+            />
             <div className="absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full bg-brand-teal-soft text-center shadow-premium ring-4 ring-background sm:right-8">
               <span className="text-lg font-bold leading-none text-accent">2</span>
               <span className="mt-1 text-[9px] font-bold uppercase leading-tight text-accent">
@@ -64,7 +54,7 @@ export function Hero() {
               </span>
             </div>
             <p className="mt-4 text-center text-xs text-muted-foreground">
-              Tangle Teezer · The Ultimate Detangler Fresh Purple
+              Tangle Teezer · The Ultimate Detangler Fresh Purple · Mais vendida
             </p>
           </div>
         </Reveal>
