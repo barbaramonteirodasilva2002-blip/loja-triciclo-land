@@ -1,16 +1,23 @@
 import Link from "next/link"
 import { Reveal } from "@/components/reveal"
+import { Parallax } from "@/components/parallax"
 import { HeroProductVisual } from "@/components/hero-product-visual"
 
 export function Hero() {
   return (
     <section id="inicio" className="relative scroll-mt-24 overflow-hidden bg-ink">
-      {/* Atmosfera: blobs de luz cromada à deriva, textura de cerdas sutil */}
+      {/* Atmosfera: blobs de luz cromada com parallax de scroll, textura de cerdas sutil */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="bristle-lines-dark absolute inset-0 opacity-[0.07]" />
-        <div className="animate-drift-a absolute -left-24 top-0 size-[32rem] rounded-full bg-primary/25 blur-[100px]" />
-        <div className="animate-drift-b absolute -right-24 top-1/3 size-[28rem] rounded-full bg-brand-violet/25 blur-[100px]" />
-        <div className="absolute bottom-0 left-1/3 size-[24rem] rounded-full bg-brand-teal-bright/15 blur-[100px]" />
+        <Parallax speed={0.18} className="absolute -left-24 top-0">
+          <div className="animate-drift-a size-[32rem] rounded-full bg-primary/25 blur-[100px]" />
+        </Parallax>
+        <Parallax speed={-0.14} className="absolute -right-24 top-1/3">
+          <div className="animate-drift-b size-[28rem] rounded-full bg-brand-violet/25 blur-[100px]" />
+        </Parallax>
+        <Parallax speed={0.1} className="absolute bottom-0 left-1/3">
+          <div className="size-[24rem] rounded-full bg-brand-teal-bright/15 blur-[100px]" />
+        </Parallax>
       </div>
 
       <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-24">
@@ -46,7 +53,7 @@ export function Hero() {
         </Reveal>
 
         <Reveal delay={120}>
-          <div className="relative">
+          <Parallax speed={0.06} className="relative">
             <HeroProductVisual
               src="/products/desembaracar/ultimate-detangler-mauve.webp"
               alt="Tangle Teezer The Ultimate Detangler Mauve"
@@ -62,7 +69,7 @@ export function Hero() {
             <p className="mt-4 text-center text-xs text-white/50">
               Tangle Teezer · The Ultimate Detangler Mauve · Mais vendida
             </p>
-          </div>
+          </Parallax>
         </Reveal>
       </div>
     </section>

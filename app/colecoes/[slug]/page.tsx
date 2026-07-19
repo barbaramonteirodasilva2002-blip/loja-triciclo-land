@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ProductCard } from "@/components/product-card"
+import { Parallax } from "@/components/parallax"
 import { COLLECTIONS, getCollection, getProductsByCollection } from "@/lib/products"
 
 export function generateStaticParams() {
@@ -35,8 +36,12 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       <section className="relative overflow-hidden bg-ink py-14">
         <div aria-hidden="true" className="pointer-events-none absolute inset-0">
           <div className="bristle-lines-dark absolute inset-0 opacity-[0.06]" />
-          <div className="animate-drift-a absolute -left-24 top-0 size-[26rem] rounded-full bg-primary/20 blur-[100px]" />
-          <div className="animate-drift-b absolute -right-24 bottom-0 size-[22rem] rounded-full bg-brand-violet/20 blur-[100px]" />
+          <Parallax speed={0.15} className="absolute -left-24 top-0">
+            <div className="animate-drift-a size-[26rem] rounded-full bg-primary/20 blur-[100px]" />
+          </Parallax>
+          <Parallax speed={-0.12} className="absolute -right-24 bottom-0">
+            <div className="animate-drift-b size-[22rem] rounded-full bg-brand-violet/20 blur-[100px]" />
+          </Parallax>
         </div>
         <div className="relative mx-auto max-w-6xl px-4">
           <Link
@@ -68,7 +73,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
 
       <main className="mx-auto max-w-6xl px-4 py-14">
         <p className="mb-5 text-xs text-muted-foreground">
-          Nome, preço, disponibilidade e foto reais, usados com autorização de revendedor(a) oficial.
+          Nome, preço, disponibilidade e foto reais dos produtos.
         </p>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {products.map((product) => (

@@ -1,5 +1,6 @@
 import { Check, X } from "lucide-react"
 import { Reveal } from "@/components/reveal"
+import { Parallax } from "@/components/parallax"
 
 export function ProblemSection() {
   return (
@@ -26,8 +27,12 @@ export function MechanismSection() {
     <section className="relative overflow-hidden bg-ink py-16 md:py-24">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="bristle-lines-dark absolute inset-0 opacity-[0.06]" />
-        <div className="animate-drift-b absolute right-0 top-0 size-[26rem] rounded-full bg-brand-violet/20 blur-[110px]" />
-        <div className="animate-drift-a absolute bottom-0 left-0 size-[22rem] rounded-full bg-primary/15 blur-[110px]" />
+        <Parallax speed={0.15} className="absolute right-0 top-0">
+          <div className="animate-drift-b size-[26rem] rounded-full bg-brand-violet/20 blur-[110px]" />
+        </Parallax>
+        <Parallax speed={-0.12} className="absolute bottom-0 left-0">
+          <div className="animate-drift-a size-[22rem] rounded-full bg-primary/15 blur-[110px]" />
+        </Parallax>
       </div>
       <Reveal className="relative mx-auto max-w-3xl px-4 text-center">
         <p className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-brand-teal-bright">O mecanismo</p>
