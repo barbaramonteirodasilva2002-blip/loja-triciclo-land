@@ -54,7 +54,7 @@ export function HeroProductVisual({ src, alt }: { src: string; alt: string }) {
           fill
           priority
           sizes="(max-width: 1024px) 90vw, 480px"
-          className="relative object-contain p-6 drop-shadow-[0_18px_24px_rgba(20,20,20,0.14)]"
+          className="relative object-contain p-3 drop-shadow-[0_18px_24px_rgba(20,20,20,0.14)]"
         />
         {/* Brilho que percorre a peça periodicamente, sugerindo o acabamento polido */}
         <div

@@ -42,8 +42,8 @@ export function Hero() {
         <Reveal delay={120}>
           <div className="relative">
             <HeroProductVisual
-              src="/products/desembaracar/ultimate-detangler-purple-hero.png"
-              alt="Tangle Teezer The Ultimate Detangler Fresh Purple"
+              src="/products/desembaracar/ultimate-detangler-mauve.webp"
+              alt="Tangle Teezer The Ultimate Detangler Mauve"
             />
             <div className="absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full bg-brand-teal-soft text-center shadow-premium ring-4 ring-background sm:right-8">
               <span className="text-lg font-bold leading-none text-accent">2</span>
@@ -54,7 +54,7 @@ export function Hero() {
               </span>
             </div>
             <p className="mt-4 text-center text-xs text-muted-foreground">
-              Tangle Teezer · The Ultimate Detangler Fresh Purple · Mais vendida
+              Tangle Teezer · The Ultimate Detangler Mauve · Mais vendida
             </p>
           </div>
         </Reveal>
