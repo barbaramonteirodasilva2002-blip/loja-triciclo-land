@@ -47,7 +47,7 @@ export function OrderSummaryBar({
         <div className="mx-auto flex max-w-3xl items-center justify-center gap-2 px-4 py-2.5 text-center text-xs font-semibold text-white sm:text-sm">
           <span aria-hidden="true" className="text-base leading-none">🚚</span>
           <span>
-            Produto original com <span className="text-accent">selo de autenticidade</span> Tangle Teezer
+            Produto original <span className="text-accent">Tangle Teezer</span> com nota fiscal
           </span>
         </div>
       </div>
@@ -105,8 +105,8 @@ export function OrderSummaryBar({
           <div className="flex items-center gap-3 rounded-xl border border-dashed border-emerald-400/60 bg-emerald-50 p-3">
             <ShieldCheck className="size-6 shrink-0 text-emerald-600" />
             <div className="flex-1">
-              <p className="text-sm font-bold text-foreground">Revenda autorizada Tangle Teezer</p>
-              <p className="text-xs text-emerald-600">Produto original, sem risco de falsificação</p>
+              <p className="text-sm font-bold text-foreground">Produto original Tangle Teezer</p>
+              <p className="text-xs text-emerald-600">Compra segura, com nota fiscal</p>
             </div>
           </div>
 

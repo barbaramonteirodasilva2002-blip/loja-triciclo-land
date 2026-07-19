@@ -11,7 +11,7 @@ const reviews = [
   },
   {
     name: "Cliente verificado(a)",
-    text: "Comprei pela autenticidade da revenda autorizada. Chegou rápido e original, com selo de autenticidade.",
+    text: "Chegou rápido e certinho, produto original. Recomendo.",
   },
   {
     name: "Cliente verificado(a)",

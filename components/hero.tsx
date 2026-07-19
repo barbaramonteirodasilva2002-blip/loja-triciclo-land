@@ -16,7 +16,7 @@ export function Hero() {
       <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-24">
         <Reveal>
           <p className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-brand-teal-bright">
-            Parceiro(a) oficial · Tangle Teezer no Brasil
+            Escovas Tangle Teezer no Brasil
           </p>
           <h1 className="mt-4 text-balance font-heading text-4xl font-extrabold leading-[1.05] tracking-tight text-white sm:text-7xl">
             O fim da

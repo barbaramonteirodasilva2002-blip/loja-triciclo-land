@@ -8,7 +8,7 @@ import { CheckoutClient } from "@/components/checkout/checkout-client"
 
 export const metadata: Metadata = {
   title: "Finalizar Compra | Tangle Teezer Brasil",
-  description: "Finalize sua compra com segurança no ponto de venda autorizado Tangle Teezer.",
+  description: "Finalize sua compra com segurança na loja Tangle Teezer Brasil.",
 }
 
 export default function CheckoutPage() {

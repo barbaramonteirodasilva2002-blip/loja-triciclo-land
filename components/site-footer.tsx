@@ -93,7 +93,7 @@ export function SiteFooter() {
           </div>
           <p className="mt-4 font-heading text-sm font-bold">[Razão Social da sua loja]</p>
           <p className="mt-1 text-xs leading-relaxed text-primary-foreground/60">
-            CNPJ [00.000.000/0000-00] · Revendedor(a) autorizado(a) da marca Tangle Teezer
+            CNPJ [00.000.000/0000-00] · Comercializamos produtos originais da marca Tangle Teezer
           </p>
           <p className="mt-4 text-xs text-primary-foreground/50">
             © {new Date().getFullYear()} Tangle Teezer Brasil. Todos os direitos reservados.

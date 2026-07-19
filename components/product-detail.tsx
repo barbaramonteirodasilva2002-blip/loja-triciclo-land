@@ -10,8 +10,8 @@ import type { Product } from "@/lib/products"
 import type { Collection } from "@/lib/products"
 
 const trustPoints = [
-  "Produto original, com selo de autenticidade",
-  "Revenda autorizada, sem risco de falsificação",
+  "Produto original",
+  "Compra 100% segura, com nota fiscal",
 ]
 
 export function ProductDetail({ product, collection }: { product: Product; collection: Collection }) {

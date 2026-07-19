@@ -22,7 +22,7 @@ export function CheckoutFooter() {
           >
             Informações da loja
           </button>
-          <p className="mt-3 text-xs text-primary-foreground/50">Revendedor(a) autorizado(a) da marca Tangle Teezer | Todos os direitos reservados</p>
+          <p className="mt-3 text-xs text-primary-foreground/50">Produtos originais Tangle Teezer | Todos os direitos reservados</p>
         </div>
       </footer>
 
@@ -40,7 +40,7 @@ export function CheckoutFooter() {
             </div>
             <div className="mt-3 space-y-1 text-sm text-muted-foreground">
               <p className="font-semibold text-foreground">[Razão Social da sua loja]</p>
-              <p>Revendedor(a) autorizado(a) da marca Tangle Teezer</p>
+              <p>Comercializamos produtos originais da marca Tangle Teezer</p>
               <p className="pt-2">
                 <span className="font-semibold text-foreground">Telefone:</span> [Telefone de contato]
               </p>

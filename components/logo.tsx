@@ -5,8 +5,7 @@ interface LogoProps {
   variant?: "light" | "dark"
 }
 
-// Wordmark em texto (a marca não fornece um arquivo de logo para revendedores),
-// no mesmo formato do site de referência: nome + selo de ponto de venda autorizado.
+// Wordmark em texto (a marca não fornece um arquivo de logo para revendedores).
 export function Logo({ className, variant = "dark" }: LogoProps) {
   const isLight = variant === "light"
   return (
@@ -25,7 +24,7 @@ export function Logo({ className, variant = "dark" }: LogoProps) {
           isLight ? "text-white/70" : "text-muted-foreground",
         )}
       >
-        Ponto de venda autorizado
+        Escovas e acessórios para cabelo
       </span>
     </span>
   )

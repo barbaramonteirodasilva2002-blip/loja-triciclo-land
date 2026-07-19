@@ -8,7 +8,7 @@ const testimonials = [
   {
     name: "Cliente Satisfeita",
     photo: "/images/reviews/fernanda.png",
-    text: "Chegou certinho e original, com selo de autenticidade. Escova excelente, desembaraça sem puxar.",
+    text: "Chegou certinho e original. Escova excelente, desembaraça sem puxar.",
   },
   {
     name: "Cliente Verificado",

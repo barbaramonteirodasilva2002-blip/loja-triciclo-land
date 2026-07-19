@@ -3,7 +3,7 @@ import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
   title: "Termos de Uso | Tangle Teezer Brasil",
-  description: "Conheça os termos e condições de uso do site e das compras realizadas neste ponto de venda autorizado.",
+  description: "Conheça os termos e condições de uso do site e das compras realizadas nesta loja.",
 }
 
 export default function Page() {
@@ -43,7 +43,7 @@ export default function Page() {
       <Section heading="Propriedade intelectual">
         <p>
           Todo o conteúdo do site, incluindo textos e imagens, não pode ser reproduzido sem autorização prévia. Tangle
-          Teezer é marca registrada de seus respectivos titulares; este site opera como revendedor(a) autorizado(a).
+          Teezer é marca registrada de seus respectivos titulares; este site comercializa produtos originais da marca.
         </p>
       </Section>
     </PageShell>

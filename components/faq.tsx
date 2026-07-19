@@ -19,7 +19,7 @@ const faqs = [
   },
   {
     q: "Como sei que é um produto original?",
-    a: "Somos ponto de venda autorizado da marca. Todos os produtos vêm com selo de autenticidade e nota fiscal, sem risco de falsificação.",
+    a: "Trabalhamos apenas com produtos originais, e todo pedido sai com nota fiscal.",
   },
   {
     q: "Qual escova escolher para o meu tipo de fio?",
