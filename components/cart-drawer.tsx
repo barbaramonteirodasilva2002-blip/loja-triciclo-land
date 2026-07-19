@@ -5,6 +5,7 @@ import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { getKit, formatBRL } from "@/lib/checkout"
 import { useCart } from "@/components/cart-provider"
+import { OrderBump } from "@/components/order-bump"
 
 export function CartDrawer() {
   const cart = useCart()
@@ -101,6 +102,9 @@ export function CartDrawer() {
                   )
                 })}
               </ul>
+              <div className="mt-4">
+                <OrderBump />
+              </div>
             </div>
 
             <div className="border-t border-border px-5 py-4">

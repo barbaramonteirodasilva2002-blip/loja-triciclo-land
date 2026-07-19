@@ -4,6 +4,7 @@ import Image from "next/image"
 import { Minus, Plus, Tag, Trash2, ShieldCheck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import type { Kit, KitId } from "@/lib/checkout"
+import { OrderBump } from "@/components/order-bump"
 
 export type CouponStatus = "idle" | "loading" | "applied" | "invalid"
 
@@ -101,6 +102,8 @@ export function OrderSummaryBar({
               </div>
             ))}
           </div>
+
+          <OrderBump />
 
           <div className="flex items-center gap-3 rounded-xl border border-dashed border-emerald-400/60 bg-emerald-50 p-3">
             <ShieldCheck className="size-6 shrink-0 text-emerald-600" />

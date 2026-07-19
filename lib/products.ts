@@ -494,3 +494,41 @@ export function getProductsByCollection(slug: string): Product[] {
 }
 
 export const FEATURED_PRODUCT_SLUG = "the-ultimate-detangler"
+
+// Order bump: para cada coleção, qual outra coleção completa melhor a rotina
+// capilar de quem já tem esse tipo de produto no carrinho. Ex: quem desembaraça
+// também se beneficia de cuidar do couro cabeludo; quem estiliza, de finalizar.
+const COMPLEMENTARY_COLLECTION: Record<CollectionSlug, CollectionSlug> = {
+  desembaracar: "bem-estar",
+  modelar: "finalizar",
+  finalizar: "bem-estar",
+  "bem-estar": "desembaracar",
+  "pet-teezer": "pet-teezer",
+  "kits-e-promocoes": "bem-estar",
+}
+
+/**
+ * Sugere um produto estratégico para adicionar ao pedido, com base nas
+ * coleções já presentes no carrinho — nunca repete um produto que já está
+ * no carrinho. Retorna undefined se não houver nenhuma sugestão disponível
+ * (ex: o cliente já tem todos os candidatos no carrinho).
+ */
+export function getOrderBumpProduct(cartProductSlugs: string[]): Product | undefined {
+  const inCart = new Set(cartProductSlugs)
+  const cartProducts = cartProductSlugs.map((slug) => getProduct(slug)).filter((p): p is Product => !!p)
+
+  const candidateCollections: CollectionSlug[] = []
+  for (const product of cartProducts) {
+    const complement = COMPLEMENTARY_COLLECTION[product.collection]
+    if (!candidateCollections.includes(complement)) candidateCollections.push(complement)
+  }
+
+  for (const collectionSlug of candidateCollections) {
+    const pick = getProductsByCollection(collectionSlug).find((p) => p.available && !inCart.has(p.slug))
+    if (pick) return pick
+  }
+
+  // Sem coleção complementar disponível (ex: carrinho vazio ou tudo já
+  // presente) — sugere o mais vendido da loja que ainda não está no carrinho.
+  return PRODUCTS.find((p) => p.bestSeller && p.available && !inCart.has(p.slug))
+}
