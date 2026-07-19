@@ -525,6 +525,23 @@ export const PRODUCTS: Product[] = [
     available: true,
   },
   {
+    slug: "rasqueadeira-de-shedding-grande-purple-grey",
+    name: "Rasqueadeira de Shedding Grande Purple Grey",
+    collection: "pet-teezer",
+    description:
+      "Remove a subpelagem solta de pets de porte grande, reduzindo a queda de pelos pela casa, na cor Purple Grey.",
+    price: "100,00",
+    priceValue: 100.0,
+    oldPrice: "125,00",
+    discountPct: "20",
+    img: "/products/pet-teezer/pet-teezer-deshedding-purple-grey-1.jpg",
+    gallery: [
+      "/products/pet-teezer/pet-teezer-deshedding-purple-grey-2.jpg",
+      "/products/pet-teezer/pet-teezer-deshedding-purple-grey-3.jpg",
+    ],
+    available: true,
+  },
+  {
     slug: "desembaracadora-detangling-pequena",
     name: "Desembaraçadora Detangling Pequena",
     collection: "pet-teezer",
