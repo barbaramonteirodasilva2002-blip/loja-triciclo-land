@@ -91,7 +91,7 @@ export function SiteHeader() {
             <Menu className="size-6" />
           </button>
 
-          <a href="/" aria-label="Tangle Teezer - página inicial">
+          <a href="/" aria-label="Ir para a página inicial da Tangle Teezer">
             <Logo />
           </a>
 

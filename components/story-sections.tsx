@@ -10,7 +10,7 @@ export function ProblemSection() {
           7h da manhã. Escova comum na mão, nó atrás do nó.
         </h2>
         <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
-          E aquele puxão que arranca fio de cabelo — e a paciência — junto. No fim, cabelo quebrado, couro cabeludo
+          E aquele puxão que arranca fio de cabelo, e a paciência, junto. No fim, cabelo quebrado, couro cabeludo
           dolorido e mais um dia começando estressado.
         </p>
         <p className="mt-4 font-accent text-xl italic text-primary">

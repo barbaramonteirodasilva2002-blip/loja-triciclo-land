@@ -49,10 +49,10 @@ export function OrderConfirmation({ data }: { data: ConfirmationData }) {
         <div className="mt-2 space-y-0.5 text-sm text-muted-foreground">
           <p>
             {address.street}, {address.number}
-            {address.complement ? ` — ${address.complement}` : ""}
+            {address.complement ? `, ${address.complement}` : ""}
           </p>
           <p>
-            {address.neighborhood} — {address.city}/{address.state}
+            {address.neighborhood}, {address.city}/{address.state}
           </p>
           <p>{address.cep}</p>
         </div>
@@ -69,8 +69,8 @@ export function OrderConfirmation({ data }: { data: ConfirmationData }) {
                 </div>
               )}
               <span>
-                Cartão de crédito {data.installments > 1 ? `— ${data.installments}x` : "— à vista"}
-                {data.cardLast4 ? ` — final ${data.cardLast4}` : ""}
+                Cartão de crédito {data.installments > 1 ? `(${data.installments}x)` : "(à vista)"}
+                {data.cardLast4 ? `, final ${data.cardLast4}` : ""}
               </span>
             </>
           )}

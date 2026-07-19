@@ -22,7 +22,7 @@ export default function Page() {
             <ArrowLeft className="size-4" />
             Voltar
           </Link>
-          <Link href="/" aria-label="Tangle Teezer - página inicial">
+          <Link href="/" aria-label="Ir para a página inicial da Tangle Teezer">
             <Logo />
           </Link>
         </div>
