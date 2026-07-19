@@ -54,21 +54,23 @@ export function Hero() {
 
         <Reveal delay={120}>
           <Parallax speed={0.06} className="relative">
-            <HeroProductVisual
-              src="/products/desembaracar/ultimate-detangler-mauve.webp"
-              alt="Tangle Teezer The Ultimate Detangler Mauve"
-            />
-            <div className="chrome-gradient-bg-badge absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full text-center shadow-chrome ring-2 ring-white/40 sm:right-8">
-              <span className="font-mono text-lg font-bold leading-none text-white">2</span>
-              <span className="mt-1 font-mono text-[9px] font-bold uppercase leading-tight text-white/90">
-                camadas
-                <br />
-                1 escovada
-              </span>
-            </div>
-            <p className="mt-4 text-center text-xs text-white/50">
-              Tangle Teezer · The Ultimate Detangler Mauve · Mais vendida
-            </p>
+            <Link href="/produto/ultimate-detangler-chrome-midnight-silver" className="block">
+              <HeroProductVisual
+                src="/products/desembaracar/ultimate-detangler-mauve.webp"
+                alt="Tangle Teezer The Ultimate Detangler Mauve"
+              />
+              <div className="chrome-gradient-bg-badge absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full text-center shadow-chrome ring-2 ring-white/40 sm:right-8">
+                <span className="font-mono text-lg font-bold leading-none text-white">2</span>
+                <span className="mt-1 font-mono text-[9px] font-bold uppercase leading-tight text-white/90">
+                  camadas
+                  <br />
+                  1 escovada
+                </span>
+              </div>
+              <p className="mt-4 text-center text-xs text-white/50">
+                Tangle Teezer · The Ultimate Detangler Mauve · Mais vendida
+              </p>
+            </Link>
           </Parallax>
         </Reveal>
       </div>
