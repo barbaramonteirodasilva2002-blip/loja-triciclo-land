@@ -1,8 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
-import { ArrowLeft, Check, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
+import { Check, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
@@ -21,15 +20,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
   return (
     <section className="mx-auto max-w-6xl px-4 py-6 lg:grid lg:grid-cols-2 lg:gap-10 lg:py-10">
       <div>
-        <Link
-          href={`/colecoes/${collection.slug}`}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition hover:text-foreground"
-        >
-          <ArrowLeft className="size-4" />
-          Voltar para {collection.name}
-        </Link>
-
-        <div className="relative mt-4 aspect-square overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium">
+        <div className="relative aspect-square overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium">
           <Image
             src={product.img || "/placeholder.svg"}
             alt={product.name}

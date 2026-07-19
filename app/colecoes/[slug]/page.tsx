@@ -32,27 +32,31 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
-      <section className="relative overflow-hidden bg-secondary/50 py-14">
-        <div aria-hidden="true" className="bristle-lines pointer-events-none absolute inset-0 opacity-[0.04]" />
+      <section className="relative overflow-hidden bg-ink py-14">
+        <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+          <div className="bristle-lines-dark absolute inset-0 opacity-[0.06]" />
+          <div className="animate-drift-a absolute -left-24 top-0 size-[26rem] rounded-full bg-primary/20 blur-[100px]" />
+          <div className="animate-drift-b absolute -right-24 bottom-0 size-[22rem] rounded-full bg-brand-violet/20 blur-[100px]" />
+        </div>
         <div className="relative mx-auto max-w-6xl px-4">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition hover:text-foreground"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-white/60 transition hover:text-white"
           >
             <ArrowLeft className="size-4" />
             Voltar para a página inicial
           </Link>
-          <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-primary">Coleção</p>
-          <h1 className="mt-1 text-balance font-heading text-3xl font-bold text-foreground sm:text-4xl">
+          <p className="mt-5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-brand-teal-bright">Coleção</p>
+          <h1 className="mt-1 text-balance font-heading text-3xl font-bold text-white sm:text-4xl">
             {collection.name}
           </h1>
-          <p className="mt-2 max-w-xl text-pretty text-muted-foreground">{collection.description}</p>
+          <p className="mt-2 max-w-xl text-pretty text-white/60">{collection.description}</p>
           {collection.tags.length > 0 && (
             <ul className="mt-4 flex flex-wrap gap-2">
               {collection.tags.map((tag) => (
                 <li
                   key={tag}
-                  className="rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-foreground/80 shadow-premium"
+                  className="rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-md"
                 >
                   {tag}
                 </li>
