@@ -311,7 +311,7 @@ export const PRODUCTS: Product[] = [
     price: "160,00",
     priceValue: 160.0,
     img: "/products/desembaracar/the-ultimate-detangler-fine.png",
-    available: false,
+    available: true,
   },
   {
     slug: "ultimate-detangler-mini-black",
@@ -441,7 +441,7 @@ export const PRODUCTS: Product[] = [
     price: "164,00",
     priceValue: 164.0,
     img: "/products/modelar/round-tool-large.jpg",
-    available: false,
+    available: true,
   },
 
   // Finalizar
