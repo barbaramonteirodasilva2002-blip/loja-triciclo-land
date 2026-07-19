@@ -39,7 +39,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
       </div>
 
       <div className="mt-6 lg:mt-0">
-        <p className="text-xs font-bold uppercase tracking-widest text-primary">{collection.name}</p>
+        <p className="text-xs font-bold uppercase tracking-widest text-brand-pink-deep">{collection.name}</p>
         <h1 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl">
           {product.name}
         </h1>
@@ -106,7 +106,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
                 cart.addItem(product.slug, 1)
                 cart.open()
               }}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary py-3.5 font-heading text-sm font-bold text-primary transition hover:bg-secondary"
+              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary py-3.5 font-heading text-sm font-bold text-brand-pink-deep transition hover:bg-secondary"
             >
               <ShoppingCart className="size-4" /> Adicionar ao carrinho
             </button>

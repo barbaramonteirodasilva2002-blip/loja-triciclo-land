@@ -8,7 +8,7 @@ export function CollectionsGrid() {
     <section id="colecoes" className="scroll-mt-24 bg-secondary/50 py-16 md:py-24">
       <div className="mx-auto max-w-6xl px-4">
         <Reveal className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">O catálogo completo</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-pink-deep">O catálogo completo</p>
           <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Uma escova para cada tipo de fio.
           </h2>
@@ -36,7 +36,7 @@ export function CollectionsGrid() {
                 <div className="flex flex-1 flex-col gap-1 p-4">
                   <h3 className="font-heading text-lg font-bold text-foreground">{c.name}</h3>
                   <p className="text-xs leading-snug text-muted-foreground">{c.description}</p>
-                  <span className="mt-auto flex items-center gap-1 pt-2 text-xs font-bold text-primary transition-all group-hover:gap-2">
+                  <span className="mt-auto flex items-center gap-1 pt-2 text-xs font-bold text-brand-pink-deep transition-all group-hover:gap-2">
                     Ver produtos <span aria-hidden="true">→</span>
                   </span>
                 </div>

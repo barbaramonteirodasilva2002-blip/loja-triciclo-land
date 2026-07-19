@@ -24,7 +24,7 @@ export function Reviews() {
     <section id="avaliacoes" className="scroll-mt-24 bg-background py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4">
         <Reveal className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Quem já usa</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-pink-deep">Quem já usa</p>
           <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Espaço para avaliações reais
           </h2>

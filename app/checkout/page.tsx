@@ -20,7 +20,7 @@ export default function CheckoutPage() {
 
       <header className="border-b border-border bg-background">
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3.5">
-          <Link href="/" aria-label="Ir para a página inicial da Tangle Teezer">
+          <Link href="/">
             <Logo />
           </Link>
           <span className="flex items-center gap-1.5 text-right uppercase leading-[1.15] tracking-wide">

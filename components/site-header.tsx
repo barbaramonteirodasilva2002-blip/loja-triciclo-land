@@ -91,7 +91,7 @@ export function SiteHeader() {
             <Menu className="size-6" />
           </button>
 
-          <a href="/" aria-label="Ir para a página inicial da Tangle Teezer">
+          <a href="/">
             <Logo />
           </a>
 
@@ -115,11 +115,14 @@ export function SiteHeader() {
               type="button"
               onClick={cart.open}
               className="relative inline-flex size-10 items-center justify-center rounded-md text-primary transition-colors hover:bg-secondary"
-              aria-label="Abrir carrinho"
+              aria-label={cart.totalCount > 0 ? `Abrir carrinho, ${cart.totalCount} itens` : "Abrir carrinho"}
             >
               <ShoppingCart className="size-5" />
               {cart.totalCount > 0 && (
-                <span className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground">
+                <span
+                  aria-hidden="true"
+                  className="absolute right-0.5 top-0.5 flex size-4 items-center justify-center rounded-full bg-accent text-[10px] font-bold text-accent-foreground"
+                >
                   {cart.totalCount}
                 </span>
               )}
@@ -158,6 +161,7 @@ export function SiteHeader() {
           menuOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
         )}
         aria-hidden={!menuOpen}
+        inert={!menuOpen}
       >
         <div
           className="absolute inset-0 bg-brand-navy-deep/70 backdrop-blur-sm"
@@ -195,7 +199,7 @@ export function SiteHeader() {
                   <a
                     href={href}
                     onClick={() => setMenuOpen(false)}
-                    className="flex items-center gap-3 rounded-xl px-3 py-3 text-primary transition-colors hover:bg-secondary"
+                    className="flex items-center gap-3 rounded-xl px-3 py-3 text-brand-pink-deep transition-colors hover:bg-secondary"
                   >
                     <span className="inline-flex size-9 items-center justify-center rounded-full bg-secondary text-accent">
                       <Icon className="size-5" />

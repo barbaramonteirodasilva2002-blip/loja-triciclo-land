@@ -6,7 +6,7 @@ export function ProblemSection() {
   return (
     <section className="bg-background py-16 md:py-24">
       <Reveal className="mx-auto max-w-3xl px-4 text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Você conhece essa cena</p>
+        <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-pink-deep">Você conhece essa cena</p>
         <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
           7h da manhã. Escova comum na mão, nó atrás do nó.
         </h2>
@@ -14,7 +14,7 @@ export function ProblemSection() {
           E aquele puxão que arranca fio de cabelo, e a paciência, junto. No fim, cabelo quebrado, couro cabeludo
           dolorido e mais um dia começando estressado.
         </p>
-        <p className="mt-4 font-accent text-xl italic text-primary">
+        <p className="mt-4 font-accent text-xl italic text-brand-pink-deep">
           O problema nunca foi o seu cabelo. Foi a escova.
         </p>
       </Reveal>
@@ -74,7 +74,7 @@ export function ComparisonSection() {
     <section className="bg-background py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4">
         <Reveal className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">A diferença</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-pink-deep">A diferença</p>
           <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Escova comum vs. Tangle Teezer
           </h2>

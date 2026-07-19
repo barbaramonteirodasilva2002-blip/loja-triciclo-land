@@ -17,6 +17,7 @@ export function CartDrawer() {
         cart.isOpen ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0",
       )}
       aria-hidden={!cart.isOpen}
+      inert={!cart.isOpen}
     >
       <div className="absolute inset-0 bg-brand-navy-deep/70 backdrop-blur-sm" onClick={cart.close} />
 

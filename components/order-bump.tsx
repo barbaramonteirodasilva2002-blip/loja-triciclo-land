@@ -18,7 +18,7 @@ export function OrderBump() {
 
   return (
     <div className="chrome-border relative overflow-hidden rounded-xl border border-dashed border-primary/40 bg-secondary/40 p-3">
-      <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-primary">
+      <p className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wide text-brand-pink-deep">
         <Sparkles className="size-3.5" />
         Combina com o que você escolheu
       </p>
@@ -28,7 +28,7 @@ export function OrderBump() {
         </div>
         <div className="min-w-0 flex-1">
           <p className="truncate text-sm font-semibold text-foreground">{suggestion.name}</p>
-          <p className="text-sm font-bold text-primary">R$ {suggestion.price}</p>
+          <p className="text-sm font-bold text-brand-pink-deep">R$ {suggestion.price}</p>
         </div>
         <button
           type="button"

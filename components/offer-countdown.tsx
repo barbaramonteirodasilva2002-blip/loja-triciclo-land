@@ -32,7 +32,7 @@ export function OfferCountdown() {
     <section id="oferta" className="scroll-mt-24 bg-background py-16 md:py-24">
       <Reveal className="mx-auto max-w-md px-4">
         <div className="shadow-premium-hover rounded-2xl border border-border bg-card p-6 text-center shadow-premium">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">The Ultimate Detangler</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-pink-deep">The Ultimate Detangler</p>
 
           <div className="relative mx-auto mt-4 aspect-square w-32 overflow-hidden rounded-xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)]">
             <Image src={kit.img} alt={kit.units} fill sizes="128px" className="object-contain p-2" />
@@ -47,7 +47,7 @@ export function OfferCountdown() {
             <span className="font-heading text-3xl font-bold text-foreground">{kit.price}</span>
           </div>
 
-          <p className="mt-2 flex items-center justify-center gap-2 text-xs font-bold text-primary">
+          <p className="mt-2 flex items-center justify-center gap-2 text-xs font-bold text-brand-pink-deep">
             <AlertTriangle className="size-4" />
             Oferta termina em {format(h)}:{format(m)}:{format(s)}
           </p>

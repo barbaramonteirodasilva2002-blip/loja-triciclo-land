@@ -42,7 +42,7 @@ export function Faq() {
     <section id="faq" className="scroll-mt-24 bg-background py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4">
         <Reveal className="mb-10 text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Antes de comprar</p>
+          <p className="text-xs font-bold uppercase tracking-[0.2em] text-brand-pink-deep">Antes de comprar</p>
           <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Perguntas frequentes
           </h2>

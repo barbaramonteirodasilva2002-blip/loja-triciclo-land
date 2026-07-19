@@ -17,12 +17,12 @@ export default function Page() {
         <div className="mx-auto flex max-w-3xl items-center justify-between px-4 py-3.5">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-brand-navy"
+            className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-pink-deep transition-colors hover:text-brand-navy"
           >
             <ArrowLeft className="size-4" />
             Voltar
           </Link>
-          <Link href="/" aria-label="Ir para a página inicial da Tangle Teezer">
+          <Link href="/">
             <Logo />
           </Link>
         </div>
