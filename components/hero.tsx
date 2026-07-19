@@ -54,10 +54,10 @@ export function Hero() {
 
         <Reveal delay={120}>
           <Parallax speed={0.06} className="relative">
-            <Link href="/produto/ultimate-detangler-chrome-midnight-silver" className="block">
+            <Link href="/produto/ultimate-detangler-chrome-mauve-copper" className="block">
               <HeroProductVisual
-                src="/products/desembaracar/ultimate-detangler-mauve.webp"
-                alt="Tangle Teezer The Ultimate Detangler Mauve"
+                src="/products/desembaracar/chrome-mauve-copper.jpg"
+                alt="Tangle Teezer Ultimate Detangler Chrome Mauve Copper"
               />
               <div className="chrome-gradient-bg-badge absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full text-center shadow-chrome ring-2 ring-white/40 sm:right-8">
                 <span className="font-mono text-lg font-bold leading-none text-white">2</span>
@@ -68,7 +68,7 @@ export function Hero() {
                 </span>
               </div>
               <p className="mt-4 text-center text-xs text-white/50">
-                Tangle Teezer · The Ultimate Detangler Mauve · Mais vendida
+                Tangle Teezer · Ultimate Detangler Chrome Mauve Copper · Mais vendida
               </p>
             </Link>
           </Parallax>

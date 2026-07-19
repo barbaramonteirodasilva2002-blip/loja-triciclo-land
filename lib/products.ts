@@ -133,6 +133,20 @@ export const PRODUCTS: Product[] = [
     available: true,
   },
   {
+    slug: "ultimate-detangler-chrome-mauve-copper",
+    name: "Ultimate Detangler Chrome Mauve Copper",
+    collection: "desembaracar",
+    description:
+      "Acabamento metalizado mauve, a mais vendida da linha Chrome, com a mesma performance de desembaraço da Ultimate Detangler.",
+    price: "202,40",
+    priceValue: 202.4,
+    oldPrice: "253,00",
+    discountPct: "20",
+    img: "/products/desembaracar/chrome-mauve-copper.jpg",
+    available: true,
+    bestSeller: true,
+  },
+  {
     slug: "the-original-mini",
     name: "The Original Mini",
     collection: "desembaracar",
