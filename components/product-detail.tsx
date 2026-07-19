@@ -3,6 +3,7 @@
 import Image from "next/image"
 import { Check, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
+import { cn } from "@/lib/utils"
 import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
 import type { Product } from "@/lib/products"
@@ -89,7 +90,12 @@ export function ProductDetail({ product, collection }: { product: Product; colle
               cart.addItem(product.slug, 1)
               window.location.href = "/checkout"
             }}
-            className="chrome-gradient-bg flex w-full items-center justify-center rounded-xl py-4 font-heading text-lg font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.01] active:scale-[0.98] disabled:animate-none disabled:cursor-not-allowed disabled:bg-muted disabled:bg-none disabled:text-muted-foreground disabled:shadow-none"
+            className={cn(
+              "flex w-full items-center justify-center rounded-xl py-4 font-heading text-lg font-bold transition-transform duration-300",
+              product.available
+                ? "chrome-gradient-bg text-white shadow-chrome hover:scale-[1.01] active:scale-[0.98]"
+                : "cursor-not-allowed bg-muted text-muted-foreground",
+            )}
           >
             {product.available ? "Quero este" : "Indisponível"}
           </button>
