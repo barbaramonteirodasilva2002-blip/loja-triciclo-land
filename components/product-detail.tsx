@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import { Check, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
@@ -17,13 +18,15 @@ const trustPoints = [
 export function ProductDetail({ product, collection }: { product: Product; collection: Collection }) {
   const cart = useCart()
   const installment = formatBRL(product.priceValue / 12)
+  const images = [product.img, ...(product.gallery ?? [])].filter(Boolean)
+  const [activeImage, setActiveImage] = useState(0)
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-6 lg:grid lg:grid-cols-2 lg:gap-10 lg:py-10">
       <div>
         <div className="relative aspect-square overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium">
           <Image
-            src={product.img || "/placeholder.svg"}
+            src={images[activeImage] || "/placeholder.svg"}
             alt={product.name}
             fill
             priority
@@ -36,6 +39,25 @@ export function ProductDetail({ product, collection }: { product: Product; colle
             </span>
           )}
         </div>
+        {images.length > 1 && (
+          <div className="mt-3 grid grid-cols-4 gap-3">
+            {images.map((src, i) => (
+              <button
+                key={src + i}
+                type="button"
+                onClick={() => setActiveImage(i)}
+                aria-label={`Ver foto ${i + 1} de ${product.name}`}
+                aria-current={activeImage === i}
+                className={cn(
+                  "relative aspect-square overflow-hidden rounded-xl bg-white shadow-premium ring-2 transition",
+                  activeImage === i ? "ring-primary" : "ring-transparent hover:ring-border",
+                )}
+              >
+                <Image src={src} alt="" fill sizes="120px" className="object-contain p-1.5" />
+              </button>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="mt-6 lg:mt-0">

@@ -77,6 +77,8 @@ export type Product = {
   /** Percentual do desconto, ex: "20". */
   discountPct?: string
   img: string
+  /** Fotos adicionais (a página do produto mostra img + gallery juntas). */
+  gallery?: string[]
   available: boolean
   bestSeller?: boolean
 }
@@ -143,6 +145,11 @@ export const PRODUCTS: Product[] = [
     oldPrice: "253,00",
     discountPct: "20",
     img: "/products/desembaracar/chrome-mauve-copper.jpg",
+    gallery: [
+      "/products/desembaracar/chrome-mauve-copper-hero.jpg",
+      "/products/desembaracar/chrome-mauve-copper-box.jpg",
+      "/products/desembaracar/chrome-mauve-copper-flatlay.jpg",
+    ],
     available: true,
     bestSeller: true,
   },
