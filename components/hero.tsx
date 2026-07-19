@@ -51,9 +51,9 @@ export function Hero() {
               src="/products/desembaracar/ultimate-detangler-mauve.webp"
               alt="Tangle Teezer The Ultimate Detangler Mauve"
             />
-            <div className="absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full border border-white/15 bg-white/10 text-center shadow-chrome backdrop-blur-md sm:right-8">
+            <div className="chrome-gradient-bg absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full text-center shadow-chrome ring-4 ring-ink sm:right-8">
               <span className="font-mono text-lg font-bold leading-none text-white">2</span>
-              <span className="mt-1 font-mono text-[9px] font-bold uppercase leading-tight text-white/70">
+              <span className="mt-1 font-mono text-[9px] font-bold uppercase leading-tight text-white/90">
                 camadas
                 <br />
                 1 escovada
