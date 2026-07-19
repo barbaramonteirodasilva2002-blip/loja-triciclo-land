@@ -31,17 +31,20 @@ export function HeroProductVisual({ src, alt }: { src: string; alt: string }) {
       style={{ perspective: "900px" }}
       className="group relative mx-auto aspect-square w-full max-w-sm sm:max-w-md motion-reduce:[perspective:none]"
     >
+      {/* Anel de glow cromado rotativo — o momento assinatura do hero */}
+      <div className="chrome-glow-ring" aria-hidden="true" />
+
       {/* Sombra que acompanha a inclinação, dando peso e profundidade */}
       <div
         aria-hidden="true"
-        className="absolute inset-6 -z-10 rounded-[2rem] bg-foreground/20 blur-2xl transition-transform duration-300 ease-out"
+        className="absolute inset-6 -z-10 rounded-[2rem] bg-black/40 blur-2xl transition-transform duration-300 ease-out"
         style={{
           transform: `translate3d(${-tilt.y * 0.6}px, ${18 - tilt.x * 0.4}px, 0) scale(0.92)`,
         }}
       />
 
       <div
-        className="relative h-full w-full animate-[hero-float_6s_ease-in-out_infinite] overflow-hidden rounded-[2rem] bg-white shadow-premium transition-transform duration-300 ease-out will-change-transform motion-reduce:animate-none"
+        className="relative h-full w-full animate-[hero-float_6s_ease-in-out_infinite] overflow-hidden rounded-[2rem] bg-white shadow-chrome transition-transform duration-300 ease-out will-change-transform motion-reduce:animate-none"
         style={{ transform: `rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
       >
         <div

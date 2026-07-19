@@ -6,8 +6,9 @@
 
 @theme inline {
   --font-heading: var(--font-heading), 'Geist Fallback';
+  --font-accent: var(--font-accent), 'Georgia', serif;
   --font-sans: var(--font-geist-sans), 'Geist Fallback';
-  --font-mono: var(--font-geist-mono), 'Geist Mono Fallback';
+  --font-mono: var(--font-brand-mono), 'Geist Mono Fallback';
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -26,6 +27,12 @@
   --color-brand-sky: var(--brand-sky);
   --color-brand-teal-soft: var(--brand-teal-soft);
   --color-brand-pink-deep: var(--brand-pink-deep);
+  --color-brand-violet: var(--brand-violet);
+  --color-brand-teal-bright: var(--brand-teal-bright);
+  --color-brand-silver: var(--brand-silver);
+  --color-brand-gold: var(--brand-gold);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
   --color-ring: var(--ring);
   --color-input: var(--input);
   --color-border: var(--border);
@@ -55,32 +62,41 @@
 
 :root {
   color-scheme: light;
-  /* Paleta Tangle Teezer: papel/tinta como base neutra, pink como cor primária
-     e verde-menta como acento secundário. --brand-navy* mantêm o nome histórico
-     do token (era a cor da marca anterior) mas agora carregam pink/tinta. */
-  --background: #fdf6ef;
-  --foreground: #141414;
+  /* Identidade "Chrome Tangle": tinta quase preta + osso neutro como base,
+     e um cromado iridescente (pink → violeta → teal) como assinatura —
+     inspirado direto nos acabamentos Chrome/metálicos da própria marca
+     (Chrome Neo Gold, Chrome Midnight Silver, Mauve). --brand-navy* mantêm
+     o nome histórico do token mas carregam o pink elétrico/tinta agora. */
+  --background: #f6f4f1;
+  --foreground: #0b0b0e;
   --card: #ffffff;
-  --card-foreground: #141414;
+  --card-foreground: #0b0b0e;
   --popover: #ffffff;
-  --popover-foreground: #141414;
-  --primary: #ec1d6e;
+  --popover-foreground: #0b0b0e;
+  --primary: #ff1f7a;
   --primary-foreground: #ffffff;
-  --secondary: #f2ead9;
-  --secondary-foreground: #141414;
-  --muted: #f2ead9;
-  --muted-foreground: #6b6558;
-  --accent: #1f7a5c;
+  --secondary: #ece8e1;
+  --secondary-foreground: #0b0b0e;
+  --muted: #ece8e1;
+  --muted-foreground: #64606c;
+  --accent: #00806a;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
-  --border: #1414141f;
-  --input: #1414141f;
-  --ring: #ec1d6e;
-  --brand-navy: #ec1d6e;
-  --brand-navy-deep: #141414;
-  --brand-sky: #a8e6d0;
-  --brand-teal-soft: #a8e6d0;
-  --brand-pink-deep: #b8134f;
+  --border: #0b0b0e1a;
+  --input: #0b0b0e1a;
+  --ring: #ff1f7a;
+  --brand-navy: #ff1f7a;
+  --brand-navy-deep: #0b0b0e;
+  --brand-sky: #00d9b5;
+  --brand-teal-soft: #d8f5ee;
+  --brand-pink-deep: #c2005a;
+  --brand-violet: #7c3aed;
+  --brand-teal-bright: #00d9b5;
+  --brand-silver: #c9cdd3;
+  --brand-gold: #d4af6a;
+  --ink: #0b0b0e;
+  --ink-soft: #17171c;
+  --chrome-gradient: linear-gradient(120deg, #ff1f7a 0%, #7c3aed 45%, #00d9b5 100%);
   --chart-1: #ec1d6e;
   --chart-2: #1f7a5c;
   --chart-3: #a8e6d0;
@@ -197,9 +213,11 @@
 /* Sombras suaves e em camadas — substituem o shadow-sm/md padrão do Tailwind
    nos cartões e blocos de produto para uma sensação mais premium. */
 :root {
-  --shadow-soft: 0 1px 2px rgba(20, 20, 20, 0.04), 0 12px 28px -12px rgba(20, 20, 20, 0.14);
-  --shadow-soft-hover: 0 2px 4px rgba(20, 20, 20, 0.05), 0 20px 40px -14px rgba(20, 20, 20, 0.2);
-  --shadow-pink: 0 10px 30px -10px rgba(236, 29, 110, 0.35);
+  --shadow-soft: 0 1px 2px rgba(11, 11, 14, 0.05), 0 14px 32px -12px rgba(11, 11, 14, 0.22);
+  --shadow-soft-hover: 0 2px 4px rgba(11, 11, 14, 0.06), 0 24px 48px -16px rgba(11, 11, 14, 0.3);
+  --shadow-pink: 0 12px 32px -8px rgba(255, 31, 122, 0.45);
+  --shadow-chrome: 0 12px 32px -8px rgba(255, 31, 122, 0.35), 0 8px 24px -10px rgba(124, 58, 237, 0.3),
+    0 4px 16px -6px rgba(0, 217, 181, 0.25);
 }
 
 .shadow-premium {
@@ -221,15 +239,33 @@
 .bristle-lines {
   background-image: repeating-linear-gradient(
       115deg,
-      rgba(236, 29, 110, 0.5) 0px,
-      rgba(236, 29, 110, 0.5) 1.5px,
+      rgba(255, 31, 122, 0.55) 0px,
+      rgba(255, 31, 122, 0.55) 1.5px,
       transparent 1.5px,
       transparent 13px
     ),
     repeating-linear-gradient(
       115deg,
-      rgba(31, 122, 92, 0.35) 0px,
-      rgba(31, 122, 92, 0.35) 1px,
+      rgba(0, 217, 181, 0.4) 0px,
+      rgba(0, 217, 181, 0.4) 1px,
+      transparent 1px,
+      transparent 13px
+    );
+  background-position: 0 0, 4.5px 4.5px;
+}
+
+.bristle-lines-dark {
+  background-image: repeating-linear-gradient(
+      115deg,
+      rgba(255, 31, 122, 0.35) 0px,
+      rgba(255, 31, 122, 0.35) 1.5px,
+      transparent 1.5px,
+      transparent 13px
+    ),
+    repeating-linear-gradient(
+      115deg,
+      rgba(124, 58, 237, 0.3) 0px,
+      rgba(124, 58, 237, 0.3) 1px,
       transparent 1px,
       transparent 13px
     );
@@ -283,6 +319,118 @@
   55%,
   100% {
     transform: translateX(120%) skewX(-20deg);
+  }
+}
+
+/* ---- Assinatura "Chrome": gradiente iridescente pink → violeta → teal,
+   inspirado nos acabamentos Chrome/metálicos da marca. Usado com
+   intenção em poucos lugares (CTA principal, anel de glow do hero,
+   divisores) — nunca como cor de fundo genérica. ---- */
+
+.chrome-gradient-bg {
+  background-image: var(--chrome-gradient);
+  background-size: 200% 200%;
+  animation: chrome-shift 8s ease infinite;
+}
+
+.chrome-gradient-text {
+  background-image: var(--chrome-gradient);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: chrome-shift 8s ease infinite;
+}
+
+.chrome-border {
+  position: relative;
+}
+
+.chrome-border::before {
+  content: "";
+  position: absolute;
+  inset: -1.5px;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: var(--chrome-gradient);
+  background-size: 200% 200%;
+  animation: chrome-shift 8s ease infinite;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+@keyframes chrome-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Anel de glow rotativo atrás da vitrine de produto no hero — o "momento
+   surreal" assinatura, uma referência direta ao acabamento espelhado/chrome
+   das escovas premium da linha. */
+.chrome-glow-ring {
+  position: absolute;
+  inset: -18%;
+  z-index: -1;
+  border-radius: 999px;
+  background: conic-gradient(from 0deg, #ff1f7a, #7c3aed, #00d9b5, #ff1f7a);
+  filter: blur(38px);
+  opacity: 0.55;
+  animation: chrome-spin 10s linear infinite;
+}
+
+@keyframes chrome-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Blobs de luz ambiente, deriva lenta — atmosfera do hero escuro, nunca
+   sobre conteúdo de leitura/tabelas. */
+@keyframes drift-a {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(6%, -8%) scale(1.15);
+  }
+}
+
+@keyframes drift-b {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-8%, 6%) scale(1.1);
+  }
+}
+
+.animate-drift-a {
+  animation: drift-a 16s ease-in-out infinite;
+}
+
+.animate-drift-b {
+  animation: drift-b 19s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chrome-gradient-bg,
+  .chrome-gradient-text,
+  .chrome-border::before,
+  .chrome-glow-ring,
+  .animate-drift-a,
+  .animate-drift-b {
+    animation: none;
   }
 }
 

@@ -38,7 +38,7 @@ export function OfferCountdown() {
             <Image src={kit.img} alt={kit.units} fill sizes="128px" className="object-contain p-2" />
           </div>
 
-          <h2 className="mt-4 text-balance font-heading text-xl font-normal text-foreground">
+          <h2 className="mt-4 text-balance font-heading text-xl font-bold text-foreground">
             Sua Tangle Teezer, sem sair de casa.
           </h2>
 
@@ -58,7 +58,7 @@ export function OfferCountdown() {
               cart.addItem(kit.id, 1)
               window.location.href = "/checkout"
             }}
-            className="mt-4 flex w-full items-center justify-center rounded-xl bg-primary py-4 font-heading text-base font-bold text-primary-foreground shadow-premium transition-all duration-300 hover:shadow-[var(--shadow-pink)] hover:brightness-105 active:scale-[0.98]"
+            className="chrome-gradient-bg mt-4 flex w-full items-center justify-center rounded-xl py-4 font-heading text-base font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.01] active:scale-[0.98]"
           >
             Ver oferta e finalizar compra
           </button>

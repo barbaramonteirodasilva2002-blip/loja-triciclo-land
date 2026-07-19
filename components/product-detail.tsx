@@ -48,7 +48,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
 
       <div className="mt-6 lg:mt-0">
         <p className="text-xs font-bold uppercase tracking-widest text-primary">{collection.name}</p>
-        <h1 className="mt-2 text-balance font-heading text-2xl font-normal leading-tight text-foreground sm:text-3xl">
+        <h1 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl">
           {product.name}
         </h1>
         <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">{product.description}</p>
@@ -98,7 +98,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
               cart.addItem(product.slug, 1)
               window.location.href = "/checkout"
             }}
-            className="flex w-full items-center justify-center rounded-xl bg-primary py-4 font-heading text-lg font-bold text-primary-foreground shadow-premium transition-all duration-300 hover:shadow-[var(--shadow-pink)] hover:brightness-105 active:scale-[0.98] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground disabled:shadow-none"
+            className="chrome-gradient-bg flex w-full items-center justify-center rounded-xl py-4 font-heading text-lg font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.01] active:scale-[0.98] disabled:animate-none disabled:cursor-not-allowed disabled:bg-muted disabled:bg-none disabled:text-muted-foreground disabled:shadow-none"
           >
             {product.available ? "Quero este" : "Indisponível"}
           </button>

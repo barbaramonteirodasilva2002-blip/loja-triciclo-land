@@ -13,7 +13,7 @@ export function Logo({ className, variant = "dark" }: LogoProps) {
     <span className={cn("inline-flex flex-col leading-none", className)}>
       <span
         className={cn(
-          "font-heading text-xl font-normal tracking-tight",
+          "font-heading text-lg font-bold tracking-tight",
           isLight ? "text-white" : "text-foreground",
         )}
       >

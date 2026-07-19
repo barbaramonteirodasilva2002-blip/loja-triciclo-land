@@ -1,16 +1,27 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
-import { Inter, DM_Serif_Display } from 'next/font/google'
+import { Inter, Unbounded, DM_Serif_Display, Space_Mono } from 'next/font/google'
 import Script from 'next/script'
 import { CartProvider } from '@/components/cart-provider'
 import { AnalyticsProvider } from '@/components/analytics-provider'
 import './globals.css'
 
 const inter = Inter({ variable: '--font-geist-sans', subsets: ['latin'] })
-const dmSerifDisplay = DM_Serif_Display({
+const unbounded = Unbounded({
   variable: '--font-heading',
   subsets: ['latin'],
+  weight: ['500', '700', '800'],
+})
+const dmSerifDisplay = DM_Serif_Display({
+  variable: '--font-accent',
+  subsets: ['latin'],
   weight: ['400'],
+  style: ['italic'],
+})
+const spaceMono = Space_Mono({
+  variable: '--font-brand-mono',
+  subsets: ['latin'],
+  weight: ['400', '700'],
 })
 
 export const metadata: Metadata = {
@@ -27,7 +38,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: 'light',
-  themeColor: '#fdf6ef',
+  themeColor: '#0b0b0e',
 }
 
 export default function RootLayout({
@@ -38,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-BR"
-      className={`light ${inter.variable} ${dmSerifDisplay.variable} bg-background`}
+      className={`light ${inter.variable} ${unbounded.variable} ${dmSerifDisplay.variable} ${spaceMono.variable} bg-background`}
     >
       <body className="font-sans antialiased">
         <AnalyticsProvider>

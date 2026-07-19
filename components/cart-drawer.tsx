@@ -110,7 +110,7 @@ export function CartDrawer() {
               </div>
               <a
                 href="/checkout"
-                className="mt-3 flex w-full items-center justify-center rounded-xl bg-brand-navy py-3.5 font-heading text-sm font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110"
+                className="chrome-gradient-bg mt-3 flex w-full items-center justify-center rounded-xl py-3.5 font-heading text-sm font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.01]"
               >
                 Finalizar Compra
               </a>

@@ -6,14 +6,14 @@ export function ProblemSection() {
     <section className="bg-background py-16 md:py-24">
       <Reveal className="mx-auto max-w-3xl px-4 text-center">
         <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Você conhece essa cena</p>
-        <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+        <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
           7h da manhã. Escova comum na mão, nó atrás do nó.
         </h2>
         <p className="mt-4 text-pretty leading-relaxed text-muted-foreground">
           E aquele puxão que arranca fio de cabelo — e a paciência — junto. No fim, cabelo quebrado, couro cabeludo
           dolorido e mais um dia começando estressado.
         </p>
-        <p className="mt-4 font-heading text-lg font-normal italic text-foreground">
+        <p className="mt-4 font-accent text-xl italic text-primary">
           O problema nunca foi o seu cabelo. Foi a escova.
         </p>
       </Reveal>
@@ -23,26 +23,32 @@ export function ProblemSection() {
 
 export function MechanismSection() {
   return (
-    <section className="relative overflow-hidden bg-secondary/50 py-16 md:py-24">
-      <div aria-hidden="true" className="bristle-lines pointer-events-none absolute inset-0 opacity-[0.04]" />
+    <section className="relative overflow-hidden bg-ink py-16 md:py-24">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="bristle-lines-dark absolute inset-0 opacity-[0.06]" />
+        <div className="animate-drift-b absolute right-0 top-0 size-[26rem] rounded-full bg-brand-violet/20 blur-[110px]" />
+        <div className="animate-drift-a absolute bottom-0 left-0 size-[22rem] rounded-full bg-primary/15 blur-[110px]" />
+      </div>
       <Reveal className="relative mx-auto max-w-3xl px-4 text-center">
-        <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">O mecanismo</p>
-        <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+        <p className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-brand-teal-bright">O mecanismo</p>
+        <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-white md:text-3xl">
           Duas camadas de cabelo. Uma escovada.
         </h2>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2">
-          <div className="shadow-premium-hover rounded-2xl border border-border bg-card p-6 text-left shadow-premium">
-            <p className="text-xs font-bold uppercase tracking-wide text-primary">Cerdas longas</p>
-            <p className="mt-2 text-sm text-muted-foreground">Trabalham a camada externa do cabelo.</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left shadow-chrome backdrop-blur-md transition-colors duration-300 hover:bg-white/[0.08]">
+            <p className="font-mono text-xs font-bold uppercase tracking-wide text-brand-teal-bright">
+              Cerdas longas
+            </p>
+            <p className="mt-2 text-sm text-white/70">Trabalham a camada externa do cabelo.</p>
           </div>
-          <div className="shadow-premium-hover rounded-2xl border border-border bg-card p-6 text-left shadow-premium">
-            <p className="text-xs font-bold uppercase tracking-wide text-primary">Cerdas curtas</p>
-            <p className="mt-2 text-sm text-muted-foreground">Alcançam a camada mais próxima do couro cabeludo.</p>
+          <div className="rounded-2xl border border-white/10 bg-white/5 p-6 text-left shadow-chrome backdrop-blur-md transition-colors duration-300 hover:bg-white/[0.08]">
+            <p className="font-mono text-xs font-bold uppercase tracking-wide text-primary">Cerdas curtas</p>
+            <p className="mt-2 text-sm text-white/70">Alcançam a camada mais próxima do couro cabeludo.</p>
           </div>
         </div>
 
-        <p className="mt-6 text-pretty leading-relaxed text-muted-foreground">
+        <p className="mt-6 text-pretty leading-relaxed text-white/60">
           As duas fileiras se movem juntas, na mesma escovada, desembaraçando por dentro e por fora ao mesmo tempo,
           sem prender e sem puxar.
         </p>
@@ -64,16 +70,16 @@ export function ComparisonSection() {
       <div className="mx-auto max-w-3xl px-4">
         <Reveal className="text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">A diferença</p>
-          <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+          <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Escova comum vs. Tangle Teezer
           </h2>
         </Reveal>
 
         <Reveal delay={100} className="mt-10 overflow-hidden rounded-2xl border border-border shadow-premium">
-          <div className="grid grid-cols-[1.2fr_1fr_1fr] bg-secondary text-center text-xs font-bold uppercase tracking-wide text-foreground">
+          <div className="chrome-gradient-bg grid grid-cols-[1.2fr_1fr_1fr] text-center text-xs font-bold uppercase tracking-wide text-white">
             <div className="p-4 text-left" />
-            <div className="p-4 text-muted-foreground">Escova comum</div>
-            <div className="p-4 text-primary">Tangle Teezer</div>
+            <div className="p-4 text-white/80">Escova comum</div>
+            <div className="p-4">Tangle Teezer</div>
           </div>
           {comparisonRows.map((row, i) => (
             <div

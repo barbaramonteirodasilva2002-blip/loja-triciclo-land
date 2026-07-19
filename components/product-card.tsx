@@ -10,7 +10,7 @@ export function ProductCard({ product }: { product: Product }) {
   const cart = useCart()
 
   return (
-    <div className="group shadow-premium-hover flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-premium">
+    <div className="chrome-border group shadow-premium-hover flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-premium before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100">
       <Link
         href={`/produto/${product.slug}`}
         className="relative block aspect-square overflow-hidden bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)]"
@@ -31,7 +31,7 @@ export function ProductCard({ product }: { product: Product }) {
             {product.discountPct}% off
           </span>
         ) : product.bestSeller ? (
-          <span className="absolute left-2 top-2 rounded-full bg-brand-navy-deep px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white">
+          <span className="chrome-gradient-bg absolute left-2 top-2 rounded-full px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-white shadow-chrome">
             Mais vendido
           </span>
         ) : null}

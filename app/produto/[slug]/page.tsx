@@ -42,7 +42,7 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
 
         {related.length > 0 && (
           <section className="mx-auto max-w-6xl px-4 py-8">
-            <h2 className="mb-4 font-heading text-xl font-normal text-foreground">
+            <h2 className="mb-4 font-heading text-xl font-bold text-foreground">
               Mais de {collection.name}
             </h2>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">

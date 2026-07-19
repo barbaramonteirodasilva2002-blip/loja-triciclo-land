@@ -40,7 +40,7 @@ export function StickyBuyBar({ kitId }: { kitId: KitId }) {
             cart.addItem(kitId, 1)
             window.location.href = "/checkout"
           }}
-          className="flex shrink-0 items-center justify-center rounded-xl bg-primary px-6 py-3.5 font-heading text-base font-bold text-primary-foreground shadow-lg shadow-primary/20 transition hover:brightness-110"
+          className="chrome-gradient-bg flex shrink-0 items-center justify-center rounded-xl px-6 py-3.5 font-heading text-base font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.02]"
         >
           QUERO ESTE
         </button>

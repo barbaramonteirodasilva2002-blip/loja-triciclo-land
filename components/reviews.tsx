@@ -25,7 +25,7 @@ export function Reviews() {
       <div className="mx-auto max-w-3xl px-4">
         <Reveal className="text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Quem já usa</p>
-          <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+          <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Espaço para avaliações reais
           </h2>
         </Reveal>

@@ -43,7 +43,7 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
             Voltar para a página inicial
           </Link>
           <p className="mt-5 text-xs font-bold uppercase tracking-[0.2em] text-primary">Coleção</p>
-          <h1 className="mt-1 text-balance font-heading text-3xl font-normal text-foreground sm:text-4xl">
+          <h1 className="mt-1 text-balance font-heading text-3xl font-bold text-foreground sm:text-4xl">
             {collection.name}
           </h1>
           <p className="mt-2 max-w-xl text-pretty text-muted-foreground">{collection.description}</p>

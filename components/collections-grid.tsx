@@ -9,7 +9,7 @@ export function CollectionsGrid() {
       <div className="mx-auto max-w-6xl px-4">
         <Reveal className="text-center">
           <p className="text-xs font-bold uppercase tracking-[0.2em] text-primary">O catálogo completo</p>
-          <h2 className="mt-3 text-balance font-heading text-2xl font-normal text-foreground md:text-3xl">
+          <h2 className="mt-3 text-balance font-heading text-2xl font-bold text-foreground md:text-3xl">
             Uma escova para cada tipo de fio.
           </h2>
           <p className="mx-auto mt-3 max-w-xl text-pretty text-muted-foreground">
@@ -22,7 +22,7 @@ export function CollectionsGrid() {
             <Reveal key={c.slug} delay={i * 60}>
               <Link
                 href={`/colecoes/${c.slug}`}
-                className="group shadow-premium-hover flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-premium"
+                className="chrome-border group shadow-premium-hover flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-premium before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100"
               >
                 <div className="relative aspect-square overflow-hidden bg-[radial-gradient(circle_at_50%_40%,var(--paper-soft,var(--secondary)),white_70%)]">
                   <Image
@@ -34,7 +34,7 @@ export function CollectionsGrid() {
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-1 p-4">
-                  <h3 className="font-heading text-lg font-normal text-foreground">{c.name}</h3>
+                  <h3 className="font-heading text-lg font-bold text-foreground">{c.name}</h3>
                   <p className="text-xs leading-snug text-muted-foreground">{c.description}</p>
                   <span className="mt-auto flex items-center gap-1 pt-2 text-xs font-bold text-primary transition-all group-hover:gap-2">
                     Ver produtos <span aria-hidden="true">→</span>
