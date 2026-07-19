@@ -104,7 +104,7 @@ export const PRODUCTS: Product[] = [
     name: "The Ultimate Detangler Black",
     collection: "desembaracar",
     description:
-      "Mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, em um acabamento preto elegante e discreto.",
+      "A escova mais completa da linha, com duas fileiras de cerdas de alturas diferentes que desembaraçam por camadas, em um acabamento preto fosco elegante e discreto. Indicada para todos os tipos de cabelo, pode ser usada seca ou molhada, inclusive no banho.",
     price: "128,00",
     priceValue: 128.0,
     oldPrice: "160,00",
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     name: "The Ultimate Detangler Millennial Pink",
     collection: "desembaracar",
     description:
-      "Mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, na cor Millennial Pink.",
+      "A escova mais completa da linha, com duas fileiras de cerdas de alturas diferentes que desembaraçam por camadas, na cor Millennial Pink, um tom rosa suave e moderno. Indicada para todos os tipos de cabelo, pode ser usada seca ou molhada, inclusive no banho.",
     price: "128,00",
     priceValue: 128.0,
     oldPrice: "160,00",
@@ -135,7 +135,7 @@ export const PRODUCTS: Product[] = [
     name: "The Ultimate Detangler Fresh Purple",
     collection: "desembaracar",
     description:
-      "Mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, na cor Fresh Purple.",
+      "A escova mais completa da linha, com duas fileiras de cerdas de alturas diferentes que desembaraçam por camadas, na cor Fresh Purple, um roxo vibrante e cheio de personalidade. Indicada para todos os tipos de cabelo, pode ser usada seca ou molhada, inclusive no banho.",
     price: "128,00",
     priceValue: 128.0,
     oldPrice: "160,00",
@@ -162,7 +162,7 @@ export const PRODUCTS: Product[] = [
     name: "Ultimate Detangler Chrome Midnight Silver",
     collection: "desembaracar",
     description:
-      "Edição especial com acabamento metalizado prata, mesma performance de desembaraço em uma escova premium para presentear.",
+      "Edição especial da linha Chrome, com acabamento metalizado prata e a mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, em uma escova premium para presentear.",
     price: "253,00",
     priceValue: 253.0,
     img: "/products/desembaracar/chrome-midnight-silver-box.jpg",
@@ -173,7 +173,7 @@ export const PRODUCTS: Product[] = [
     name: "Ultimate Detangler Chrome Neo Gold",
     collection: "desembaracar",
     description:
-      "Acabamento dourado metalizado em edição limitada da Ultimate Detangler, para quem quer um toque de luxo na rotina.",
+      "Edição especial da linha Chrome, com acabamento dourado metalizado e a mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, para quem quer um toque de luxo na rotina.",
     price: "163,00",
     priceValue: 163.0,
     img: "/products/desembaracar/chrome-neo-gold.jpg",
@@ -184,7 +184,7 @@ export const PRODUCTS: Product[] = [
     name: "Ultimate Detangler Chrome Mauve Copper",
     collection: "desembaracar",
     description:
-      "Acabamento metalizado mauve, a mais vendida da linha Chrome, com a mesma performance de desembaraço da Ultimate Detangler.",
+      "Edição especial da linha Chrome, com acabamento metalizado mauve e a mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, a mais vendida da linha para quem quer um toque de luxo no dia a dia.",
     price: "202,40",
     priceValue: 202.4,
     oldPrice: "253,00",
@@ -202,7 +202,8 @@ export const PRODUCTS: Product[] = [
     slug: "the-original-mini",
     name: "The Original Mini",
     collection: "desembaracar",
-    description: "Versão mini da escova clássica The Original, perfeita para crianças ou para levar na bolsa.",
+    description:
+      "Versão mini da escova clássica The Original, com duas fileiras de cerdas flexíveis que desembaraçam sem puxar, perfeita para crianças ou para levar na bolsa.",
     price: "68,00",
     priceValue: 68.0,
     oldPrice: "85,00",
@@ -214,7 +215,8 @@ export const PRODUCTS: Product[] = [
     slug: "the-original-mini-aqua",
     name: "The Original Mini Aqua",
     collection: "desembaracar",
-    description: "Versão mini da escova clássica The Original, na cor Aqua, perfeita para levar na bolsa.",
+    description:
+      "Versão mini da escova clássica The Original, com duas fileiras de cerdas flexíveis que desembaraçam sem puxar, na cor Aqua, perfeita para crianças ou para levar na bolsa.",
     price: "68,00",
     priceValue: 68.0,
     oldPrice: "85,00",
@@ -317,7 +319,8 @@ export const PRODUCTS: Product[] = [
     slug: "ultimate-detangler-mini-black",
     name: "Ultimate Detangler Mini Black",
     collection: "desembaracar",
-    description: "Versão mini em preto fosco, compacta para o dia a dia ou a bolsa de viagem.",
+    description:
+      "Versão mini em preto fosco, compacta para o dia a dia ou a bolsa de viagem, com a mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler.",
     price: "117,00",
     priceValue: 117.0,
     img: "/products/desembaracar/mini-black.jpg",
@@ -332,7 +335,8 @@ export const PRODUCTS: Product[] = [
     slug: "ultimate-detangler-mini-runway-pink",
     name: "Ultimate Detangler Mini Runway Pink",
     collection: "desembaracar",
-    description: "Versão mini na cor rosa Runway, o mesmo desembaraço sem dor em formato de bolso.",
+    description:
+      "Versão mini na cor rosa Runway, com a mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, o mesmo desembaraço sem dor em formato de bolso.",
     price: "118,00",
     priceValue: 118.0,
     img: "/products/desembaracar/mini-runway-pink.jpg",
@@ -374,7 +378,7 @@ export const PRODUCTS: Product[] = [
     name: "The Ultimate Detangler Mini Digital Lavender",
     collection: "desembaracar",
     description:
-      "Versão compacta da Ultimate Detangler, na cor Digital Lavender, ideal para bolsa e viagem.",
+      "Versão compacta da Ultimate Detangler, com a mesma tecnologia de duas fileiras de cerdas em tamanho reduzido, na cor Digital Lavender, um lilás suave e delicado.",
     price: "116,00",
     priceValue: 116.0,
     oldPrice: "145,00",
@@ -408,7 +412,7 @@ export const PRODUCTS: Product[] = [
     name: "The Ultimate Detangler Mini Marshmallow Duo",
     collection: "desembaracar",
     description:
-      "Versão compacta da Ultimate Detangler, na cor Marshmallow Duo, ideal para bolsa e viagem.",
+      "Versão compacta da Ultimate Detangler, com a mesma tecnologia de duas fileiras de cerdas em tamanho reduzido, na cor Marshmallow Duo, em dois tons suaves que lembram um marshmallow.",
     price: "116,00",
     priceValue: 116.0,
     oldPrice: "145,00",
@@ -476,7 +480,8 @@ export const PRODUCTS: Product[] = [
     slug: "the-ultimate-styler-pink",
     name: "The Ultimate Styler Pink",
     collection: "finalizar",
-    description: "Mesma tecnologia da Ultimate Styler em uma edição colorida na cor rosa.",
+    description:
+      "Escova de finalização com cerdas de javali e nylon, dá brilho e alinha os fios no último passo antes de sair de casa, em uma edição colorida na cor rosa.",
     price: "157,00",
     priceValue: 157.0,
     img: "/products/finalizar/styler-pink.jpg",
@@ -597,7 +602,8 @@ export const PRODUCTS: Product[] = [
     slug: "kit-dia-dos-pais-original-styler-e-mini",
     name: "Kit Dia dos Pais: Original, Styler e Mini",
     collection: "kits-e-promocoes",
-    description: "Combo com três escovas essenciais da linha, com desconto especial para presentear.",
+    description:
+      "Combo com a Original, a Styler e a Mini, três escovas essenciais da linha, com desconto especial para presentear.",
     price: "306,56",
     priceValue: 306.56,
     oldPrice: "383,20",
@@ -630,7 +636,8 @@ export const PRODUCTS: Product[] = [
     slug: "kit-cuidado-e-nutricao-wella-professionals-tangle-teezer",
     name: "Kit Cuidado e Nutrição (Wella Professionals + Tangle Teezer)",
     collection: "kits-e-promocoes",
-    description: "Combo com produtos Wella Professionals de nutrição e uma escova Tangle Teezer.",
+    description:
+      "Combo com produtos Wella Professionals de nutrição para os fios e uma escova Tangle Teezer para o dia a dia, cuidado completo em um só combo.",
     price: "213,00",
     priceValue: 213.0,
     img: "/products/kits-e-promocoes/kit-wella-nutricao.png",
