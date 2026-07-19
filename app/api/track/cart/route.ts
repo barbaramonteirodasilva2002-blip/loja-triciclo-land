@@ -1,13 +1,18 @@
 import { NextRequest, NextResponse } from "next/server"
 import { sql, ensureSchema } from "@/lib/db"
+import { isSameOriginRequest, isValidSessionId } from "@/lib/request-guard"
 
 export async function POST(request: NextRequest) {
+  if (!isSameOriginRequest(request)) {
+    return NextResponse.json({ ok: false }, { status: 403 })
+  }
+
   const body = await request.json().catch(() => null)
   const sessionId = body?.sessionId
   const items = Array.isArray(body?.items) ? body.items : null
   const customer = body?.customer ?? null
 
-  if (typeof sessionId !== "string" || !sessionId || !items) {
+  if (!isValidSessionId(sessionId) || !items) {
     return NextResponse.json({ ok: false }, { status: 400 })
   }
 
