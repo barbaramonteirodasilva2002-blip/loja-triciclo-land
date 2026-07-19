@@ -51,7 +51,7 @@ export function Hero() {
               src="/products/desembaracar/ultimate-detangler-mauve.webp"
               alt="Tangle Teezer The Ultimate Detangler Mauve"
             />
-            <div className="chrome-gradient-bg absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full text-center shadow-chrome ring-4 ring-ink sm:right-8">
+            <div className="chrome-gradient-bg-badge absolute -top-4 right-4 flex size-24 flex-col items-center justify-center rounded-full text-center shadow-chrome ring-2 ring-white/40 sm:right-8">
               <span className="font-mono text-lg font-bold leading-none text-white">2</span>
               <span className="mt-1 font-mono text-[9px] font-bold uppercase leading-tight text-white/90">
                 camadas
