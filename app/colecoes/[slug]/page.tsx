@@ -72,8 +72,8 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       </section>
 
       <main className="mx-auto max-w-6xl px-4 py-14">
-        <p className="mb-5 text-xs text-muted-foreground">
-          Nome, preço, disponibilidade e foto reais dos produtos.
+        <p className="mb-5 text-sm font-semibold text-foreground">
+          {products.length} {products.length === 1 ? "produto" : "produtos"}
         </p>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {products.map((product) => (
