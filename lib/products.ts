@@ -275,10 +275,10 @@ export const PRODUCTS: Product[] = [
   // Modelar
   {
     slug: "easy-dry-go",
-    name: "Easy Dry & Go",
+    name: "The Ultimate Blow-Dry",
     collection: "modelar",
     description:
-      "Escova modeladora que acelera a secagem e facilita o styling do dia a dia, com cerdas que deslizam sem enroscar.",
+      "Escova de secagem com dentes em formato de garrafa, que alisa e dá volume enquanto seca o cabelo, reduzindo o frizz.",
     price: "151,20",
     priceValue: 151.2,
     oldPrice: "189,00",
@@ -301,10 +301,10 @@ export const PRODUCTS: Product[] = [
   // Finalizar
   {
     slug: "back-combing",
-    name: "Back Combing",
+    name: "The Ultimate Volumizer",
     collection: "finalizar",
     description:
-      "Escova para criar volume na raiz com a técnica de backcombing, sem danificar ou embaraçar o fio.",
+      "Pente para a técnica de backcombing, cria altura e volume na raiz com o mínimo de dano ao fio.",
     price: "100,00",
     priceValue: 100.0,
     oldPrice: "125,00",
