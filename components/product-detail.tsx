@@ -2,12 +2,13 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Check, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
+import { Check, Minus, Plus, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
 import { ProductFeatures } from "@/components/product-features"
+import { ProductShippingCalculator } from "@/components/product-shipping-calculator"
 import type { Product } from "@/lib/products"
 import type { Collection } from "@/lib/products"
 
@@ -21,6 +22,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
   const installment = formatBRL(product.priceValue / 12)
   const images = [product.img, ...(product.gallery ?? [])].filter(Boolean)
   const [activeImage, setActiveImage] = useState(0)
+  const [quantity, setQuantity] = useState(1)
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-6 lg:grid lg:grid-cols-2 lg:gap-10 lg:py-10">
@@ -66,8 +68,6 @@ export function ProductDetail({ product, collection }: { product: Product; colle
         <h1 className="mt-2 text-balance font-heading text-2xl font-bold leading-tight text-foreground sm:text-3xl">
           {product.name}
         </h1>
-        <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">{product.description}</p>
-
         <ProductFeatures features={product.features} />
 
         <div className="mt-5 rounded-2xl border border-border bg-secondary/60 p-5 shadow-premium">
@@ -107,36 +107,64 @@ export function ProductDetail({ product, collection }: { product: Product; colle
           ))}
         </div>
 
-        <div className="mt-5 space-y-2.5">
-          <button
-            type="button"
-            disabled={!product.available}
-            onClick={() => {
-              cart.addItem(product.slug, 1)
-              window.location.href = "/checkout"
-            }}
-            className={cn(
-              "flex w-full items-center justify-center rounded-xl py-4 font-heading text-lg font-bold transition-transform duration-300",
-              product.available
-                ? "chrome-gradient-bg text-white shadow-chrome hover:scale-[1.01] active:scale-[0.98]"
-                : "cursor-not-allowed bg-muted text-muted-foreground",
-            )}
-          >
-            {product.available ? "Quero este" : "Indisponível"}
-          </button>
-          {product.available && (
+        {product.available && (
+          <div className="mt-5 flex items-center gap-3">
+            <div className="flex shrink-0 items-center rounded-xl border border-border">
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => Math.max(1, q - 1))}
+                aria-label="Diminuir quantidade"
+                className="flex size-11 items-center justify-center text-foreground transition hover:bg-secondary"
+              >
+                <Minus className="size-4" />
+              </button>
+              <span className="w-8 text-center font-heading font-bold text-foreground">{quantity}</span>
+              <button
+                type="button"
+                onClick={() => setQuantity((q) => Math.min(10, q + 1))}
+                aria-label="Aumentar quantidade"
+                className="flex size-11 items-center justify-center text-foreground transition hover:bg-secondary"
+              >
+                <Plus className="size-4" />
+              </button>
+            </div>
             <button
               type="button"
               onClick={() => {
-                cart.addItem(product.slug, 1)
-                cart.open()
+                cart.addItem(product.slug, quantity)
+                window.location.href = "/checkout"
               }}
-              className="flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary py-3.5 font-heading text-sm font-bold text-brand-pink-deep transition hover:bg-secondary"
+              className="chrome-gradient-bg flex flex-1 items-center justify-center rounded-xl py-4 font-heading text-lg font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.01] active:scale-[0.98]"
             >
-              <ShoppingCart className="size-4" /> Adicionar ao carrinho
+              Quero este
             </button>
-          )}
-        </div>
+          </div>
+        )}
+        {!product.available && (
+          <button
+            type="button"
+            disabled
+            className="mt-5 flex w-full cursor-not-allowed items-center justify-center rounded-xl bg-muted py-4 font-heading text-lg font-bold text-muted-foreground"
+          >
+            Indisponível
+          </button>
+        )}
+        {product.available && (
+          <button
+            type="button"
+            onClick={() => {
+              cart.addItem(product.slug, quantity)
+              cart.open()
+            }}
+            className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary py-3.5 font-heading text-sm font-bold text-brand-pink-deep transition hover:bg-secondary"
+          >
+            <ShoppingCart className="size-4" /> Adicionar ao carrinho
+          </button>
+        )}
+
+        <ProductShippingCalculator />
+
+        <p className="mt-5 text-pretty leading-relaxed text-muted-foreground">{product.description}</p>
 
         <div className="mt-5 grid grid-cols-2 gap-2 border-t border-border pt-5 text-center">
           <div className="flex flex-col items-center gap-1.5">
