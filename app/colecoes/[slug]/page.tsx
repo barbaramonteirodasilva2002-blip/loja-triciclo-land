@@ -6,6 +6,7 @@ import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ProductCard } from "@/components/product-card"
 import { Parallax } from "@/components/parallax"
+import { Reveal } from "@/components/reveal"
 import { COLLECTIONS, getCollection, getProductsByCollection } from "@/lib/products"
 
 export function generateStaticParams() {
@@ -76,8 +77,10 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
           {products.length} {products.length === 1 ? "produto" : "produtos"}
         </p>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-          {products.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+          {products.map((product, i) => (
+            <Reveal key={product.slug} delay={(i % 4) * 60}>
+              <ProductCard product={product} />
+            </Reveal>
           ))}
         </div>
       </main>

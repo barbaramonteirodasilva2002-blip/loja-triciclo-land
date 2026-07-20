@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import {
   Menu,
   X,
@@ -52,7 +52,9 @@ const institutionalLinks = [
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [cartBump, setCartBump] = useState(false)
   const cart = useCart()
+  const prevCartCount = useRef(cart.totalCount)
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : ""
@@ -60,6 +62,15 @@ export function SiteHeader() {
       document.body.style.overflow = ""
     }
   }, [menuOpen])
+
+  // Salto rápido no ícone do carrinho sempre que um item é adicionado, dando
+  // feedback visual imediato sem depender de texto ou toast.
+  useEffect(() => {
+    if (cart.totalCount > prevCartCount.current) {
+      setCartBump(true)
+    }
+    prevCartCount.current = cart.totalCount
+  }, [cart.totalCount])
 
   return (
     <>
@@ -114,7 +125,11 @@ export function SiteHeader() {
             <button
               type="button"
               onClick={cart.open}
-              className="relative inline-flex size-10 items-center justify-center rounded-md text-primary transition-colors hover:bg-secondary"
+              className={cn(
+                "relative inline-flex size-10 items-center justify-center rounded-md text-primary transition-colors hover:bg-secondary",
+                cartBump && "animate-cart-bump",
+              )}
+              onAnimationEnd={() => setCartBump(false)}
               aria-label={cart.totalCount > 0 ? `Abrir carrinho, ${cart.totalCount} itens` : "Abrir carrinho"}
             >
               <ShoppingCart className="size-5" />
