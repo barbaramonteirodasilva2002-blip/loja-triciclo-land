@@ -64,6 +64,30 @@ export function getCollection(slug: string): Collection | undefined {
   return COLLECTIONS.find((c) => c.slug === slug)
 }
 
+// Características reais do produto, mostradas como ícone + legenda na página
+// de produto (ver components/product-features.tsx para o ícone de cada uma).
+export type FeatureKey =
+  | "duas-camadas"
+  | "seco-molhado"
+  | "sem-puxar"
+  | "compacta"
+  | "premium"
+  | "sustentavel"
+  | "colecionavel"
+  | "cerdas-macias"
+  | "circulacao"
+  | "reduz-frizz"
+  | "volume-raiz"
+  | "alinha-brilho"
+  | "pet-friendly"
+  | "presentear"
+  | "dentes-largos"
+  | "condicionador"
+  | "minimo-dano"
+  | "facil-manuseio"
+  | "remove-oleosidade"
+  | "economia"
+
 export type Product = {
   slug: string
   name: string
@@ -81,6 +105,8 @@ export type Product = {
   gallery?: string[]
   available: boolean
   bestSeller?: boolean
+  /** Características reais exibidas com ícone na página do produto (2 por produto). */
+  features?: FeatureKey[]
 }
 
 export const PRODUCTS: Product[] = [
@@ -98,6 +124,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/the-ultimate-detangler.png",
     available: true,
     bestSeller: true,
+    features: ["duas-camadas", "seco-molhado"],
   },
   {
     slug: "the-ultimate-detangler-black",
@@ -112,6 +139,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/tud-black-1.jpg",
     gallery: ["/products/desembaracar/tud-black-2.jpg", "/products/desembaracar/tud-black-3.jpg"],
     available: true,
+    features: ["duas-camadas", "premium"],
   },
   {
     slug: "the-ultimate-detangler-millennial-pink",
@@ -129,6 +157,7 @@ export const PRODUCTS: Product[] = [
       "/products/desembaracar/tud-millennial-pink-3.jpg",
     ],
     available: true,
+    features: ["duas-camadas", "seco-molhado"],
   },
   {
     slug: "the-ultimate-detangler-fresh-purple",
@@ -143,6 +172,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/tud-fresh-purple-1.jpg",
     gallery: ["/products/desembaracar/tud-fresh-purple-2.jpg"],
     available: true,
+    features: ["duas-camadas", "seco-molhado"],
   },
   {
     slug: "the-ultimate-detangler-mini",
@@ -156,6 +186,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/the-ultimate-detangler-mini.jpg",
     available: true,
+    features: ["duas-camadas", "compacta"],
   },
   {
     slug: "ultimate-detangler-chrome-midnight-silver",
@@ -167,6 +198,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 253.0,
     img: "/products/desembaracar/chrome-midnight-silver-box.jpg",
     available: true,
+    features: ["premium", "duas-camadas"],
   },
   {
     slug: "ultimate-detangler-chrome-neo-gold",
@@ -178,6 +210,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 163.0,
     img: "/products/desembaracar/chrome-neo-gold.jpg",
     available: true,
+    features: ["premium", "duas-camadas"],
   },
   {
     slug: "ultimate-detangler-chrome-mauve-copper",
@@ -197,6 +230,7 @@ export const PRODUCTS: Product[] = [
     ],
     available: true,
     bestSeller: true,
+    features: ["premium", "duas-camadas"],
   },
   {
     slug: "the-original-mini",
@@ -210,6 +244,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/the-original-mini.jpg",
     available: true,
+    features: ["sem-puxar", "compacta"],
   },
   {
     slug: "the-original-mini-aqua",
@@ -224,6 +259,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/original-mini-aqua-1.jpg",
     gallery: ["/products/desembaracar/original-mini-aqua-2.jpg"],
     available: true,
+    features: ["sem-puxar", "compacta"],
   },
   {
     slug: "the-ultimate-detangler-naturally-curly",
@@ -237,6 +273,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/the-ultimate-detangler-naturally-curly.png",
     available: true,
+    features: ["duas-camadas", "sem-puxar"],
   },
   {
     slug: "escova-de-cabelo-desembaracadora-the-original",
@@ -250,6 +287,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/escova-de-cabelo-desembaracadora-the-original.jpg",
     available: true,
+    features: ["duas-camadas", "sem-puxar"],
   },
   {
     slug: "the-original-panther-black",
@@ -264,6 +302,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/original-panther-black-1.jpg",
     gallery: ["/products/desembaracar/original-panther-black-2.jpg"],
     available: true,
+    features: ["duas-camadas", "sem-puxar"],
   },
   {
     slug: "mini-ultimate-detangler-devil-wears-prada",
@@ -277,6 +316,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/mini-ultimate-detangler-devil-wears-prada.jpg",
     available: true,
+    features: ["colecionavel", "compacta"],
   },
   {
     slug: "the-ultimate-detangler-o-diabo-veste-prada",
@@ -290,6 +330,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/the-ultimate-detangler-diabo-veste-prada.png",
     available: true,
+    features: ["colecionavel", "duas-camadas"],
   },
   {
     slug: "plant-based",
@@ -303,6 +344,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/desembaracar/plant-based.jpg",
     available: true,
+    features: ["sustentavel", "duas-camadas"],
   },
   {
     slug: "the-ultimate-detangler-fine",
@@ -314,6 +356,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 160.0,
     img: "/products/desembaracar/the-ultimate-detangler-fine.png",
     available: true,
+    features: ["cerdas-macias", "sem-puxar"],
   },
   {
     slug: "ultimate-detangler-mini-black",
@@ -330,6 +373,7 @@ export const PRODUCTS: Product[] = [
       "/products/desembaracar/tud-mini-black-3.jpg",
     ],
     available: true,
+    features: ["duas-camadas", "compacta"],
   },
   {
     slug: "ultimate-detangler-mini-runway-pink",
@@ -341,6 +385,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 118.0,
     img: "/products/desembaracar/mini-runway-pink.jpg",
     available: true,
+    features: ["compacta", "sem-puxar"],
   },
   {
     slug: "the-ultimate-detangler-extra-gentle",
@@ -351,6 +396,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 121.0,
     img: "/products/desembaracar/extra-gentle.png",
     available: true,
+    features: ["cerdas-macias", "sem-puxar"],
   },
   {
     slug: "fine-fragile-wet-detangler-cinnamon",
@@ -362,6 +408,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 117.0,
     img: "/products/desembaracar/fine-fragile-cinnamon.jpg",
     available: true,
+    features: ["cerdas-macias", "condicionador"],
   },
   {
     slug: "mini-ultimate-detangler-swarovski",
@@ -372,6 +419,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 203.4,
     img: "/products/desembaracar/swarovski-mini.jpg",
     available: true,
+    features: ["colecionavel", "compacta"],
   },
   {
     slug: "the-ultimate-detangler-mini-digital-lavender",
@@ -389,6 +437,7 @@ export const PRODUCTS: Product[] = [
       "/products/desembaracar/tud-mini-digital-lavender-3.jpg",
     ],
     available: true,
+    features: ["duas-camadas", "compacta"],
   },
   {
     slug: "the-ultimate-detangler-mini-lilac-swarovski",
@@ -406,6 +455,7 @@ export const PRODUCTS: Product[] = [
       "/products/desembaracar/tud-mini-lilac-swarovski-3.jpg",
     ],
     available: true,
+    features: ["colecionavel", "compacta"],
   },
   {
     slug: "the-ultimate-detangler-mini-marshmallow-duo",
@@ -420,6 +470,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/tud-mini-marshmallow-duo-1.jpg",
     gallery: ["/products/desembaracar/tud-mini-marshmallow-duo-2.jpg"],
     available: true,
+    features: ["duas-camadas", "compacta"],
   },
 
   // Modelar
@@ -436,6 +487,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/modelar/easy-dry-go.png",
     available: true,
     bestSeller: true,
+    features: ["volume-raiz", "reduz-frizz"],
   },
   {
     slug: "round-tool-large",
@@ -446,6 +498,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 164.0,
     img: "/products/modelar/round-tool-large.jpg",
     available: true,
+    features: ["volume-raiz", "alinha-brilho"],
   },
 
   // Finalizar
@@ -461,6 +514,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/finalizar/back-combing.jpg",
     available: true,
+    features: ["volume-raiz", "minimo-dano"],
   },
   {
     slug: "the-ultimate-styler",
@@ -475,6 +529,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/finalizar/the-ultimate-styler.png",
     available: true,
     bestSeller: true,
+    features: ["alinha-brilho", "facil-manuseio"],
   },
   {
     slug: "the-ultimate-styler-pink",
@@ -486,6 +541,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 157.0,
     img: "/products/finalizar/styler-pink.jpg",
     available: true,
+    features: ["alinha-brilho", "facil-manuseio"],
   },
   {
     slug: "hair-pick-comb",
@@ -499,6 +555,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/finalizar/hair-pick-comb.jpg",
     available: true,
+    features: ["dentes-largos", "sem-puxar"],
   },
 
   // Bem-Estar
@@ -514,6 +571,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/bem-estar/scalp-exfoliator.jpg",
     available: true,
+    features: ["circulacao", "remove-oleosidade"],
   },
 
   // Pet-Teezer
@@ -528,6 +586,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/pet-teezer/rasqueadeira-de-shedding-grande.jpg",
     available: true,
+    features: ["pet-friendly", "sem-puxar"],
   },
   {
     slug: "rasqueadeira-de-shedding-grande-purple-grey",
@@ -545,6 +604,7 @@ export const PRODUCTS: Product[] = [
       "/products/pet-teezer/pet-teezer-deshedding-purple-grey-3.jpg",
     ],
     available: true,
+    features: ["pet-friendly", "sem-puxar"],
   },
   {
     slug: "desembaracadora-detangling-pequena",
@@ -557,6 +617,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/pet-teezer/desembaracadora-detangling-pequena.jpg",
     available: true,
+    features: ["pet-friendly", "sem-puxar"],
   },
   {
     slug: "rasqueadeira-pet-pequena",
@@ -569,6 +630,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/pet-teezer/rasqueadeira-pet-pequena.jpg",
     available: true,
+    features: ["pet-friendly", "sem-puxar"],
   },
   {
     slug: "desembaracadora-detangling-grande",
@@ -582,6 +644,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/pet-teezer/desembaracadora-detangling-grande.jpg",
     available: true,
     bestSeller: true,
+    features: ["pet-friendly", "sem-puxar"],
   },
   {
     slug: "kit-millennial-pink-e-desembaracadora-pet",
@@ -595,6 +658,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/pet-teezer/kit-tangle-teezer-millennial-pink-desembaracadora-pet.png",
     available: true,
+    features: ["presentear", "pet-friendly"],
   },
 
   // Kits e Promoções
@@ -610,6 +674,7 @@ export const PRODUCTS: Product[] = [
     discountPct: "20",
     img: "/products/kits-e-promocoes/kit-dia-dos-pais-original-styler-e-mini.png",
     available: true,
+    features: ["presentear", "economia"],
   },
   {
     slug: "kit-tangle-teezer-black",
@@ -620,6 +685,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 226.0,
     img: "/products/kits-e-promocoes/kit-black.jpg",
     available: true,
+    features: ["presentear", "premium"],
   },
   {
     slug: "kit-cuidado-da-raiz-nioxin-tangle-teezer",
@@ -631,6 +697,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 162.0,
     img: "/products/kits-e-promocoes/kit-nioxin-raiz.png",
     available: true,
+    features: ["presentear", "circulacao"],
   },
   {
     slug: "kit-cuidado-e-nutricao-wella-professionals-tangle-teezer",
@@ -642,6 +709,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 213.0,
     img: "/products/kits-e-promocoes/kit-wella-nutricao.png",
     available: true,
+    features: ["presentear", "economia"],
   },
   {
     slug: "kit-cronograma-capilar-wella-professionals-tangle-teezer",
@@ -652,6 +720,7 @@ export const PRODUCTS: Product[] = [
     priceValue: 173.0,
     img: "/products/kits-e-promocoes/kit-wella-cronograma.png",
     available: true,
+    features: ["presentear", "economia"],
   },
 ]
 

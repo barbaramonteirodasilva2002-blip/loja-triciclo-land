@@ -7,6 +7,7 @@ import { formatBRL } from "@/lib/checkout"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
+import { ProductFeatures } from "@/components/product-features"
 import type { Product } from "@/lib/products"
 import type { Collection } from "@/lib/products"
 
@@ -66,6 +67,8 @@ export function ProductDetail({ product, collection }: { product: Product; colle
           {product.name}
         </h1>
         <p className="mt-3 text-pretty leading-relaxed text-muted-foreground">{product.description}</p>
+
+        <ProductFeatures features={product.features} />
 
         <div className="mt-5 rounded-2xl border border-border bg-secondary/60 p-5 shadow-premium">
           {product.available ? (
