@@ -73,19 +73,19 @@ export function ProductDetail({ product, collection }: { product: Product; colle
         <div className="mt-5 rounded-2xl border border-border bg-secondary/60 p-5 shadow-premium">
           {product.available ? (
             <>
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2.5">
                 {product.oldPrice && (
                   <span className="text-sm text-muted-foreground line-through">R$ {product.oldPrice}</span>
                 )}
+                <p className="font-heading text-3xl font-bold leading-none tracking-tight text-foreground sm:text-4xl">
+                  R$ {product.price}
+                </p>
                 {product.discountPct && (
                   <span className="rounded-full bg-brand-navy-deep px-2.5 py-1 text-xs font-bold text-white">
                     {product.discountPct}% OFF
                   </span>
                 )}
               </div>
-              <p className="mt-1 font-heading text-4xl font-bold leading-none tracking-tight text-foreground sm:text-5xl">
-                R$ {product.price}
-              </p>
               <p className="mt-2 text-sm text-muted-foreground">
                 no Pix ou em até <span className="font-semibold text-foreground">12x de R$ {installment}</span> no
                 cartão

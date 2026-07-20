@@ -49,17 +49,14 @@ export function ProductFeatures({ features }: { features?: FeatureKey[] }) {
   if (!features || features.length === 0) return null
 
   return (
-    <div className="mt-5 grid grid-cols-2 gap-2">
+    <div className="mt-5 flex flex-wrap gap-6">
       {features.map((key) => {
         const info = FEATURE_INFO[key]
         const Icon = info.icon
         return (
-          <div
-            key={key}
-            className="flex flex-col items-center gap-1.5 rounded-xl border border-border bg-secondary/40 px-2 py-3 text-center"
-          >
-            <Icon className="size-5 text-primary" />
-            <span className="text-xs font-semibold leading-snug text-foreground">{info.label}</span>
+          <div key={key} className="flex flex-col items-center gap-1.5 text-center">
+            <Icon className="size-7 text-foreground" strokeWidth={1.5} />
+            <span className="max-w-[6.5rem] text-xs font-bold leading-snug text-foreground">{info.label}</span>
           </div>
         )
       })}
