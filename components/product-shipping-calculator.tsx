@@ -69,11 +69,13 @@ export function ProductShippingCalculator() {
       </a>
 
       {notFound && (
-        <p className="mt-3 text-xs font-semibold text-[#d9534f]">CEP não encontrado, confira e tente de novo.</p>
+        <p className="animate-fade-in-up mt-3 text-xs font-semibold text-[#d9534f]">
+          CEP não encontrado, confira e tente de novo.
+        </p>
       )}
 
       {result && (
-        <div className="mt-4 space-y-2 border-t border-border pt-4">
+        <div className="animate-fade-in-up mt-4 space-y-2 border-t border-border pt-4">
           <p className="flex items-center gap-1.5 text-xs font-semibold text-foreground">
             <span className="flex size-4 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-emerald-600">
               <Check className="size-2.5" />

@@ -1,13 +1,15 @@
 "use client"
 
+import { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { ShoppingCart } from "lucide-react"
+import { Check, ShoppingCart } from "lucide-react"
 import { useCart } from "@/components/cart-provider"
 import type { Product } from "@/lib/products"
 
 export function ProductCard({ product }: { product: Product }) {
   const cart = useCart()
+  const [added, setAdded] = useState(false)
 
   return (
     <div className="chrome-border group shadow-premium-hover flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-premium before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100">
@@ -61,12 +63,24 @@ export function ProductCard({ product }: { product: Product }) {
             disabled={!product.available}
             onClick={() => {
               cart.addItem(product.slug, 1)
-              cart.open()
+              setAdded(true)
+              setTimeout(() => {
+                setAdded(false)
+                cart.open()
+              }, 550)
             }}
             className="mt-2.5 flex w-full items-center justify-center gap-1.5 rounded-full bg-primary py-2 text-xs font-bold text-primary-foreground transition-all duration-200 hover:bg-brand-pink-deep active:scale-[0.97] disabled:cursor-not-allowed disabled:bg-muted disabled:text-muted-foreground"
           >
-            <ShoppingCart className="size-3.5" />
-            {product.available ? "Quero este" : "Indisponível"}
+            {added ? (
+              <>
+                <Check className="size-3.5" /> Adicionado!
+              </>
+            ) : (
+              <>
+                <ShoppingCart className="size-3.5" />
+                {product.available ? "Quero este" : "Indisponível"}
+              </>
+            )}
           </button>
         </div>
       </div>

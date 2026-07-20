@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import Image from "next/image"
-import { Check, Minus, Plus, ShieldCheck, ShoppingCart, Truck } from "lucide-react"
+import { Check, Minus, Plus, ShieldCheck, ShoppingBag, ShoppingCart, Truck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/components/cart-provider"
@@ -23,18 +23,20 @@ export function ProductDetail({ product, collection }: { product: Product; colle
   const images = [product.img, ...(product.gallery ?? [])].filter(Boolean)
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
+  const [added, setAdded] = useState(false)
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-6 lg:grid lg:grid-cols-2 lg:gap-10 lg:py-10">
       <div>
         <div className="relative aspect-square overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium">
           <Image
+            key={images[activeImage]}
             src={images[activeImage] || "/placeholder.svg"}
             alt={product.name}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-contain p-6 drop-shadow-[0_14px_20px_rgba(20,20,20,0.12)]"
+            className="animate-fade-in-up object-contain p-6 drop-shadow-[0_14px_20px_rgba(20,20,20,0.12)]"
           />
           {product.discountPct && (
             <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
@@ -154,11 +156,28 @@ export function ProductDetail({ product, collection }: { product: Product; colle
             type="button"
             onClick={() => {
               cart.addItem(product.slug, quantity)
-              cart.open()
+              setAdded(true)
+              setTimeout(() => {
+                setAdded(false)
+                cart.open()
+              }, 550)
             }}
-            className="mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl border-2 border-primary py-3.5 font-heading text-sm font-bold text-brand-pink-deep transition hover:bg-secondary"
+            className={cn(
+              "mt-2.5 flex w-full items-center justify-center gap-2 rounded-xl border-2 py-3.5 font-heading text-sm font-bold transition",
+              added
+                ? "border-accent bg-accent/10 text-accent"
+                : "border-primary text-brand-pink-deep hover:bg-secondary",
+            )}
           >
-            <ShoppingCart className="size-4" /> Adicionar ao carrinho
+            {added ? (
+              <>
+                <ShoppingBag className="size-4" /> Adicionado!
+              </>
+            ) : (
+              <>
+                <ShoppingCart className="size-4" /> Adicionar ao carrinho
+              </>
+            )}
           </button>
         )}
 
