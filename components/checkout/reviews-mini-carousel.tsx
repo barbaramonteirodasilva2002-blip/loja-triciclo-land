@@ -4,26 +4,129 @@ import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Star, BadgeCheck } from "lucide-react"
 
-const testimonials = [
+type Testimonial = {
+  name: string
+  photo?: string
+  text: string
+}
+
+const AVATAR_COLORS = [
+  "bg-brand-navy",
+  "bg-accent",
+  "bg-emerald-500",
+  "bg-amber-500",
+  "bg-sky-500",
+  "bg-rose-500",
+  "bg-violet-500",
+  "bg-teal-500",
+]
+
+const testimonials: Testimonial[] = [
   {
-    name: "Cliente Satisfeita",
+    name: "Fernanda C.",
     photo: "/images/reviews/fernanda.png",
     text: "Chegou certinho e original. Escova excelente, desembaraça sem puxar.",
   },
   {
-    name: "Cliente Verificado",
+    name: "Ricardo M.",
     photo: "/images/reviews/ricardo.png",
     text: "Comprei mais de uma vez, entrega rápida e produto sempre original. Recomendo.",
   },
   {
-    name: "Cliente Satisfeita",
+    name: "Marcos T.",
     photo: "/images/reviews/marcos.png",
     text: "Uso todo dia depois do banho e não quebra mais o cabelo como a escova antiga.",
   },
+  {
+    name: "Juliana S.",
+    photo: "/images/reviews/juliana.png",
+    text: "Meu cabelo é cacheado e sempre embaraçava muito. Com essa escova passo o pente sem dor nenhuma.",
+  },
+  {
+    name: "André P.",
+    photo: "/images/reviews/andre.png",
+    text: "Presenteei minha esposa e ela amou. Vem numa caixinha bonita, dá pra embrulhar direto.",
+  },
+  {
+    name: "Camila R.",
+    text: "Uso no cabelo molhado depois do banho e é impressionante como não puxa nem quebra os fios.",
+  },
+  {
+    name: "Beatriz L.",
+    text: "Comprei o kit com o Scalp Exfoliator também. Meu couro cabeludo agradece, uso toda semana.",
+  },
+  {
+    name: "Larissa N.",
+    text: "Chegou em 4 dias, bem embalada e com nota fiscal. Já é a segunda escova que compro da marca.",
+  },
+  {
+    name: "Patrícia G.",
+    text: "Levo na bolsa e uso até no trabalho pra ajeitar o cabelo. Cabe em qualquer nécessaire.",
+  },
+  {
+    name: "Bianca F.",
+    text: "Minha filha tem cabelo bem cacheado e chorava toda hora na hora de pentear. Agora nem reclama mais.",
+  },
+  {
+    name: "Mariana V.",
+    text: "A cor rosa é ainda mais linda pessoalmente. Vale cada centavo.",
+  },
+  {
+    name: "Simone A.",
+    text: "Já tinha visto influenciadoras usando e resolvi comprar. Desembaraça muito mais rápido que escova comum.",
+  },
+  {
+    name: "Gabriela D.",
+    text: "Uso no cabelo seco antes de dormir e no molhado depois do banho. Virou parte da rotina.",
+  },
+  {
+    name: "Renata P.",
+    text: "Entrega super rápida, e o preço aqui tava bem melhor do que em outros lugares que pesquisei.",
+  },
+  {
+    name: "Carla M.",
+    text: "A escova durou muito mais do que eu esperava, uso há mais de um ano e as cerdas continuam firmes.",
+  },
+  {
+    name: "Rafael S.",
+    text: "Comprei para minha mãe, que tem o cabelo bem fino, e ela disse que nunca quebrou tão pouco fio.",
+  },
+  {
+    name: "Diego C.",
+    text: "Achei que fosse só modismo, mas realmente funciona. Não esperava gostar tanto.",
+  },
+  {
+    name: "Bruno T.",
+    text: "Produto original com selo de autenticidade, isso me deixou tranquilo na hora de comprar.",
+  },
+  {
+    name: "Lucas F.",
+    text: "Levo pra academia pra usar depois do banho. Prática e não ocupa espaço na mochila.",
+  },
+  {
+    name: "Eduardo B.",
+    text: "Comprei de presente de aniversário, ela já tinha pedido fazia tempo. Chegou antes do previsto.",
+  },
 ]
 
+function Avatar({ name, photo, colorIndex }: { name: string; photo?: string; colorIndex: number }) {
+  if (photo) {
+    return (
+      <Image src={photo} alt={name} width={36} height={36} className="size-9 shrink-0 rounded-full object-cover" />
+    )
+  }
+  const initial = name.trim().charAt(0).toUpperCase()
+  return (
+    <span
+      className={`flex size-9 shrink-0 items-center justify-center rounded-full text-sm font-bold text-white ${AVATAR_COLORS[colorIndex % AVATAR_COLORS.length]}`}
+    >
+      {initial}
+    </span>
+  )
+}
+
 export function ReviewsMiniCarousel() {
-  const [active, setActive] = useState(0)
+  const [active, setActive] = useState(() => Math.floor(Math.random() * testimonials.length))
 
   useEffect(() => {
     const id = setInterval(() => setActive((i) => (i + 1) % testimonials.length), 5000)
@@ -34,8 +137,8 @@ export function ReviewsMiniCarousel() {
 
   return (
     <div className="rounded-2xl border border-border bg-card p-4 shadow-sm">
-      <div className="flex items-center gap-3">
-        <Image src={t.photo} alt={t.name} width={36} height={36} className="size-9 shrink-0 rounded-full object-cover" />
+      <div key={active} className="animate-fade-in-up flex items-center gap-3">
+        <Avatar name={t.name} photo={t.photo} colorIndex={active} />
         <div>
           <p className="flex items-center gap-1 text-xs font-bold text-foreground">
             {t.name}
@@ -48,17 +151,11 @@ export function ReviewsMiniCarousel() {
           </div>
         </div>
       </div>
-      <p className="mt-2 text-xs leading-relaxed text-muted-foreground">{t.text}</p>
-      <div className="mt-3 flex justify-center gap-1.5">
-        {testimonials.map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setActive(i)}
-            aria-label={`Ver depoimento ${i + 1}`}
-            className={`size-1.5 rounded-full transition-all ${i === active ? "w-4 bg-accent" : "bg-border"}`}
-          />
-        ))}
+      <p key={`${active}-text`} className="animate-fade-in-up mt-2 text-xs leading-relaxed text-muted-foreground">
+        {t.text}
+      </p>
+      <div className="mt-3 h-1 overflow-hidden rounded-full bg-border">
+        <div key={active} className="animate-carousel-progress h-full w-full origin-left rounded-full bg-accent" />
       </div>
     </div>
   )
