@@ -213,7 +213,7 @@ export function ProductDetail({ product, collection }: { product: Product; colle
           </div>
         </div>
 
-        <ProductReviews productName={product.name} color={product.color} />
+        <ProductReviews productName={product.name} color={product.color} collection={product.collection} />
 
         <div className="mt-4 flex justify-center">
           <PaymentMethods />
