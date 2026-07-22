@@ -126,9 +126,10 @@ function Avatar({ name, photo, colorIndex }: { name: string; photo?: string; col
 }
 
 export function ReviewsMiniCarousel() {
-  const [active, setActive] = useState(() => Math.floor(Math.random() * testimonials.length))
+  const [active, setActive] = useState(0)
 
   useEffect(() => {
+    setActive(Math.floor(Math.random() * testimonials.length))
     const id = setInterval(() => setActive((i) => (i + 1) % testimonials.length), 5000)
     return () => clearInterval(id)
   }, [])

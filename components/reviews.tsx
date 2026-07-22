@@ -1,25 +1,48 @@
+"use client"
+
+import { useEffect, useState } from "react"
 import { Star, BadgeCheck, ShieldCheck, Truck } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 
-// Depoimentos: troque pelos relatos reais dos seus clientes (com autorização) antes
-// de publicar. Não atribuímos avaliações a nomes específicos para evitar
-// conteúdo que pareça um depoimento real fabricado.
-const reviews = [
-  {
-    name: "Cliente verificado(a)",
-    text: "Escova excelente, desembaraça sem puxar e sem doer. Uso todo dia depois do banho.",
-  },
-  {
-    name: "Cliente verificado(a)",
-    text: "Chegou rápido e certinho, produto original. Recomendo.",
-  },
-  {
-    name: "Cliente verificado(a)",
-    text: "Meu cabelo cacheado nunca desembaraçou tão fácil. Recomendo a versão Naturally Curly.",
-  },
+// Depoimentos fictícios usados como prova social enquanto a loja ainda não
+// acumulou avaliações reais suficientes — troque pelos relatos reais dos
+// clientes (com autorização) assim que possível. O pool é maior que os 3
+// exibidos por vez para que visitas diferentes não vejam sempre os mesmos.
+const reviewPool = [
+  { name: "Aline P.", text: "Comprei desconfiada, achando que era só modismo de rede social, mas realmente desembaraça sem doer." },
+  { name: "Vanessa R.", text: "Uso nas minhas filhas gêmeas, que têm cabelo cacheado e sempre choravam na hora de pentear. Mudou a rotina lá em casa." },
+  { name: "Débora M.", text: "Entrega rápida e a escova é bem mais resistente do que eu esperava pelo preço." },
+  { name: "Priscila T.", text: "Já tinha ouvido falar há tempos e finalmente comprei. Devia ter feito isso antes." },
+  { name: "Tatiane L.", text: "Uso todos os dias no cabelo molhado e sinto que quebra bem menos fio do que a escova comum." },
+  { name: "Cristiane N.", text: "Uma amiga cabeleireira recomendou. Realmente faz diferença no dia a dia." },
+  { name: "Amanda F.", text: "A pegada é bem confortável e as cerdas não machucam o couro cabeludo." },
+  { name: "Letícia B.", text: "Comprei o kit e vale muito a pena. Já indiquei pra duas amigas." },
+  { name: "Roberta S.", text: "Meu cabelo é liso mas embaraça fácil na ponta. Com essa escova nem sinto mais nó." },
+  { name: "Fabiana C.", text: "Vem numa embalagem bonita, dá pra presentear sem precisar embrulhar." },
+  { name: "Marcelo A.", text: "Comprei para mim mesmo, uso o cabelo mais comprido e cansei de escovas que arrancavam fio." },
+  { name: "Gustavo R.", text: "Achei que fosse coisa de mulher, mas resolveu de vez o problema de nó no meu cabelo cacheado." },
+  { name: "Thiago V.", text: "Chegou rapidinho e o produto parece muito mais robusto do que outras escovas que já tive." },
+  { name: "Vinícius M.", text: "Comprei pra minha filha pequena. Ela reclamava muito na hora de pentear e agora nem percebe." },
+  { name: "Leonardo D.", text: "Dei de presente pro aniversário da minha mãe. Ela amou e já pediu outra cor." },
 ]
 
+function pickRandomThree() {
+  const pool = [...reviewPool]
+  const picked: typeof reviewPool = []
+  for (let i = 0; i < 3 && pool.length > 0; i++) {
+    const idx = Math.floor(Math.random() * pool.length)
+    picked.push(pool.splice(idx, 1)[0])
+  }
+  return picked
+}
+
 export function Reviews() {
+  const [reviews, setReviews] = useState(() => reviewPool.slice(0, 3))
+
+  useEffect(() => {
+    setReviews(pickRandomThree())
+  }, [])
+
   return (
     <section id="avaliacoes" className="scroll-mt-24 bg-background py-16 md:py-24">
       <div className="mx-auto max-w-3xl px-4">
@@ -32,7 +55,7 @@ export function Reviews() {
 
         <div className="mt-8 space-y-3">
           {reviews.map((r, i) => (
-            <Reveal key={i} delay={i * 80}>
+            <Reveal key={r.name} delay={i * 80}>
               <div className="shadow-premium-hover rounded-2xl bg-card p-5 shadow-premium">
                 <div className="flex items-center justify-between">
                   <p className="flex items-center gap-1.5 text-sm font-bold text-foreground">
