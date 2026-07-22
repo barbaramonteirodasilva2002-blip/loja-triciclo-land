@@ -49,7 +49,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Camila R.",
-    text: "Uso no cabelo molhado depois do banho e é impressionante como não puxa nem quebra os fios.",
+    text: "uso no cabelo molhado depois do banho e nao acredito como não puxa nem quebra o fio!!",
   },
   {
     name: "Beatriz L.",
@@ -61,7 +61,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Patrícia G.",
-    text: "Levo na bolsa e uso até no trabalho pra ajeitar o cabelo. Cabe em qualquer nécessaire.",
+    text: "levo na bolsa e uso ate no trabalho pra ajeitar o cabelo, cabe em qualquer nécessaire",
   },
   {
     name: "Bianca F.",
@@ -69,11 +69,11 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Mariana V.",
-    text: "A cor rosa é ainda mais linda pessoalmente. Vale cada centavo.",
+    text: "a cor rosa é linda dms, amei",
   },
   {
     name: "Simone A.",
-    text: "Já tinha visto influenciadoras usando e resolvi comprar. Desembaraça muito mais rápido que escova comum.",
+    text: "Já tinha visto um monte de gente usando e resolvi comprar, desembaraça bem mais rápido mesmo.",
   },
   {
     name: "Gabriela D.",
@@ -81,7 +81,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Renata P.",
-    text: "Entrega super rápida, e o preço aqui tava bem melhor do que em outros lugares que pesquisei.",
+    text: "entrega rapida e o preço tava bem melhor do que em outros lugares q eu vi",
   },
   {
     name: "Carla M.",
@@ -89,11 +89,11 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Rafael S.",
-    text: "Comprei para minha mãe, que tem o cabelo bem fino, e ela disse que nunca quebrou tão pouco fio.",
+    text: "comprei pra minha mae, cabelo bem fino dela, e ela disse q nunca quebrou tao pouco fio",
   },
   {
     name: "Diego C.",
-    text: "Achei que fosse só modismo, mas realmente funciona. Não esperava gostar tanto.",
+    text: "achei que era só modinha mas funciona mesmo, nem esperava gostar tanto",
   },
   {
     name: "Bruno T.",
@@ -101,7 +101,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Lucas F.",
-    text: "Levo pra academia pra usar depois do banho. Prática e não ocupa espaço na mochila.",
+    text: "levo pra academia pra usar dps do banho, pratica e n ocupa espaço na mochila",
   },
   {
     name: "Eduardo B.",
