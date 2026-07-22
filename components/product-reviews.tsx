@@ -3,11 +3,14 @@
 import { useEffect, useState } from "react"
 import { Star, BadgeCheck } from "lucide-react"
 
+const ROTATE_INTERVAL_MS = 4000
+const PAIRS_COUNT = 5
+
 // Nomes fictícios usados como prova social enquanto o produto ainda não tem
 // avaliações reais — troque pelos relatos reais dos clientes assim que
-// possível. Um comentário é genérico (reaproveitável em qualquer produto) e
-// o outro cita o nome do produto exibido na página, pra parecer específico
-// sem precisar escrever depoimentos únicos para as 43 variantes do catálogo.
+// possível. Cada produto mostra 5 duplas (10 comentários), uma dupla por
+// vez: um comentário genérico + um específico (cita a cor do produto
+// quando ela existe, senão cita o nome do produto).
 const NAMES = [
   "Karina S.",
   "Bruna T.",
@@ -39,7 +42,7 @@ const GENERIC_TEXTS = [
   "achei q ia quebrar rapido mas ta durando bem, uso ha uns meses",
 ]
 
-const SPECIFIC_TEMPLATES: Array<(productName: string) => string> = [
+const NAME_TEMPLATES: Array<(productName: string) => string> = [
   (p) => `Comprei a ${p} depois de ver todo mundo comentando, e realmente vale a fama.`,
   (p) => `Já tinha outras escovas da marca, mas a ${p} ficou minha favorita de longe.`,
   (p) => `Escolhi a ${p} sem pensar duas vezes e não podia ter escolhido melhor.`,
@@ -47,47 +50,85 @@ const SPECIFIC_TEMPLATES: Array<(productName: string) => string> = [
   (p) => `Tava em dúvida entre uns modelos, mas a ${p} me conquistou de cara.`,
 ]
 
-function buildReviews(productName: string) {
-  const nameIdx1 = Math.floor(Math.random() * NAMES.length)
-  let nameIdx2 = Math.floor(Math.random() * NAMES.length)
-  while (nameIdx2 === nameIdx1) nameIdx2 = Math.floor(Math.random() * NAMES.length)
-  const text = GENERIC_TEXTS[Math.floor(Math.random() * GENERIC_TEXTS.length)]
-  const specificText = SPECIFIC_TEMPLATES[Math.floor(Math.random() * SPECIFIC_TEMPLATES.length)](productName)
-  return [
-    { name: NAMES[nameIdx1], text },
-    { name: NAMES[nameIdx2], text: specificText },
-  ]
+const COLOR_TEMPLATES: Array<(color: string) => string> = [
+  (c) => `Estava muito louca pela cor ${c}, e não me decepcionei nadinha.`,
+  (c) => `A cor ${c} é ainda mais linda pessoalmente do que nas fotos do site.`,
+  (c) => `Escolhi só pela cor ${c} mesmo, e acabei amando o produto também.`,
+  (c) => `Fiquei de olho esperando a cor ${c} voltar ao estoque, valeu a espera.`,
+  (c) => `Bati o olho na cor ${c} e nem pensei duas vezes antes de comprar.`,
+]
+
+type ReviewCard = { name: string; text: string }
+type ReviewPair = [ReviewCard, ReviewCard]
+
+function pickDistinct<T>(pool: T[], count: number): T[] {
+  const copy = [...pool]
+  const picked: T[] = []
+  for (let i = 0; i < count && copy.length > 0; i++) {
+    const idx = Math.floor(Math.random() * copy.length)
+    picked.push(copy.splice(idx, 1)[0])
+  }
+  return picked
 }
 
-export function ProductReviews({ productName }: { productName: string }) {
-  const [reviews, setReviews] = useState(() => [
-    { name: NAMES[0], text: GENERIC_TEXTS[0] },
-    { name: NAMES[1], text: SPECIFIC_TEMPLATES[0](productName) },
+function buildPairs(productName: string, color: string | undefined): ReviewPair[] {
+  const names = pickDistinct(NAMES, PAIRS_COUNT * 2)
+  const generics = pickDistinct(GENERIC_TEXTS, PAIRS_COUNT)
+  const specificTexts = color
+    ? pickDistinct(COLOR_TEMPLATES, PAIRS_COUNT).map((tpl) => tpl(color))
+    : pickDistinct(NAME_TEMPLATES, PAIRS_COUNT).map((tpl) => tpl(productName))
+
+  return Array.from({ length: PAIRS_COUNT }, (_, i) => [
+    { name: names[i * 2], text: generics[i] },
+    { name: names[i * 2 + 1], text: specificTexts[i] },
   ])
+}
+
+function initialPairs(productName: string, color: string | undefined): ReviewPair[] {
+  const specificTexts = color
+    ? COLOR_TEMPLATES.slice(0, PAIRS_COUNT).map((tpl) => tpl(color))
+    : NAME_TEMPLATES.slice(0, PAIRS_COUNT).map((tpl) => tpl(productName))
+
+  return Array.from({ length: PAIRS_COUNT }, (_, i) => [
+    { name: NAMES[i * 2], text: GENERIC_TEXTS[i] },
+    { name: NAMES[i * 2 + 1], text: specificTexts[i] },
+  ])
+}
+
+export function ProductReviews({ productName, color }: { productName: string; color?: string }) {
+  const [pairs, setPairs] = useState<ReviewPair[]>(() => initialPairs(productName, color))
+  const [active, setActive] = useState(0)
 
   useEffect(() => {
-    setReviews(buildReviews(productName))
-  }, [productName])
+    setPairs(buildPairs(productName, color))
+    setActive(0)
+    const id = setInterval(() => setActive((i) => (i + 1) % PAIRS_COUNT), ROTATE_INTERVAL_MS)
+    return () => clearInterval(id)
+  }, [productName, color])
+
+  const currentPair = pairs[active] ?? pairs[0]
 
   return (
     <div className="mt-5 space-y-3 border-t border-border pt-5">
       <p className="text-xs font-bold uppercase tracking-widest text-brand-pink-deep">Quem já comprou</p>
-      {reviews.map((r, i) => (
-        <div key={i} className="animate-fade-in-up rounded-2xl border border-border bg-card p-4 shadow-sm">
-          <div className="flex items-center justify-between">
-            <p className="flex items-center gap-1.5 text-sm font-bold text-foreground">
-              {r.name}
-              <BadgeCheck className="size-3.5 text-brand-navy" />
-            </p>
-            <div className="flex text-[#f5a623]">
-              {Array.from({ length: 5 }).map((_, j) => (
-                <Star key={j} className="size-3.5 fill-current" />
-              ))}
+      <div key={active} className="animate-fade-in-up space-y-3">
+        {currentPair.map((r, i) => (
+          <div key={i} className="rounded-2xl border border-border bg-card p-4 shadow-sm">
+            <div className="flex items-center justify-between">
+              <p className="flex items-center gap-1.5 text-sm font-bold text-foreground">
+                {r.name}
+                <BadgeCheck className="size-3.5 text-brand-navy" />
+              </p>
+              <div className="flex text-[#f5a623]">
+                {Array.from({ length: 5 }).map((_, j) => (
+                  <Star key={j} className="size-3.5 fill-current" />
+                ))}
+              </div>
             </div>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.text}</p>
           </div>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.text}</p>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   )
 }

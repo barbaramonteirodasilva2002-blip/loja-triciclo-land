@@ -105,6 +105,8 @@ export type Product = {
   gallery?: string[]
   available: boolean
   bestSeller?: boolean
+  /** Nome da cor/edição, só quando o produto realmente tiver uma (ver product-reviews.tsx). */
+  color?: string
   /** Características reais exibidas com ícone na página do produto (2 por produto). */
   features?: FeatureKey[]
 }
@@ -140,6 +142,7 @@ export const PRODUCTS: Product[] = [
     gallery: ["/products/desembaracar/tud-black-2.jpg", "/products/desembaracar/tud-black-3.jpg"],
     available: true,
     features: ["duas-camadas", "premium"],
+    color: "Black",
   },
   {
     slug: "the-ultimate-detangler-millennial-pink",
@@ -158,6 +161,7 @@ export const PRODUCTS: Product[] = [
     ],
     available: true,
     features: ["duas-camadas", "seco-molhado"],
+    color: "Millennial Pink",
   },
   {
     slug: "the-ultimate-detangler-fresh-purple",
@@ -173,6 +177,7 @@ export const PRODUCTS: Product[] = [
     gallery: ["/products/desembaracar/tud-fresh-purple-2.jpg"],
     available: true,
     features: ["duas-camadas", "seco-molhado"],
+    color: "Fresh Purple",
   },
   {
     slug: "the-ultimate-detangler-mini",
@@ -199,6 +204,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/chrome-midnight-silver-box.jpg",
     available: true,
     features: ["premium", "duas-camadas"],
+    color: "Midnight Silver",
   },
   {
     slug: "ultimate-detangler-chrome-neo-gold",
@@ -211,6 +217,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/chrome-neo-gold.jpg",
     available: true,
     features: ["premium", "duas-camadas"],
+    color: "Neo Gold",
   },
   {
     slug: "ultimate-detangler-chrome-mauve-copper",
@@ -231,6 +238,7 @@ export const PRODUCTS: Product[] = [
     available: true,
     bestSeller: true,
     features: ["premium", "duas-camadas"],
+    color: "Mauve Copper",
   },
   {
     slug: "the-original-mini",
@@ -260,6 +268,7 @@ export const PRODUCTS: Product[] = [
     gallery: ["/products/desembaracar/original-mini-aqua-2.jpg"],
     available: true,
     features: ["sem-puxar", "compacta"],
+    color: "Aqua",
   },
   {
     slug: "the-ultimate-detangler-naturally-curly",
@@ -303,6 +312,7 @@ export const PRODUCTS: Product[] = [
     gallery: ["/products/desembaracar/original-panther-black-2.jpg"],
     available: true,
     features: ["duas-camadas", "sem-puxar"],
+    color: "Panther Black",
   },
   {
     slug: "mini-ultimate-detangler-devil-wears-prada",
@@ -374,6 +384,7 @@ export const PRODUCTS: Product[] = [
     ],
     available: true,
     features: ["duas-camadas", "compacta"],
+    color: "Black",
   },
   {
     slug: "ultimate-detangler-mini-runway-pink",
@@ -386,6 +397,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/mini-runway-pink.jpg",
     available: true,
     features: ["compacta", "sem-puxar"],
+    color: "Runway Pink",
   },
   {
     slug: "the-ultimate-detangler-extra-gentle",
@@ -409,6 +421,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/desembaracar/fine-fragile-cinnamon.jpg",
     available: true,
     features: ["cerdas-macias", "condicionador"],
+    color: "Cinnamon",
   },
   {
     slug: "mini-ultimate-detangler-swarovski",
@@ -438,6 +451,7 @@ export const PRODUCTS: Product[] = [
     ],
     available: true,
     features: ["duas-camadas", "compacta"],
+    color: "Digital Lavender",
   },
   {
     slug: "the-ultimate-detangler-mini-lilac-swarovski",
@@ -456,6 +470,7 @@ export const PRODUCTS: Product[] = [
     ],
     available: true,
     features: ["colecionavel", "compacta"],
+    color: "Lilac",
   },
   {
     slug: "the-ultimate-detangler-mini-marshmallow-duo",
@@ -471,6 +486,7 @@ export const PRODUCTS: Product[] = [
     gallery: ["/products/desembaracar/tud-mini-marshmallow-duo-2.jpg"],
     available: true,
     features: ["duas-camadas", "compacta"],
+    color: "Marshmallow Duo",
   },
 
   // Modelar
@@ -542,6 +558,7 @@ export const PRODUCTS: Product[] = [
     img: "/products/finalizar/styler-pink.jpg",
     available: true,
     features: ["alinha-brilho", "facil-manuseio"],
+    color: "Pink",
   },
   {
     slug: "hair-pick-comb",
@@ -605,6 +622,7 @@ export const PRODUCTS: Product[] = [
     ],
     available: true,
     features: ["pet-friendly", "sem-puxar"],
+    color: "Purple Grey",
   },
   {
     slug: "desembaracadora-detangling-pequena",
