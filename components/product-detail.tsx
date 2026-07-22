@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useRef, useState } from "react"
 import Image from "next/image"
 import { Check, Minus, Plus, ShieldCheck, ShoppingBag, ShoppingCart, Truck } from "lucide-react"
 import { formatBRL } from "@/lib/checkout"
@@ -24,11 +24,26 @@ export function ProductDetail({ product, collection }: { product: Product; colle
   const [activeImage, setActiveImage] = useState(0)
   const [quantity, setQuantity] = useState(1)
   const [added, setAdded] = useState(false)
+  const zoomRef = useRef<HTMLDivElement>(null)
+  const [zoomOrigin, setZoomOrigin] = useState<string | null>(null)
+
+  function handleZoomMove(e: React.MouseEvent<HTMLDivElement>) {
+    const rect = zoomRef.current?.getBoundingClientRect()
+    if (!rect) return
+    const x = ((e.clientX - rect.left) / rect.width) * 100
+    const y = ((e.clientY - rect.top) / rect.height) * 100
+    setZoomOrigin(`${x}% ${y}%`)
+  }
 
   return (
     <section className="mx-auto max-w-6xl px-4 py-6 lg:grid lg:grid-cols-2 lg:gap-10 lg:py-10">
       <div>
-        <div className="relative aspect-square overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium">
+        <div
+          ref={zoomRef}
+          onMouseMove={handleZoomMove}
+          onMouseLeave={() => setZoomOrigin(null)}
+          className="relative aspect-square cursor-zoom-in overflow-hidden rounded-2xl bg-[radial-gradient(circle_at_50%_40%,var(--secondary),white_70%)] shadow-premium"
+        >
           <Image
             key={images[activeImage]}
             src={images[activeImage] || "/placeholder.svg"}
@@ -36,7 +51,8 @@ export function ProductDetail({ product, collection }: { product: Product; colle
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="animate-fade-in-up object-contain p-6 drop-shadow-[0_14px_20px_rgba(20,20,20,0.12)]"
+            style={zoomOrigin ? { transformOrigin: zoomOrigin, transform: "scale(2.2)" } : undefined}
+            className="animate-fade-in-up object-contain p-6 drop-shadow-[0_14px_20px_rgba(20,20,20,0.12)] transition-transform duration-200 ease-out"
           />
           {product.discountPct && (
             <span className="absolute left-3 top-3 rounded-full bg-primary px-3 py-1 text-xs font-bold text-primary-foreground">
