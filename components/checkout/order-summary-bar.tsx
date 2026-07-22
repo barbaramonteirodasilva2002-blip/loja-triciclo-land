@@ -139,8 +139,14 @@ export function OrderSummaryBar({
                 {couponStatus === "loading" ? "..." : "Aplicar"}
               </button>
             </div>
-            {couponStatus === "applied" && <p className="mt-1.5 text-xs font-semibold text-emerald-600">Cupom aplicado!</p>}
-            {couponStatus === "invalid" && <p className="mt-1.5 text-xs font-semibold text-[#d9534f]">Cupom inválido ou expirado.</p>}
+            {couponStatus === "applied" && (
+              <p className="animate-fade-in-up mt-1.5 text-xs font-semibold text-emerald-600">Cupom aplicado!</p>
+            )}
+            {couponStatus === "invalid" && (
+              <p className="animate-fade-in-up mt-1.5 text-xs font-semibold text-[#d9534f]">
+                Cupom inválido ou expirado.
+              </p>
+            )}
           </div>
 
           <div className="space-y-1.5 border-t border-border pt-3 text-sm">

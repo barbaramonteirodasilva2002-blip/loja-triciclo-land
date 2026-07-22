@@ -45,7 +45,7 @@ export function PaymentSection({
           type="button"
           onClick={() => onPaymentMethodChange("pix")}
           className={cn(
-            "relative flex flex-col items-center justify-center gap-0.5 rounded-xl border-2 py-3 text-sm font-semibold transition",
+            "relative flex flex-col items-center justify-center gap-0.5 rounded-xl border-2 py-3 text-sm font-semibold transition active:scale-[0.98]",
             paymentMethod === "pix" ? "border-brand-navy bg-secondary text-brand-navy" : "border-border text-muted-foreground hover:border-brand-navy/40",
           )}
         >
@@ -61,7 +61,7 @@ export function PaymentSection({
           type="button"
           onClick={() => onPaymentMethodChange("cartao")}
           className={cn(
-            "flex items-center justify-center gap-2 rounded-xl border-2 py-3 text-sm font-semibold transition",
+            "flex items-center justify-center gap-2 rounded-xl border-2 py-3 text-sm font-semibold transition active:scale-[0.98]",
             paymentMethod === "cartao" ? "border-brand-navy bg-secondary text-brand-navy" : "border-border text-muted-foreground hover:border-brand-navy/40",
           )}
         >
@@ -70,7 +70,7 @@ export function PaymentSection({
       </div>
 
       {paymentMethod === "pix" && (
-        <div className="mt-4 space-y-2.5">
+        <div className="animate-fade-in-up mt-4 space-y-2.5">
           <div className="flex items-start gap-3 rounded-xl bg-secondary/60 p-4">
             <QrCode className="mt-0.5 size-5 shrink-0 text-brand-navy" />
             <p className="text-sm text-muted-foreground">
@@ -89,7 +89,7 @@ export function PaymentSection({
       )}
 
       {paymentMethod === "cartao" && (
-        <div className="mt-4 space-y-3">
+        <div className="animate-fade-in-up mt-4 space-y-3">
           <div>
             <label htmlFor="cc-number" className="text-xs font-semibold text-muted-foreground">
               Número do cartão

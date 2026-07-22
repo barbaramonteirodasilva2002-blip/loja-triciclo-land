@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { ArrowLeft, ArrowRight, Lock, ShoppingBag, Check } from "lucide-react"
+import { ArrowLeft, ArrowRight, Loader2, Lock, ShoppingBag, Check } from "lucide-react"
 import { getKit, getShippingMethod, PIX_DISCOUNT_PERCENT, DEFAULT_SHIPPING_METHOD, type ShippingMethodId } from "@/lib/checkout"
 import { formatCEP, formatCPF, formatPhone, isValidCPF, isValidExpiry, luhnCheck, detectCardBrand } from "@/lib/format"
 import { getSessionId } from "@/lib/session"
@@ -382,7 +382,7 @@ export function CheckoutClient() {
         <StepIndicator current={step} onStepClick={goToStep} />
 
         {step === 1 && (
-          <div className="space-y-4">
+          <div key={1} className="animate-fade-in-up space-y-4">
             <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
               <p className="text-sm font-bold text-foreground">Preencha seus dados para envio do pedido.</p>
               <div className="mt-3 space-y-3">
@@ -460,7 +460,7 @@ export function CheckoutClient() {
         )}
 
         {step === 2 && (
-          <div className="space-y-4">
+          <div key={2} className="animate-fade-in-up space-y-4">
           <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
             <p className="text-sm font-bold text-foreground">Para onde enviamos o seu pedido?</p>
             <div className="mt-3 space-y-3">
@@ -572,7 +572,7 @@ export function CheckoutClient() {
         )}
 
         {step === 3 && (
-          <div className="space-y-4">
+          <div key={3} className="animate-fade-in-up space-y-4">
             <PaymentSection
               paymentMethod={paymentMethod}
               onPaymentMethodChange={setPaymentMethod}
@@ -607,7 +607,7 @@ export function CheckoutClient() {
                 disabled={submitting}
                 className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-brand-navy py-4 font-heading text-base font-bold text-white shadow-lg shadow-brand-navy/20 transition hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-70"
               >
-                <Lock className="size-4" />
+                {submitting ? <Loader2 className="size-4 animate-spin" /> : <Lock className="size-4" />}
                 {submitting ? "Processando..." : "Finalizar Pedido"}
               </button>
             </div>

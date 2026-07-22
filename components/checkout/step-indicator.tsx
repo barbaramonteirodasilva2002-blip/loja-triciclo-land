@@ -34,10 +34,12 @@ export function StepIndicator({
                 className="flex shrink-0 flex-col items-center gap-1.5"
               >
                 <span
+                  key={isActive ? "active" : isDone ? "done" : "pending"}
                   className={cn(
                     "flex size-8 shrink-0 items-center justify-center rounded-full text-sm font-bold transition",
+                    "animate-fade-in-up",
                     isDone && "bg-brand-navy text-white",
-                    isActive && "bg-accent text-accent-foreground",
+                    isActive && "bg-accent text-accent-foreground shadow-chrome",
                     !isDone && !isActive && "bg-secondary text-muted-foreground",
                   )}
                 >
@@ -53,7 +55,12 @@ export function StepIndicator({
                 </span>
               </button>
               {i < steps.length - 1 && (
-                <span className={cn("mx-2 mt-4 h-0.5 flex-1 rounded-full", isDone ? "bg-brand-navy" : "bg-border")} />
+                <span
+                  className={cn(
+                    "mx-2 mt-4 h-0.5 flex-1 rounded-full transition-colors duration-500",
+                    isDone ? "bg-brand-navy" : "bg-border",
+                  )}
+                />
               )}
             </Fragment>
           )

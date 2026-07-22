@@ -24,18 +24,18 @@ export function ShippingSelector({
               type="button"
               onClick={() => onSelect(method.id)}
               className={cn(
-                "flex w-full items-center justify-between rounded-xl border-2 p-4 text-left transition",
+                "flex w-full items-center justify-between rounded-xl border-2 p-4 text-left transition active:scale-[0.99]",
                 isSelected ? "border-brand-navy bg-secondary/60" : "border-border hover:border-brand-navy/40",
               )}
             >
               <div className="flex items-center gap-3">
                 <span
                   className={cn(
-                    "flex size-5 shrink-0 items-center justify-center rounded-full border-2",
+                    "flex size-5 shrink-0 items-center justify-center rounded-full border-2 transition",
                     isSelected ? "border-brand-navy" : "border-border",
                   )}
                 >
-                  {isSelected && <span className="size-2.5 rounded-full bg-brand-navy" />}
+                  {isSelected && <span className="size-2.5 animate-fade-in-up rounded-full bg-brand-navy" />}
                 </span>
                 <div>
                   <p className="flex items-center gap-2 text-sm font-bold text-foreground">
