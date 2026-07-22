@@ -9,6 +9,7 @@ import { useCart } from "@/components/cart-provider"
 import { PaymentMethods } from "@/components/payment-methods"
 import { ProductFeatures } from "@/components/product-features"
 import { ProductShippingCalculator } from "@/components/product-shipping-calculator"
+import { ProductReviews } from "@/components/product-reviews"
 import type { Product } from "@/lib/products"
 import type { Collection } from "@/lib/products"
 
@@ -211,6 +212,8 @@ export function ProductDetail({ product, collection }: { product: Product; colle
             <span className="text-xs text-muted-foreground">Frete grátis</span>
           </div>
         </div>
+
+        <ProductReviews productName={product.name} />
 
         <div className="mt-4 flex justify-center">
           <PaymentMethods />
