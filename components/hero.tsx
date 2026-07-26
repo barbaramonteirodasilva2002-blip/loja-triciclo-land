@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { Percent } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { Parallax } from "@/components/parallax"
 import { HeroProductVisual } from "@/components/hero-product-visual"
@@ -35,21 +36,21 @@ export function Hero() {
             de manhã.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-5">
-            <div className="relative">
-              <Link
-                href="/produto/the-ultimate-detangler"
-                className="chrome-gradient-bg group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-4 font-heading text-sm font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
-              >
-                <span className="pointer-events-none absolute inset-0 -translate-x-full bg-white/25 transition-transform duration-700 ease-out group-hover:translate-x-full" />
-                <span className="relative">Quero desembaraçar meu cabelo</span>
-              </Link>
-              <Parallax speed={0.06} className="pointer-events-none absolute -right-4 -top-7 rotate-[-8deg]">
-                <span className="animate-badge-pulse flex items-center rounded-full bg-primary px-3 py-1.5 text-[11px] font-extrabold uppercase tracking-wide text-white ring-2 ring-ink">
-                  Até 60% off
-                </span>
-              </Parallax>
-            </div>
+          <Parallax speed={0.05} className="mt-6">
+            <span className="animate-badge-pulse inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg shadow-primary/30">
+              <Percent className="size-4" />
+              Até 60% off em produtos selecionados
+            </span>
+          </Parallax>
+
+          <div className="mt-6 flex flex-wrap items-center gap-5">
+            <Link
+              href="/produto/the-ultimate-detangler"
+              className="chrome-gradient-bg group relative inline-flex items-center justify-center overflow-hidden rounded-full px-8 py-4 font-heading text-sm font-bold text-white shadow-chrome transition-transform duration-300 hover:scale-[1.03] active:scale-[0.98]"
+            >
+              <span className="pointer-events-none absolute inset-0 -translate-x-full bg-white/25 transition-transform duration-700 ease-out group-hover:translate-x-full" />
+              <span className="relative">Quero desembaraçar meu cabelo</span>
+            </Link>
             <a
               href="#colecoes"
               className="inline-flex items-center justify-center gap-1 text-sm font-semibold text-white transition hover:gap-2 hover:text-brand-teal-bright"
