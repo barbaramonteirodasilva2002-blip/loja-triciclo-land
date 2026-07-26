@@ -36,7 +36,7 @@ export function Reveal({
   return (
     <div
       ref={ref}
-      data-reveal={visible ? "in" : undefined}
+      data-reveal={visible ? "in" : "out"}
       data-reveal-dir={direction !== "up" ? direction : undefined}
       style={visible ? { transitionDelay: `${delay}ms` } : undefined}
       className={className}
