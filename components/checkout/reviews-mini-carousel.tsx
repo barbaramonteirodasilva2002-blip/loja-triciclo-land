@@ -49,7 +49,7 @@ const testimonials: Testimonial[] = [
   },
   {
     name: "Camila R.",
-    text: "uso no cabelo molhado depois do banho e nao acredito como não puxa nem quebra o fio!!",
+    text: "uso no cabelo molhado depois do banho e nao acredito como nao puxa nem quebra o fio!!",
   },
   {
     name: "Beatriz L.",
