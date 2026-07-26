@@ -14,6 +14,7 @@ import {
   Package,
   ShieldCheck,
   Heart,
+  Percent,
 } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { cn } from "@/lib/utils"
@@ -30,6 +31,7 @@ const mainLinks = [
 const collectionLinks = COLLECTIONS.map((c) => ({ label: c.name, href: `/colecoes/${c.slug}` }))
 
 const marqueeItems = [
+  { icon: Percent, label: "Até 60% OFF em produtos selecionados" },
   { icon: Truck, label: "Frete grátis para todo o Brasil" },
   { icon: Package, label: "Envio imediato" },
   { icon: Heart, label: "Mais de 3 mil clientes satisfeitos" },
