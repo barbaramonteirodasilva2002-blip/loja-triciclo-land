@@ -23,7 +23,6 @@ export default function Page() {
         <ul className="list-disc space-y-1 pl-5">
           <li>Pix (aprovação imediata)</li>
           <li>Cartão de crédito: Visa, Mastercard, Elo, American Express, Hipercard e Diners</li>
-          <li>Boleto bancário</li>
           <li>Parcelamento em até 12x no cartão</li>
         </ul>
       </Section>

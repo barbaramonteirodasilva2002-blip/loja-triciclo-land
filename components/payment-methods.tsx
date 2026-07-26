@@ -1,14 +1,13 @@
 import Image from "next/image"
 
 const cards = [
-  { name: "Visa", file: "visa" },
-  { name: "Mastercard", file: "mastercard" },
-  { name: "American Express", file: "amex" },
-  { name: "Diners Club", file: "diners" },
-  { name: "Hipercard", file: "hipercard" },
-  { name: "Boleto", file: "boleto" },
-  { name: "Elo", file: "elo" },
-  { name: "Pix", file: "pix" },
+  { name: "Visa", file: "visa", width: 780, height: 500 },
+  { name: "Mastercard", file: "mastercard", width: 780, height: 500 },
+  { name: "American Express", file: "amex", width: 780, height: 500 },
+  { name: "Diners Club", file: "diners", width: 780, height: 500 },
+  { name: "Hipercard", file: "hipercard", width: 780, height: 500 },
+  { name: "Elo", file: "elo", width: 780, height: 500 },
+  { name: "Pix", file: "pix", width: 24, height: 24 },
 ]
 
 export function PaymentMethods() {
@@ -22,8 +21,8 @@ export function PaymentMethods() {
           <Image
             src={`/images/cards/${c.file}.svg`}
             alt={c.name}
-            width={120}
-            height={40}
+            width={c.width}
+            height={c.height}
             sizes="52px"
             className="h-auto w-full object-contain"
           />
