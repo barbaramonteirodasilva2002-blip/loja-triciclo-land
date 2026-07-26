@@ -1,4 +1,3 @@
-import { Percent } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function DiscountBanner({ className }: { className?: string }) {
@@ -9,7 +8,6 @@ export function DiscountBanner({ className }: { className?: string }) {
         className,
       )}
     >
-      <Percent className="size-3.5" />
       Até 60% off em produtos selecionados
     </span>
   )

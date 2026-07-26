@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { Percent } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { Parallax } from "@/components/parallax"
 import { HeroProductVisual } from "@/components/hero-product-visual"
@@ -38,7 +37,6 @@ export function Hero() {
 
           <Parallax speed={0.05} className="mt-6">
             <span className="animate-badge-pulse inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-extrabold uppercase tracking-wide text-white shadow-lg shadow-primary/30">
-              <Percent className="size-4" />
               Até 60% off em produtos selecionados
             </span>
           </Parallax>
