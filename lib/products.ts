@@ -199,8 +199,10 @@ export const PRODUCTS: Product[] = [
     collection: "desembaracar",
     description:
       "Edição especial da linha Chrome, com acabamento metalizado prata e a mesma tecnologia de duas fileiras de cerdas da Ultimate Detangler, em uma escova premium para presentear.",
-    price: "253,00",
-    priceValue: 253.0,
+    price: "101,20",
+    priceValue: 101.2,
+    oldPrice: "253,00",
+    discountPct: "60",
     img: "/products/desembaracar/chrome-midnight-silver-box.jpg",
     available: true,
     features: ["premium", "duas-camadas"],
