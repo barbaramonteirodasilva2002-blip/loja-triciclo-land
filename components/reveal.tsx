@@ -6,10 +6,13 @@ export function Reveal({
   children,
   delay = 0,
   className,
+  direction = "up",
 }: {
   children: ReactNode
   delay?: number
   className?: string
+  /** "up" (padrão) sobe suavemente; "left"/"right" desliza a partir da lateral. */
+  direction?: "up" | "left" | "right"
 }) {
   const ref = useRef<HTMLDivElement>(null)
   const [visible, setVisible] = useState(false)
@@ -34,6 +37,7 @@ export function Reveal({
     <div
       ref={ref}
       data-reveal={visible ? "in" : undefined}
+      data-reveal-dir={direction !== "up" ? direction : undefined}
       style={visible ? { transitionDelay: `${delay}ms` } : undefined}
       className={className}
     >

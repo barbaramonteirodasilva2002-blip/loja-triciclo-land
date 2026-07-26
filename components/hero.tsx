@@ -22,7 +22,7 @@ export function Hero() {
       </div>
 
       <div className="relative mx-auto grid max-w-6xl gap-8 px-4 py-16 lg:grid-cols-2 lg:items-center lg:gap-10 lg:py-24">
-        <Reveal>
+        <Reveal direction="left">
           <p className="font-mono text-xs font-bold uppercase tracking-[0.25em] text-brand-teal-bright">
             Escovas Tangle Teezer no Brasil
           </p>
@@ -60,7 +60,7 @@ export function Hero() {
           </div>
         </Reveal>
 
-        <Reveal delay={120}>
+        <Reveal delay={120} direction="right">
           <Parallax speed={0.06} className="relative">
             <Link href="/produto/ultimate-detangler-chrome-mauve-copper" className="block">
               <HeroProductVisual

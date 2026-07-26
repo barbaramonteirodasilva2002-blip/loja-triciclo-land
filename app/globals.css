@@ -285,11 +285,29 @@
   transform: translateY(0);
 }
 
+/* Variante direcional: em vez de subir, desliza da esquerda/direita — usada
+   no hero pra dar a sensação dos dois blocos "se encontrando" no centro. */
+[data-reveal][data-reveal-dir="left"] {
+  transform: translateX(-48px);
+}
+
+[data-reveal][data-reveal-dir="right"] {
+  transform: translateX(48px);
+}
+
+[data-reveal="in"][data-reveal-dir="left"],
+[data-reveal="in"][data-reveal-dir="right"] {
+  transform: translateX(0);
+}
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+  [data-reveal][data-reveal-dir] {
+    transform: none;
   }
   .shadow-premium-hover:hover {
     transform: none;
