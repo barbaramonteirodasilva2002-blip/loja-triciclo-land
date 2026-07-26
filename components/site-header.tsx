@@ -205,7 +205,7 @@ export function SiteHeader() {
             <div className="flex justify-center">
               <Logo variant="light" />
             </div>
-            <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à Tangle Teezer</p>
+            <p className="mt-2 text-sm text-white/70">Bem-vindo(a) à Nó Zero</p>
           </div>
 
           {/* Corpo do menu */}

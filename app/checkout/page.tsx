@@ -7,8 +7,8 @@ import { Logo } from "@/components/logo"
 import { CheckoutClient } from "@/components/checkout/checkout-client"
 
 export const metadata: Metadata = {
-  title: "Finalizar Compra | Tangle Teezer Brasil",
-  description: "Finalize sua compra com segurança na loja Tangle Teezer Brasil.",
+  title: "Finalizar Compra | Nó Zero",
+  description: "Finalize sua compra com segurança na loja Nó Zero.",
 }
 
 export default function CheckoutPage() {

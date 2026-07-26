@@ -96,7 +96,7 @@ export function SiteFooter() {
             CNPJ [00.000.000/0000-00] · Comercializamos produtos originais da marca Tangle Teezer
           </p>
           <p className="mt-4 text-xs text-primary-foreground/50">
-            © {new Date().getFullYear()} Tangle Teezer Brasil. Todos os direitos reservados.
+            © {new Date().getFullYear()} Nó Zero. Todos os direitos reservados.
           </p>
         </div>
       </div>

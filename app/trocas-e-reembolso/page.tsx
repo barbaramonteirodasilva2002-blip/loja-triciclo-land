@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Trocas e Reembolso | Tangle Teezer Brasil",
+  title: "Trocas e Reembolso | Nó Zero",
   description: "Saiba como solicitar trocas, devoluções e reembolsos dos produtos Tangle Teezer.",
 }
 

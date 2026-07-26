@@ -6,7 +6,7 @@ import { Faq } from "@/components/faq"
 import { SiteFooter } from "@/components/site-footer"
 
 export const metadata: Metadata = {
-  title: "Dúvidas Frequentes | Tangle Teezer Brasil",
+  title: "Dúvidas Frequentes | Nó Zero",
   description: "Respostas para as principais dúvidas sobre as escovas Tangle Teezer: uso, tipos de fio, entrega e garantia.",
 }
 

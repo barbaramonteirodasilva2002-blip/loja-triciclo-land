@@ -2,15 +2,15 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Quem Somos | Tangle Teezer Brasil",
-  description: "Conheça nossa loja de escovas Tangle Teezer no Brasil.",
+  title: "Quem Somos | Nó Zero",
+  description: "Conheça a Nó Zero, nossa loja de escovas Tangle Teezer no Brasil.",
 }
 
 export default function Page() {
   return (
     <PageShell
       title="Quem Somos"
-      intro="Somos uma loja especializada em escovas Tangle Teezer no Brasil, levando os produtos originais até a sua casa com entrega rápida e segura."
+      intro="Somos a Nó Zero, uma loja especializada em escovas Tangle Teezer no Brasil, levando os produtos originais até a sua casa com entrega rápida e segura."
     >
       <Section heading="Nossa missão">
         <p>

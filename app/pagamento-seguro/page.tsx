@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Pagamento Seguro | Tangle Teezer Brasil",
+  title: "Pagamento Seguro | Nó Zero",
   description: "Entenda como protegemos os seus dados e quais formas de pagamento são aceitas.",
 }
 

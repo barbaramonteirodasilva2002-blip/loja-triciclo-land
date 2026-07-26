@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Termos de Uso | Tangle Teezer Brasil",
+  title: "Termos de Uso | Nó Zero",
   description: "Conheça os termos e condições de uso do site e das compras realizadas nesta loja.",
 }
 

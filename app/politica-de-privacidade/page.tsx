@@ -2,7 +2,7 @@ import type { Metadata } from "next"
 import { PageShell, Section } from "@/components/page-shell"
 
 export const metadata: Metadata = {
-  title: "Política de Privacidade | Tangle Teezer Brasil",
+  title: "Política de Privacidade | Nó Zero",
   description: "Entenda como coletamos, usamos e protegemos os seus dados pessoais.",
 }
 

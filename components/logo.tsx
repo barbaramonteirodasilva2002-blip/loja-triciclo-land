@@ -5,7 +5,7 @@ interface LogoProps {
   variant?: "light" | "dark"
 }
 
-// Wordmark em texto (a marca não fornece um arquivo de logo para revendedores).
+// Wordmark em texto (ainda sem arquivo de logo desenhado).
 export function Logo({ className, variant = "dark" }: LogoProps) {
   const isLight = variant === "light"
   return (
@@ -16,7 +16,7 @@ export function Logo({ className, variant = "dark" }: LogoProps) {
           isLight ? "text-white" : "text-foreground",
         )}
       >
-        Tangle Teezer
+        Nó Zero
       </span>
       <span
         className={cn(

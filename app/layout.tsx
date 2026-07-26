@@ -25,9 +25,9 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Tangle Teezer Brasil',
+  title: 'Nó Zero',
   description:
-    'Escovas Tangle Teezer originais: Desembaraçar, Modelar, Finalizar, Bem-Estar, Pet-Teezer e Kits. Produto original, compra segura e frete grátis.',
+    'Nó Zero: escovas Tangle Teezer originais — Desembaraçar, Modelar, Finalizar, Bem-Estar, Pet-Teezer e Kits. Produto original, compra segura e frete grátis.',
   generator: 'v0.app',
   icons: {
     icon: '/icon.svg',

@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const collection = getCollection(slug)
   if (!collection) return {}
   return {
-    title: `${collection.name} | Tangle Teezer Brasil`,
+    title: `${collection.name} | Nó Zero`,
     description: collection.description,
   }
 }
