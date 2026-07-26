@@ -1,6 +1,7 @@
 import { Check, X } from "lucide-react"
 import { Reveal } from "@/components/reveal"
 import { Parallax } from "@/components/parallax"
+import { TrustStat } from "@/components/trust-stat"
 
 export function ProblemSection() {
   return (
@@ -17,6 +18,11 @@ export function ProblemSection() {
         <p className="mt-4 font-accent text-xl italic text-brand-pink-deep">
           O problema nunca foi o seu cabelo. Foi a escova.
         </p>
+
+        <div className="mt-8 border-t border-border pt-8">
+          <TrustStat />
+          <p className="mt-1 text-sm font-semibold text-muted-foreground">clientes já resolveram esse problema</p>
+        </div>
       </Reveal>
     </section>
   )
@@ -80,29 +86,30 @@ export function ComparisonSection() {
           </h2>
         </Reveal>
 
-        <Reveal delay={100} className="mt-10 overflow-hidden rounded-2xl border border-border shadow-premium">
-          <div className="chrome-gradient-bg grid grid-cols-[1.2fr_1fr_1fr] text-center text-xs font-bold uppercase tracking-wide text-white">
+        <div className="mt-10 overflow-hidden rounded-2xl border border-border shadow-premium">
+          <Reveal className="chrome-gradient-bg grid grid-cols-[1.2fr_1fr_1fr] text-center text-xs font-bold uppercase tracking-wide text-white">
             <div className="p-4 text-left" />
             <div className="p-4 text-white/80">Escova comum</div>
             <div className="p-4">Tangle Teezer</div>
-          </div>
+          </Reveal>
           {comparisonRows.map((row, i) => (
-            <div
-              key={row.label}
-              className={`grid grid-cols-[1.2fr_1fr_1fr] items-center text-sm ${i % 2 ? "bg-card" : "bg-background"}`}
-            >
-              <div className="border-r border-border p-4 text-left font-medium text-foreground">{row.label}</div>
-              <div className="flex items-center justify-center gap-1.5 border-r border-border p-3 text-center text-xs text-muted-foreground sm:p-4 sm:text-sm">
-                <X className="size-3.5 shrink-0 text-muted-foreground/60" />
-                <span>{row.common}</span>
+            <Reveal key={row.label} delay={i * 90}>
+              <div
+                className={`grid grid-cols-[1.2fr_1fr_1fr] items-center text-sm ${i % 2 ? "bg-card" : "bg-background"}`}
+              >
+                <div className="border-r border-border p-4 text-left font-medium text-foreground">{row.label}</div>
+                <div className="flex items-center justify-center gap-1.5 border-r border-border p-3 text-center text-xs text-muted-foreground sm:p-4 sm:text-sm">
+                  <X className="size-3.5 shrink-0 text-muted-foreground/60" />
+                  <span>{row.common}</span>
+                </div>
+                <div className="flex items-center justify-center gap-1.5 p-3 text-center text-xs font-semibold text-foreground sm:p-4 sm:text-sm">
+                  <Check className="size-3.5 shrink-0 text-accent" />
+                  <span>{row.tangle}</span>
+                </div>
               </div>
-              <div className="flex items-center justify-center gap-1.5 p-3 text-center text-xs font-semibold text-foreground sm:p-4 sm:text-sm">
-                <Check className="size-3.5 shrink-0 text-accent" />
-                <span>{row.tangle}</span>
-              </div>
-            </div>
+            </Reveal>
           ))}
-        </Reveal>
+        </div>
       </div>
     </section>
   )
