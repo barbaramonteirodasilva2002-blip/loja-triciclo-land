@@ -1,6 +1,8 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
 import {
   Menu,
   X,
@@ -19,7 +21,13 @@ import { Logo } from "@/components/logo"
 import { cn } from "@/lib/utils"
 import { useCart } from "@/components/cart-provider"
 import { CartDrawer } from "@/components/cart-drawer"
-import { COLLECTIONS } from "@/lib/products"
+import { COLLECTIONS, PRODUCTS } from "@/lib/products"
+
+const DIACRITICS_PATTERN = new RegExp("[" + String.fromCharCode(0x0300) + "-" + String.fromCharCode(0x036f) + "]", "g")
+
+function normalize(value: string) {
+  return value.normalize("NFD").replace(DIACRITICS_PATTERN, "").toLowerCase()
+}
 
 const mainLinks = [
   { label: "Início", href: "/", icon: Home },
@@ -53,9 +61,26 @@ const institutionalLinks = [
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
+  const [query, setQuery] = useState("")
   const [cartBump, setCartBump] = useState(false)
   const cart = useCart()
   const prevCartCount = useRef(cart.totalCount)
+
+  function closeSearch() {
+    setSearchOpen(false)
+    setQuery("")
+  }
+
+  const trimmedQuery = query.trim()
+  const searchResults =
+    trimmedQuery.length > 1
+      ? PRODUCTS.filter((p) => {
+          if (!p.available) return false
+          const needle = normalize(trimmedQuery)
+          const haystack = normalize(`${p.name} ${p.color ?? ""} ${p.description}`)
+          return haystack.includes(needle)
+        }).slice(0, 6)
+      : []
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : ""
@@ -117,7 +142,7 @@ export function SiteHeader() {
             </a>
             <button
               type="button"
-              onClick={() => setSearchOpen((v) => !v)}
+              onClick={() => (searchOpen ? closeSearch() : setSearchOpen(true))}
               className="inline-flex size-10 items-center justify-center rounded-md text-primary transition-colors hover:bg-secondary"
               aria-label="Buscar produtos"
             >
@@ -154,18 +179,50 @@ export function SiteHeader() {
               <input
                 autoFocus
                 type="search"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
                 placeholder="O que você procura hoje?"
                 className="w-full bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
               />
               <button
                 type="button"
-                onClick={() => setSearchOpen(false)}
+                onClick={closeSearch}
                 aria-label="Fechar busca"
                 className="text-muted-foreground transition-colors hover:text-foreground"
               >
                 <X className="size-5" />
               </button>
             </div>
+
+            {trimmedQuery.length > 1 && (
+              <div className="mx-auto max-w-6xl px-4 pb-3">
+                {searchResults.length > 0 ? (
+                  <ul className="space-y-1">
+                    {searchResults.map((p) => (
+                      <li key={p.slug}>
+                        <Link
+                          href={`/produto/${p.slug}`}
+                          onClick={closeSearch}
+                          className="flex items-center gap-3 rounded-lg p-2 transition-colors hover:bg-secondary"
+                        >
+                          <span className="relative size-11 shrink-0 overflow-hidden rounded-lg bg-white ring-1 ring-border">
+                            <Image src={p.img} alt="" fill sizes="44px" className="object-contain p-1" />
+                          </span>
+                          <span className="min-w-0 flex-1">
+                            <span className="block truncate text-sm font-medium text-foreground">{p.name}</span>
+                            <span className="block text-xs text-muted-foreground">R$ {p.price}</span>
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <p className="px-2 py-3 text-sm text-muted-foreground">
+                    Nenhum produto encontrado para &ldquo;{trimmedQuery}&rdquo;.
+                  </p>
+                )}
+              </div>
+            )}
           </div>
         )}
       </header>

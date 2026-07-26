@@ -25,6 +25,7 @@ const spaceMono = Space_Mono({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tangle-teezer-next.vercel.app'),
   title: 'Nó Zero',
   description:
     'Nó Zero: escovas Tangle Teezer originais — Desembaraçar, Modelar, Finalizar, Bem-Estar, Pet-Teezer e Kits. Produto original, compra segura e frete grátis.',
@@ -33,6 +34,18 @@ export const metadata: Metadata = {
     icon: '/icon.svg',
     shortcut: '/icon.svg',
     apple: '/apple-icon.png',
+  },
+  openGraph: {
+    title: 'Nó Zero',
+    description: 'O fim da dor de pentear. Escovas Tangle Teezer originais no Brasil.',
+    siteName: 'Nó Zero',
+    locale: 'pt_BR',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Nó Zero',
+    description: 'O fim da dor de pentear. Escovas Tangle Teezer originais no Brasil.',
   },
 }
 
