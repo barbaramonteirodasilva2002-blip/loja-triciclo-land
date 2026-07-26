@@ -14,7 +14,6 @@ import {
   Package,
   ShieldCheck,
   Heart,
-  Percent,
 } from "lucide-react"
 import { Logo } from "@/components/logo"
 import { cn } from "@/lib/utils"
@@ -30,8 +29,8 @@ const mainLinks = [
 
 const collectionLinks = COLLECTIONS.map((c) => ({ label: c.name, href: `/colecoes/${c.slug}` }))
 
-const marqueeItems = [
-  { icon: Percent, label: "Até 60% OFF em produtos selecionados" },
+const marqueeItems: { icon?: typeof Truck; label: string }[] = [
+  { label: "Até 60% OFF em produtos selecionados" },
   { icon: Truck, label: "Frete grátis para todo o Brasil" },
   { icon: Package, label: "Envio imediato" },
   { icon: Heart, label: "Mais de 3 mil clientes satisfeitos" },
@@ -84,7 +83,7 @@ export function SiteHeader() {
               key={i}
               className="flex shrink-0 items-center gap-2.5 whitespace-nowrap px-2 text-[11px] font-semibold uppercase tracking-[0.14em] sm:text-xs"
             >
-              <item.icon className="size-3.5 shrink-0 text-brand-teal-bright" />
+              {item.icon && <item.icon className="size-3.5 shrink-0 text-brand-teal-bright" />}
               {item.label}
               <span className="mx-4 text-white/20">·</span>
             </span>
