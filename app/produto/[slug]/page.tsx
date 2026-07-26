@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/site-footer"
 import { StickyBuyBar } from "@/components/sticky-buy-bar"
 import { ProductDetail } from "@/components/product-detail"
 import { ProductCard } from "@/components/product-card"
+import { DiscountBanner } from "@/components/discount-banner"
 import { PRODUCTS, getCollection, getProduct, getProductsByCollection } from "@/lib/products"
 
 export function generateStaticParams() {
@@ -58,9 +59,10 @@ export default async function ProductPage({ params }: { params: Promise<{ slug: 
         {related.length > 0 && (
           <section className="bg-secondary/50 py-10">
             <div className="mx-auto max-w-6xl px-4">
-              <h2 className="mb-4 font-heading text-xl font-bold text-foreground">
-                Mais de {collection.name}
-              </h2>
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+                <h2 className="font-heading text-xl font-bold text-foreground">Mais de {collection.name}</h2>
+                <DiscountBanner />
+              </div>
               <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
                 {related.map((p) => (
                   <ProductCard key={p.slug} product={p} />

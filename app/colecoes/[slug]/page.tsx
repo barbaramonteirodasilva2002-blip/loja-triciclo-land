@@ -5,6 +5,7 @@ import { ArrowLeft } from "lucide-react"
 import { SiteHeader } from "@/components/site-header"
 import { SiteFooter } from "@/components/site-footer"
 import { ProductCard } from "@/components/product-card"
+import { DiscountBanner } from "@/components/discount-banner"
 import { Parallax } from "@/components/parallax"
 import { Reveal } from "@/components/reveal"
 import { COLLECTIONS, getCollection, getProductsByCollection } from "@/lib/products"
@@ -73,9 +74,12 @@ export default async function CollectionPage({ params }: { params: Promise<{ slu
       </section>
 
       <main className="mx-auto max-w-6xl px-4 py-14">
-        <p className="mb-5 text-sm font-semibold text-foreground">
-          {products.length} {products.length === 1 ? "produto" : "produtos"}
-        </p>
+        <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
+          <p className="text-sm font-semibold text-foreground">
+            {products.length} {products.length === 1 ? "produto" : "produtos"}
+          </p>
+          <DiscountBanner />
+        </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
           {products.map((product, i) => (
             <Reveal key={product.slug} delay={(i % 4) * 60}>
